@@ -25,11 +25,13 @@
   a { text-decoration:none; color:inherit; }
 
   .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
-  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:9px; }
-  .brand .mark { width:7px; height:7px; border-radius:50%; background:var(--ink); display:inline-block; }
-  .topbar a.back { font-size:14px; font-weight:500; color:var(--gray); transition:color .15s ease; }
-  .topbar a.back:hover { color:var(--ink); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .topbar-left { display:flex; align-items:center; gap:20px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:9px; transition:opacity .15s ease; }
+  .brand:hover { opacity:0.65; }
+  .brand .mark { width:7px; height:7px; border-radius:50%; background:var(--theme); display:inline-block; }
+  .topbar a.back { font-size:14px; font-weight:600; color:var(--gray); transition:color .15s ease; white-space:nowrap; }
+  .topbar a.back:hover { color:var(--theme); }
 
   .wrap { max-width:1120px; margin:0 auto; padding:64px 24px 96px; }
 
@@ -94,8 +96,10 @@
 <body class="v-a">
 <div class="topbar">
   <div class="topbar-inner">
-    <span class="brand"><span class="mark"></span>코웨이 스마트홈 트렌드</span>
-    <a class="back" href="../index.html">← 뉴스레터 모음</a>
+    <div class="topbar-left">
+      <a class="back" href="../index.html">← 뉴스레터 모음</a>
+      <a class="brand" href="../index.html"><span class="mark"></span>코웨이 스마트홈 트렌드</a>
+    </div>
   </div>
 </div>
 
