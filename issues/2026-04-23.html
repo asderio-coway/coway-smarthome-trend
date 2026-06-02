@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>경쟁사 재편과 Matter 1.4 본격화 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2f9e7d; --theme-soft:#eaf6f1; --theme-deep:#1f6f59;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:9px; }
+  .brand .mark { width:7px; height:7px; border-radius:50%; background:var(--ink); display:inline-block; }
+  .topbar a.back { font-size:14px; font-weight:500; color:var(--gray); transition:color .15s ease; }
+  .topbar a.back:hover { color:var(--ink); }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:64px 24px 96px; }
+
+  .issue-head { margin-bottom:56px; }
+  .kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:var(--ink); margin:12px 0 20px; max-width:22ch; word-break:keep-all; text-wrap:balance; }
+  .issue-meta { font-size:14px; color:var(--gray); display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .badge { font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+  .issue-meta .dot { color:var(--gray-light); }
+
+  .glance-head { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--theme); margin-bottom:16px; }
+  .glance { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:72px; }
+  .glance-item { border-radius:18px; padding:28px 26px 30px; }
+  .glance-num { display:inline-block; font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1; }
+  .glance-num::before { content:""; display:block; width:26px; height:3px; border-radius:2px; margin-bottom:16px; }
+  .glance-text { font-size:16.5px; font-weight:500; line-height:1.55; margin-top:14px; letter-spacing:-0.01em; word-break:keep-all; }
+  .glance-text b { font-weight:700; }
+  /* 시안 A — 소프트 그라데이션 밴드(차분, 기본) */
+  .v-a .glance-item { background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .v-a .glance-num { color:var(--theme); }
+  .v-a .glance-num::before { background:var(--theme); }
+  .v-a .glance-text { color:var(--ink); }
+  /* 시안 B — 은은한 그라데이션 밴드 */
+  .v-b .glance-item { background:linear-gradient(135deg,var(--theme),var(--theme-deep)); box-shadow:0 14px 34px rgba(0,0,0,.16); }
+  .v-b .glance-num { color:#fff; }
+  .v-b .glance-num::before { background:rgba(255,255,255,.85); }
+  .v-b .glance-text { color:#fff; }
+  .v-b .glance-head { color:var(--theme); }
+
+  .section-label { font-size:28px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin:0 0 6px; }
+  .section-sub { font-size:14px; color:var(--gray); margin:0 0 32px; }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-bottom:64px; }
+  .pcard { display:flex; flex-direction:column; background:var(--bg); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .pcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .thumb { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--bg-soft); display:block; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .pcard:hover .thumb img { transform:scale(1.04); }
+  .cat-chip { position:absolute; top:12px; left:12px; z-index:2; font-size:11.5px; font-weight:600; padding:5px 11px 5px 9px; border-radius:var(--radius-pill); color:var(--ink); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-flex; align-items:center; gap:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-chip::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--cat, var(--gray)); }
+  .cat-ai { --cat:var(--cat-ai); } .cat-well { --cat:var(--cat-well); } .cat-std { --cat:var(--cat-std); } .cat-eco { --cat:var(--cat-eco); } .cat-biz { --cat:var(--cat-biz); }
+  .cat-chip { color:var(--cat, var(--ink)); }
+
+  .pbody { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1; }
+  .pbody h3 { font-size:19px; font-weight:600; line-height:1.32; letter-spacing:-0.015em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .pbody p { font-size:14.5px; line-height:1.65; color:var(--gray); margin:0 0 18px; }
+  .src-row { margin-top:auto; }
+  .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); transition:color .15s ease; }
+  .src-btn:hover { color:var(--theme); }
+  .src-btn .meta { color:var(--gray-light); }
+  .img-credit { font-size:11px; color:var(--gray-light); margin-top:9px; line-height:1.4; }
+  .img-credit a { color:var(--gray-light); transition:color .15s ease; }
+  .img-credit a:hover { color:var(--gray); text-decoration:underline; text-underline-offset:2px; }
+
+  .footer { margin-top:8px; padding-top:32px; border-top:1px solid var(--hairline); font-size:12.5px; font-weight:300; line-height:1.7; letter-spacing:0.01em; color:var(--gray-light); max-width:60ch; }
+
+  @media (max-width:980px){ .grid { grid-template-columns:repeat(2,1fr); } .glance { grid-template-columns:1fr; } }
+  @media (max-width:640px){ .grid { grid-template-columns:1fr; } .issue-title { font-size:32px; } .wrap { padding:44px 20px 72px; } }
+</style>
+<style>:root{--theme:#2f9e7d;--theme-soft:#eaf6f1;--theme-deep:#1f6f59;}</style>
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand"><span class="mark"></span>코웨이 스마트홈 트렌드</span>
+    <a class="back" href="../index.html">← 뉴스레터 모음</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="issue-head">
+    <div class="kicker">Issue 03 · 2026.04.06–2026.04.23</div>
+    <h1 class="issue-title">경쟁사 재편과 Matter 1.4 본격화</h1>
+    <div class="issue-meta">
+      <span class="badge">포토 카드뉴스</span>
+      <span>발행 2026.04.23</span>
+      <span class="dot">·</span>
+      <span>분석 6건</span>
+    </div>
+  </header>
+
+  <div class="glance-head">이번 호 한눈에</div>
+  <section class="glance">
+      <div class="glance-item"><span class="glance-num">01</span><div class="glance-text">구글·삼성·애플이 같은 분기에 홈 허브에 AI 에이전트를 기본 탑재하며 경쟁축이 음성비서에서 온디바이스 AI로 이동했다.</div></div>
+      <div class="glance-item"><span class="glance-num">02</span><div class="glance-text">Matter 1.4가 에너지·카메라 도메인까지 확장되며 단순 연결을 넘어 복합 가정 자동화 프레임워크로 전환됐다.</div></div>
+      <div class="glance-item"><span class="glance-num">03</span><div class="glance-text">EU CRA·RED에 미국 FCC 인증까지 더해지며 커넥티드 제품의 사이버보안 이중 규제가 출시 게이트로 작동한다.</div></div>
+  </section>
+
+  <h2 class="section-label">주요 기사</h2>
+  <p class="section-sub">업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</p>
+
+  <div class="grid">
+    <article class="pcard">
+      <a class="thumb" href="https://www.theverge.com/tech" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20viewBox%3D&#39;0%200%20640%20400&#39;%3E%20%3Cdefs%3E%3ClinearGradient%20id%3D&#39;g&#39;%20x1%3D&#39;0&#39;%20y1%3D&#39;0&#39;%20x2%3D&#39;1&#39;%20y2%3D&#39;1&#39;%3E%20%3Cstop%20offset%3D&#39;0&#39;%20stop-color%3D&#39;%231b1b4b&#39;%2F%3E%3Cstop%20offset%3D&#39;0.5&#39;%20stop-color%3D&#39;%233b3f9e&#39;%2F%3E%3Cstop%20offset%3D&#39;1&#39;%20stop-color%3D&#39;%236f74e6&#39;%2F%3E%20%3C%2FlinearGradient%3E%3C%2Fdefs%3E%20%3Crect%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20fill%3D&#39;url(%23g)&#39;%2F%3E%20%3Cg%20fill%3D&#39;none&#39;%20stroke%3D&#39;%23ffffff&#39;%20stroke-opacity%3D&#39;0.14&#39;%20stroke-width%3D&#39;3&#39;%3E%20%3Ccircle%20cx%3D&#39;470&#39;%20cy%3D&#39;200&#39;%20r%3D&#39;34&#39;%20fill%3D&#39;%23ffffff&#39;%20fill-opacity%3D&#39;0.14&#39;%20stroke%3D&#39;none&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;370&#39;%20cy%3D&#39;110&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;130&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;380&#39;%20cy%3D&#39;300&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;290&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Cpath%20d%3D&#39;M470%20200%20L370%20110%20M470%20200%20L560%20130%20M470%20200%20L380%20300%20M470%20200%20L560%20290&#39;%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E" alt="구글, Gemini for Home 전 제품 기본 탑재" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글, Gemini for Home 전 제품 기본 탑재</h3>
+        <p>Nest·구글홈 전 라인업에 Gemini가 기본 탑재되고 개발자용 Home API가 공개됐다. 자연어 명령만으로 Matter 호환 타사 기기까지 묶은 루틴을 만들 수 있게 됐다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.theverge.com/tech" target="_blank" rel="noopener">The Verge <span class="meta">· 04.09</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://news.samsung.com/global/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20viewBox%3D&#39;0%200%20640%20400&#39;%3E%20%3Cdefs%3E%3ClinearGradient%20id%3D&#39;g&#39;%20x1%3D&#39;0&#39;%20y1%3D&#39;0&#39;%20x2%3D&#39;1&#39;%20y2%3D&#39;1&#39;%3E%20%3Cstop%20offset%3D&#39;0&#39;%20stop-color%3D&#39;%231b1b4b&#39;%2F%3E%3Cstop%20offset%3D&#39;0.5&#39;%20stop-color%3D&#39;%233b3f9e&#39;%2F%3E%3Cstop%20offset%3D&#39;1&#39;%20stop-color%3D&#39;%236f74e6&#39;%2F%3E%20%3C%2FlinearGradient%3E%3C%2Fdefs%3E%20%3Crect%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20fill%3D&#39;url(%23g)&#39;%2F%3E%20%3Cg%20fill%3D&#39;none&#39;%20stroke%3D&#39;%23ffffff&#39;%20stroke-opacity%3D&#39;0.14&#39;%20stroke-width%3D&#39;3&#39;%3E%20%3Ccircle%20cx%3D&#39;470&#39;%20cy%3D&#39;200&#39;%20r%3D&#39;34&#39;%20fill%3D&#39;%23ffffff&#39;%20fill-opacity%3D&#39;0.14&#39;%20stroke%3D&#39;none&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;370&#39;%20cy%3D&#39;110&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;130&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;380&#39;%20cy%3D&#39;300&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;290&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Cpath%20d%3D&#39;M470%20200%20L370%20110%20M470%20200%20L560%20130%20M470%20200%20L380%20300%20M470%20200%20L560%20290&#39;%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E" alt="삼성, 갤럭시 통합 SmartThings AI Home" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>삼성, 갤럭시 통합 SmartThings AI Home</h3>
+        <p>갤럭시 AI가 학습한 사용자 패턴을 SmartThings 허브를 통해 TV·냉장고·에어케어로 확산하는 구조를 공식화했다. 연결은 개방하되 핵심 지능은 자사 기기에 묶는 방향이다.</p>
+        <div class="src-row"><a class="src-btn" href="https://news.samsung.com/global/" target="_blank" rel="noopener">Samsung Newsroom <span class="meta">· 04.14</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5mac.com/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20viewBox%3D&#39;0%200%20640%20400&#39;%3E%20%3Cdefs%3E%3ClinearGradient%20id%3D&#39;g&#39;%20x1%3D&#39;0&#39;%20y1%3D&#39;0&#39;%20x2%3D&#39;1&#39;%20y2%3D&#39;1&#39;%3E%20%3Cstop%20offset%3D&#39;0&#39;%20stop-color%3D&#39;%231b1b4b&#39;%2F%3E%3Cstop%20offset%3D&#39;0.5&#39;%20stop-color%3D&#39;%233b3f9e&#39;%2F%3E%3Cstop%20offset%3D&#39;1&#39;%20stop-color%3D&#39;%236f74e6&#39;%2F%3E%20%3C%2FlinearGradient%3E%3C%2Fdefs%3E%20%3Crect%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20fill%3D&#39;url(%23g)&#39;%2F%3E%20%3Cg%20fill%3D&#39;none&#39;%20stroke%3D&#39;%23ffffff&#39;%20stroke-opacity%3D&#39;0.14&#39;%20stroke-width%3D&#39;3&#39;%3E%20%3Ccircle%20cx%3D&#39;470&#39;%20cy%3D&#39;200&#39;%20r%3D&#39;34&#39;%20fill%3D&#39;%23ffffff&#39;%20fill-opacity%3D&#39;0.14&#39;%20stroke%3D&#39;none&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;370&#39;%20cy%3D&#39;110&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;130&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;380&#39;%20cy%3D&#39;300&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;290&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Cpath%20d%3D&#39;M470%20200%20L370%20110%20M470%20200%20L560%20130%20M470%20200%20L380%20300%20M470%20200%20L560%20290&#39;%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E" alt="애플, HomeKit에 Apple Intelligence 확대" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>애플, HomeKit에 Apple Intelligence 확대</h3>
+        <p>홈팟·애플TV를 프라이빗 인텔리전스 허브로 재정의하고 개인 맞춤 루틴 학습을 모두 기기 내부에서 처리한다. 프라이버시 우선 로컬 AI를 차별화 축으로 내세웠다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5mac.com/" target="_blank" rel="noopener">9to5Mac <span class="meta">· 04.11</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.lgnewsroom.com/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-well">웰니스·헬스케어</span>
+        <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20viewBox%3D&#39;0%200%20640%20400&#39;%3E%20%3Cdefs%3E%3ClinearGradient%20id%3D&#39;g&#39;%20x1%3D&#39;0&#39;%20y1%3D&#39;0&#39;%20x2%3D&#39;1&#39;%20y2%3D&#39;1&#39;%3E%20%3Cstop%20offset%3D&#39;0&#39;%20stop-color%3D&#39;%2306381f&#39;%2F%3E%3Cstop%20offset%3D&#39;0.5&#39;%20stop-color%3D&#39;%230f7a4d&#39;%2F%3E%3Cstop%20offset%3D&#39;1&#39;%20stop-color%3D&#39;%232fc98a&#39;%2F%3E%20%3C%2FlinearGradient%3E%3C%2Fdefs%3E%20%3Crect%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20fill%3D&#39;url(%23g)&#39;%2F%3E%20%3Cg%20fill%3D&#39;none&#39;%20stroke%3D&#39;%23ffffff&#39;%20stroke-opacity%3D&#39;0.14&#39;%20stroke-width%3D&#39;3&#39;%3E%20%3Ccircle%20cx%3D&#39;470&#39;%20cy%3D&#39;200&#39;%20r%3D&#39;34&#39;%20fill%3D&#39;%23ffffff&#39;%20fill-opacity%3D&#39;0.14&#39;%20stroke%3D&#39;none&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;370&#39;%20cy%3D&#39;110&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;130&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;380&#39;%20cy%3D&#39;300&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;290&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Cpath%20d%3D&#39;M470%20200%20L370%20110%20M470%20200%20L560%20130%20M470%20200%20L380%20300%20M470%20200%20L560%20290&#39;%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E" alt="LG, ThinQ Care 건강 루틴 유럽 출시" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>LG, ThinQ Care 건강 루틴 유럽 출시</h3>
+        <p>공기질·수면·식단 데이터를 묶어 건강 루틴을 제안하는 ThinQ Care를 유럽 전역에 출시했다. GDPR 준수를 위해 데이터는 로컬에서 처리한다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.lgnewsroom.com/" target="_blank" rel="noopener">LG Newsroom <span class="meta">· 04.15</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.theverge.com/tech" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20viewBox%3D&#39;0%200%20640%20400&#39;%3E%20%3Cdefs%3E%3ClinearGradient%20id%3D&#39;g&#39;%20x1%3D&#39;0&#39;%20y1%3D&#39;0&#39;%20x2%3D&#39;1&#39;%20y2%3D&#39;1&#39;%3E%20%3Cstop%20offset%3D&#39;0&#39;%20stop-color%3D&#39;%235a1e07&#39;%2F%3E%3Cstop%20offset%3D&#39;0.5&#39;%20stop-color%3D&#39;%23c4570f&#39;%2F%3E%3Cstop%20offset%3D&#39;1&#39;%20stop-color%3D&#39;%23f0a020&#39;%2F%3E%20%3C%2FlinearGradient%3E%3C%2Fdefs%3E%20%3Crect%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20fill%3D&#39;url(%23g)&#39;%2F%3E%20%3Cg%20fill%3D&#39;none&#39;%20stroke%3D&#39;%23ffffff&#39;%20stroke-opacity%3D&#39;0.14&#39;%20stroke-width%3D&#39;3&#39;%3E%20%3Ccircle%20cx%3D&#39;470&#39;%20cy%3D&#39;200&#39;%20r%3D&#39;34&#39;%20fill%3D&#39;%23ffffff&#39;%20fill-opacity%3D&#39;0.14&#39;%20stroke%3D&#39;none&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;370&#39;%20cy%3D&#39;110&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;130&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;380&#39;%20cy%3D&#39;300&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;290&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Cpath%20d%3D&#39;M470%20200%20L370%20110%20M470%20200%20L560%20130%20M470%20200%20L380%20300%20M470%20200%20L560%20290&#39;%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E" alt="아카라 Hub M3, Matter 1.4 에너지 선제 대응" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>아카라 Hub M3, Matter 1.4 에너지 선제 대응</h3>
+        <p>독립 허브 가운데 가장 빠르게 Matter 1.4 에너지 관리와 Thread 1.4 보더라우터를 적용해 출시했다. 중화권 플레이어의 표준 대응 속도가 글로벌 3사와 대등해졌다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.theverge.com/tech" target="_blank" rel="noopener">The Verge <span class="meta">· 04.17</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act" target="_blank" rel="noopener">
+        <span class="cat-chip cat-std">표준·규제</span>
+        <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20viewBox%3D&#39;0%200%20640%20400&#39;%3E%20%3Cdefs%3E%3ClinearGradient%20id%3D&#39;g&#39;%20x1%3D&#39;0&#39;%20y1%3D&#39;0&#39;%20x2%3D&#39;1&#39;%20y2%3D&#39;1&#39;%3E%20%3Cstop%20offset%3D&#39;0&#39;%20stop-color%3D&#39;%2310151f&#39;%2F%3E%3Cstop%20offset%3D&#39;0.5&#39;%20stop-color%3D&#39;%232b3a52&#39;%2F%3E%3Cstop%20offset%3D&#39;1&#39;%20stop-color%3D&#39;%2352708f&#39;%2F%3E%20%3C%2FlinearGradient%3E%3C%2Fdefs%3E%20%3Crect%20width%3D&#39;640&#39;%20height%3D&#39;400&#39;%20fill%3D&#39;url(%23g)&#39;%2F%3E%20%3Cg%20fill%3D&#39;none&#39;%20stroke%3D&#39;%23ffffff&#39;%20stroke-opacity%3D&#39;0.14&#39;%20stroke-width%3D&#39;3&#39;%3E%20%3Ccircle%20cx%3D&#39;470&#39;%20cy%3D&#39;200&#39;%20r%3D&#39;34&#39;%20fill%3D&#39;%23ffffff&#39;%20fill-opacity%3D&#39;0.14&#39;%20stroke%3D&#39;none&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;370&#39;%20cy%3D&#39;110&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;130&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Ccircle%20cx%3D&#39;380&#39;%20cy%3D&#39;300&#39;%20r%3D&#39;16&#39;%2F%3E%3Ccircle%20cx%3D&#39;560&#39;%20cy%3D&#39;290&#39;%20r%3D&#39;16&#39;%2F%3E%20%3Cpath%20d%3D&#39;M470%20200%20L370%20110%20M470%20200%20L560%20130%20M470%20200%20L380%20300%20M470%20200%20L560%20290&#39;%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E" alt="EU CRA, 2027년 12월 본격 적용" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>EU CRA, 2027년 12월 본격 적용</h3>
+        <p>디지털 요소를 포함한 모든 제품에 수명주기 전반의 사이버보안 의무가 부과된다. RED 위임법과 중첩되며 유럽 수출 공청기·정수기 라인업에도 직접 영향을 준다.</p>
+        <div class="src-row"><a class="src-btn" href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act" target="_blank" rel="noopener">European Commission <span class="meta">· 04.10</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="footer">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>이용 가이드 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2f9e7d; --theme-soft:#eaf6f1; --theme-deep:#1f6f59;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:9px; }
+  .brand .mark { width:7px; height:7px; border-radius:50%; background:var(--ink); display:inline-block; }
+  .nav { display:flex; gap:22px; font-size:14px; font-weight:500; color:var(--gray); }
+  .nav a { transition:color .15s ease; }
+  .nav a:hover, .nav a.active { color:var(--ink); }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:72px 24px 96px; }
+  .page-kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .page-title { font-size:52px; font-weight:800; letter-spacing:-0.035em; line-height:1.05; color:var(--ink); margin:12px 0 18px; word-break:keep-all; text-wrap:balance; }
+  .page-desc { font-size:19px; font-weight:400; line-height:1.55; color:var(--gray); max-width:640px; margin:0 0 12px; word-break:keep-all; }
+
+  /* 섹션 공통 */
+  .section { margin-top:72px; }
+  .section-head { display:flex; align-items:baseline; gap:14px; margin-bottom:8px; }
+  .section-no { font-size:13px; font-weight:700; letter-spacing:0.1em; color:var(--theme); font-variant-numeric:tabular-nums; }
+  .section-title { font-size:30px; font-weight:800; letter-spacing:-0.03em; color:var(--ink); margin:0; word-break:keep-all; text-wrap:balance; }
+  .section-sub { font-size:15px; color:var(--gray); margin:0 0 30px; max-width:64ch; word-break:keep-all; }
+
+  /* 가이드 카드 그리드 */
+  .gcards { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+  .gcard { background:var(--bg); border:1px solid var(--hairline); border-radius:var(--radius); padding:28px 28px 30px; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .gcard:hover { transform:translateY(-3px); box-shadow:var(--shadow-hover); }
+  .gcard .tag { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; letter-spacing:0.02em; color:var(--theme); background:var(--theme-soft); padding:5px 12px; border-radius:var(--radius-pill); margin-bottom:16px; }
+  .gcard h3 { font-size:19px; font-weight:700; line-height:1.32; letter-spacing:-0.015em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .gcard p { font-size:14.5px; line-height:1.66; color:var(--gray); margin:0; word-break:keep-all; }
+  .gcard p + p { margin-top:12px; }
+  .gcard .hl { color:var(--theme); font-weight:600; }
+
+  /* 미니 데모 요소 — 실제 화면 요소를 본뜬 시각 가이드 */
+  .demo { margin-top:18px; padding-top:18px; border-top:1px dashed var(--hairline); }
+  .demo-label { font-size:11.5px; font-weight:600; letter-spacing:0.04em; color:var(--gray-light); margin-bottom:11px; }
+  .demo-chips { display:flex; gap:7px; flex-wrap:wrap; }
+  .demo-chip { font-size:12.5px; font-weight:500; padding:6px 13px; border-radius:var(--radius-pill); color:var(--gray); background:var(--bg-soft); }
+  .demo-chip.on { background:var(--ink); color:#fff; }
+  .demo-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#fff; background:var(--theme); padding:9px 17px; border-radius:var(--radius-pill); }
+  .demo-src { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); }
+  .demo-src .meta { color:var(--gray-light); }
+  .demo-fmt { display:inline-block; font-size:11.5px; font-weight:600; padding:4px 11px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+
+  /* 카테고리 색 가이드 (섹션2 보조) */
+  .catlist { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+  .catpill { display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; padding:6px 13px; border-radius:var(--radius-pill); background:var(--bg); border:1px solid var(--hairline); color:var(--ink); }
+  .catpill::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--cat,var(--gray)); }
+  .catpill.cat-ai { --cat:var(--cat-ai); } .catpill.cat-well { --cat:var(--cat-well); }
+  .catpill.cat-std { --cat:var(--cat-std); } .catpill.cat-eco { --cat:var(--cat-eco); } .catpill.cat-biz { --cat:var(--cat-biz); }
+
+  /* 구독 CTA */
+  .sub-cta { display:flex; flex-wrap:wrap; align-items:center; gap:20px; background:var(--theme-soft); border-radius:24px; padding:36px 38px; box-shadow:var(--shadow); }
+  .sub-cta-text { flex:1; min-width:240px; }
+  .sub-cta-text h3 { font-size:22px; font-weight:800; letter-spacing:-0.02em; color:var(--theme-deep); margin:0 0 8px; word-break:keep-all; }
+  .sub-cta-text p { font-size:15px; line-height:1.6; color:var(--gray); margin:0; word-break:keep-all; }
+  .sub-btn { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:600; color:#fff; background:var(--theme); padding:13px 26px; border-radius:var(--radius-pill); box-shadow:var(--shadow); transition:transform .2s ease, box-shadow .2s ease; }
+  .sub-btn:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); }
+
+  /* 계절 색상 가이드 */
+  .seasons { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px; }
+  .season { border-radius:18px; padding:22px 20px 24px; border:1px solid var(--hairline); background:var(--bg); box-shadow:var(--shadow); }
+  .season.now { border-color:transparent; box-shadow:0 4px 14px rgba(0,0,0,.06),0 14px 34px rgba(0,0,0,.06); }
+  .swatch { width:100%; height:54px; border-radius:12px; margin-bottom:14px; }
+  .season h4 { font-size:16px; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin:0 0 4px; }
+  .season .hex { font-size:12.5px; color:var(--gray-light); font-variant-numeric:tabular-nums; }
+  .season .badge-now { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.02em; color:#fff; background:var(--theme); padding:3px 10px; border-radius:var(--radius-pill); margin-top:10px; }
+  .sw-spring { background:#2f9e7d; } .sw-summer { background:#2f7fd6; } .sw-autumn { background:#c8772e; } .sw-winter { background:#5b5fc7; }
+
+  .footer { margin-top:88px; padding-top:32px; border-top:1px solid var(--hairline); font-size:12.5px; font-weight:300; line-height:1.7; letter-spacing:0.01em; color:var(--gray-light); max-width:60ch; }
+
+  @media (max-width:780px){ .gcards { grid-template-columns:1fr; } .seasons { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px){ .page-title { font-size:36px; } .wrap { padding:48px 20px 72px; } .section-title { font-size:25px; } }
+</style>
+<style>:root{--theme:#2f7fd6;--theme-soft:#eaf2fb;--theme-deep:#1f5aa0;}</style>
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand"><span class="mark"></span>코웨이 스마트홈 트렌드</span>
+    <nav class="nav">
+      <a href="index.html">뉴스레터 모음</a>
+      <a class="active" href="guide.html">이용 가이드</a>
+      <a href="mailto:asderio@coway.com?subject=%5B스마트홈%20트렌드%5D%20뉴스레터%20구독%20신청">구독</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-kicker">GUIDE · 이용 안내</div>
+  <h1 class="page-title">어디서 무엇을 보나요</h1>
+  <p class="page-desc">코웨이 스마트홈 트렌드 뉴스레터의 화면과 버튼을 하나씩 설명합니다. 처음 방문하셨다면 이 페이지부터 읽어 보세요.</p>
+
+  <!-- (1) 뉴스레터 모음 -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-no">01</span>
+      <h2 class="section-title">뉴스레터 모음 화면</h2>
+    </div>
+    <p class="section-sub">상단 메뉴의 <span style="color:var(--theme);font-weight:600;">뉴스레터 모음</span>을 누르면 나오는 첫 화면입니다. 최신호와 지난 호를 한자리에서 훑어볼 수 있습니다.</p>
+    <div class="gcards">
+      <div class="gcard">
+        <span class="tag">최신호</span>
+        <h3>맨 위 큰 카드 = 가장 최근 호</h3>
+        <p>화면 상단의 가장 큰 카드가 <span class="hl">최신호</span>입니다. 제목과 <span class="hl">핵심 3줄 요약</span>, 발행일이 함께 보여, 카드를 누르면 바로 호 상세 화면으로 이동합니다.</p>
+      </div>
+      <div class="gcard">
+        <span class="tag">지난 호</span>
+        <h3>아래 카드 묶음 = 지난 호 목록</h3>
+        <p>최신호 아래로는 지난 호들이 카드 형태로 나열됩니다. 각 카드에는 <span class="hl">호 번호·제목·요약·발행일</span>이 담겨 있어, 원하는 호를 골라 누르면 됩니다.</p>
+      </div>
+      <div class="gcard">
+        <span class="tag">필터</span>
+        <h3>카테고리 필터칩으로 주제 추리기</h3>
+        <p>제목 아래 알약 모양 <span class="hl">필터칩</span>으로 관심 주제만 골라 볼 수 있습니다. <span class="hl">전체</span>가 기본 선택(진하게 표시)이며, 칩을 누르면 해당 카테고리 글만 남습니다.</p>
+        <div class="demo">
+          <div class="demo-label">필터칩 예시</div>
+          <div class="demo-chips">
+            <span class="demo-chip on">전체</span>
+            <span class="demo-chip">AI 루틴·자동화</span>
+            <span class="demo-chip">표준·규제</span>
+            <span class="demo-chip">생태계·플랫폼</span>
+          </div>
+        </div>
+      </div>
+      <div class="gcard">
+        <span class="tag">발행 주기</span>
+        <h3>격주로 새 호가 올라옵니다</h3>
+        <p>뉴스레터는 <span class="hl">2주에 한 번</span> 자동 발행됩니다. 새 호가 나오면 모음 맨 위 최신호 카드가 자동으로 교체되니, 가끔 들러 확인하시면 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (2) 호 상세 -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-no">02</span>
+      <h2 class="section-title">호 상세 화면</h2>
+    </div>
+    <p class="section-sub">모음에서 카드를 누르면 열리는 <span style="color:var(--theme);font-weight:600;">개별 호</span> 화면입니다. 그 회차의 핵심 흐름과 주요 기사를 정리해 둡니다.</p>
+    <div class="gcards">
+      <div class="gcard">
+        <span class="tag">한눈에</span>
+        <h3>상단 "이번 호 한눈에" = 핵심 3줄</h3>
+        <p>화면 위쪽에 그 회차의 <span class="hl">핵심 3줄 요약</span>이 번호와 함께 놓입니다. 시간이 없다면 이 세 줄만 읽어도 그 호의 큰 흐름을 잡을 수 있습니다.</p>
+      </div>
+      <div class="gcard">
+        <span class="tag">기사 카드</span>
+        <h3>6개 기사 카드로 본문 구성</h3>
+        <p>요약 아래로는 그 회차의 <span class="hl">주요 기사 6건</span>이 카드로 나열됩니다. 각 카드에는 제목과 업계 관찰자 시점의 요약, 출처와 날짜가 담겨 있습니다.</p>
+      </div>
+      <div class="gcard">
+        <span class="tag">색 뱃지</span>
+        <h3>카테고리 색 뱃지로 주제 구분</h3>
+        <p>각 기사 카드 모서리의 <span class="hl">색 뱃지</span>가 글의 주제를 알려 줍니다. 아래 색과 의미를 참고하세요. (자세한 색 규칙은 04번 항목 참고)</p>
+        <div class="demo">
+          <div class="demo-label">카테고리 색</div>
+          <div class="catlist">
+            <span class="catpill cat-ai">AI 루틴·자동화</span>
+            <span class="catpill cat-well">웰니스·헬스케어</span>
+            <span class="catpill cat-std">표준·규제</span>
+            <span class="catpill cat-eco">생태계·플랫폼</span>
+            <span class="catpill cat-biz">사업모델·온보딩</span>
+          </div>
+        </div>
+      </div>
+      <div class="gcard">
+        <span class="tag">원문 보기</span>
+        <h3>"원문 ↗" 버튼 = 출처로 이동</h3>
+        <p>각 기사 카드 이미지나 <span class="hl">출처 버튼</span>을 누르면 새 창에서 원문 기사로 이동합니다. 화살표 <span class="hl">↗</span> 표시가 외부 링크라는 뜻입니다.</p>
+        <div class="demo">
+          <div class="demo-label">출처 버튼 예시</div>
+          <span class="demo-src">The Verge <span class="meta">· 2026.04.09 ↗</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (3) 구독 -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-no">03</span>
+      <h2 class="section-title">구독하기</h2>
+    </div>
+    <p class="section-sub">새 호가 나올 때마다 메일로 받아 보고 싶다면 구독을 신청하세요.</p>
+    <div class="sub-cta">
+      <div class="sub-cta-text">
+        <h3>구독 버튼을 누르면 메일이 열립니다</h3>
+        <p>상단 메뉴의 <span style="color:var(--theme-deep);font-weight:600;">구독</span>을 누르면 신청 메일이 자동으로 작성됩니다. 그대로 보내기만 하면 신청 완료, 이후 <span style="color:var(--theme-deep);font-weight:600;">격주</span>로 새 호를 받아 보실 수 있습니다.</p>
+      </div>
+      <a class="sub-btn" href="mailto:asderio@coway.com?subject=%5B스마트홈%20트렌드%5D%20뉴스레터%20구독%20신청">구독 신청 메일 보내기 →</a>
+    </div>
+  </section>
+
+  <!-- (4) 색상 가이드 -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-no">04</span>
+      <h2 class="section-title">계절별 테마색</h2>
+    </div>
+    <p class="section-sub">강조색(버튼·링크·뱃지에 쓰이는 색)은 <span style="color:var(--theme);font-weight:600;">발행 계절</span>에 따라 바뀝니다. 같은 화면이라도 봄·여름·가을·겨울에 따라 분위기가 달라지니, 색이 변해도 같은 뉴스레터입니다.</p>
+    <div class="seasons">
+      <div class="season now">
+        <div class="swatch sw-spring"></div>
+        <h4>봄</h4>
+        <div class="hex">#2f9e7d · teal</div>
+        <span class="badge-now">현재 회차</span>
+      </div>
+      <div class="season">
+        <div class="swatch sw-summer"></div>
+        <h4>여름</h4>
+        <div class="hex">#2f7fd6 · blue</div>
+      </div>
+      <div class="season">
+        <div class="swatch sw-autumn"></div>
+        <h4>가을</h4>
+        <div class="hex">#c8772e · amber</div>
+      </div>
+      <div class="season">
+        <div class="swatch sw-winter"></div>
+        <h4>겨울</h4>
+        <div class="hex">#5b5fc7 · indigo</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <span class="section-no">05</span>
+      <h2 class="section-title">용어 풀이</h2>
+    </div>
+    <p class="section-sub">기사에 자주 나오는 전문 용어를 한 줄로 풀었습니다. 본문에도 처음 나올 때 괄호로 간단히 설명을 덧붙입니다.</p>
+    <dl style="margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px;">
+      <div><dt style="font-weight:700;color:var(--ink);">Matter</dt><dd style="margin:4px 0 0;color:var(--gray);line-height:1.6;">제조사가 달라도 스마트홈 기기를 하나로 연결하는 공통 표준.</dd></div>
+      <div><dt style="font-weight:700;color:var(--ink);">Thread</dt><dd style="margin:4px 0 0;color:var(--gray);line-height:1.6;">배터리 기기에 적합한 저전력 근거리 무선 네트워크.</dd></div>
+      <div><dt style="font-weight:700;color:var(--ink);">스마트홈 허브</dt><dd style="margin:4px 0 0;color:var(--gray);line-height:1.6;">집 안 기기들을 모아 제어하는 중심 장치(스피커·디스플레이 등).</dd></div>
+      <div><dt style="font-weight:700;color:var(--ink);">온디바이스 AI</dt><dd style="margin:4px 0 0;color:var(--gray);line-height:1.6;">서버가 아닌 기기 자체에서 처리하는 AI(빠르고 사생활 보호에 유리).</dd></div>
+      <div><dt style="font-weight:700;color:var(--ink);">CRA · RED</dt><dd style="margin:4px 0 0;color:var(--gray);line-height:1.6;">EU의 사이버보안·무선기기 규제. 통과해야 유럽 출시가 가능.</dd></div>
+      <div><dt style="font-weight:700;color:var(--ink);">대표 이미지(og:image)</dt><dd style="margin:4px 0 0;color:var(--gray);line-height:1.6;">기사를 공유할 때 자동으로 뜨는 대표 썸네일 사진.</dd></div>
+    </dl>
+  </section>
+
+  <div class="footer">코웨이 IoT기획팀 · 스마트홈 트렌드 뉴스레터 — 사내용. 격주 자동 발행. 문의: 김태현 (IoT기획팀)</div>
+</div>
+</body>
+</html>

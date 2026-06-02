@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>뉴스레터 모음 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    --theme:#2f9e7d; --theme-soft:#eaf6f1; --theme-deep:#1f6f59;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:9px; }
+  .brand .mark { width:7px; height:7px; border-radius:50%; background:var(--ink); display:inline-block; }
+  .nav { display:flex; gap:22px; font-size:14px; font-weight:500; color:var(--gray); }
+  .nav a { transition:color .15s ease; }
+  .nav a:hover, .nav a.active { color:var(--ink); }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:72px 24px 96px; }
+  .page-kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .page-title { font-size:52px; font-weight:800; letter-spacing:-0.035em; line-height:1.05; color:var(--ink); margin:12px 0 18px; word-break:keep-all; text-wrap:balance; }
+  .page-desc { font-size:19px; font-weight:400; line-height:1.55; color:var(--gray); max-width:620px; margin:0 0 40px; word-break:keep-all; }
+
+  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:48px; }
+  .chip { font-size:13px; font-weight:500; padding:7px 15px; border-radius:var(--radius-pill); color:var(--gray); background:var(--bg-soft); transition:background .15s ease, color .15s ease; }
+  .chip.on { background:var(--ink); color:#fff; }
+
+  /* 최신호 강조(featured) */
+  .featured { display:block; background:var(--bg-soft); border-radius:24px; padding:44px 44px 40px; margin-bottom:56px; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .featured:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .featured-tag { font-size:13px; font-weight:700; color:var(--theme); letter-spacing:0.04em; margin-bottom:16px; }
+  .featured-title { font-size:34px; font-weight:800; line-height:1.12; letter-spacing:-0.03em; color:var(--ink); margin:0 0 16px; max-width:20ch; word-break:keep-all; text-wrap:balance; }
+  .featured-glance { font-size:18px; font-weight:400; line-height:1.55; color:var(--gray); margin:0 0 28px; max-width:62ch; word-break:keep-all; }
+  .featured-foot { display:flex; align-items:center; gap:16px; font-size:15px; font-weight:600; color:var(--theme); }
+  .featured-foot .date { color:var(--gray-light); font-weight:400; font-variant-numeric:tabular-nums; margin-left:auto; }
+
+  .grid-label { font-size:21px; font-weight:600; color:var(--ink); margin:0 0 24px; letter-spacing:-0.02em; word-break:keep-all; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; }
+  .icard { display:flex; flex-direction:column; background:var(--bg); border-radius:var(--radius); padding:26px; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .icard:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .icard-top { display:flex; justify-content:space-between; align-items:center; font-size:12.5px; color:var(--gray-light); margin-bottom:16px; }
+  .icard-no { color:var(--gray); font-weight:600; letter-spacing:0.02em; font-variant-numeric:tabular-nums; }
+  .icard-fmt { font-size:11.5px; font-weight:600; padding:4px 11px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+  .icard h3 { font-size:20px; font-weight:600; line-height:1.3; letter-spacing:-0.02em; color:var(--ink); margin:0 0 12px; word-break:keep-all; }
+  .icard p { font-size:14.5px; line-height:1.6; color:var(--gray); margin:0 0 20px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .icard .read { margin-top:auto; font-size:13px; font-weight:500; color:var(--theme); display:flex; justify-content:space-between; align-items:center; }
+  .icard .read .date { color:var(--gray-light); font-weight:400; font-variant-numeric:tabular-nums; }
+
+  .empty { color:var(--gray); padding:40px 0; }
+  .footer { margin-top:80px; padding-top:32px; border-top:1px solid var(--hairline); font-size:12.5px; font-weight:300; line-height:1.7; letter-spacing:0.01em; color:var(--gray-light); max-width:60ch; }
+
+  /* 구독 폼 */
+  .subscribe-box { background:var(--theme-soft); border-radius:24px; padding:32px 36px; margin-bottom:48px; }
+  .subscribe-box h2 { font-size:21px; font-weight:700; letter-spacing:-0.02em; color:var(--theme-deep); margin:0 0 6px; word-break:keep-all; }
+  .subscribe-box p.lead { font-size:14.5px; color:var(--gray); margin:0 0 18px; word-break:keep-all; }
+  .subscribe-form { display:flex; gap:10px; flex-wrap:wrap; align-items:center; max-width:480px; }
+  .subscribe-form input[type=email] { flex:1 1 220px; min-width:0; font-family:var(--font); font-size:15px; color:var(--ink); padding:14px 18px; border:1px solid var(--hairline); border-radius:var(--radius-pill); background:var(--bg); outline:none; transition:border-color .15s ease, box-shadow .15s ease; }
+  .subscribe-form input[type=email]:focus { border-color:var(--theme); box-shadow:0 0 0 3px rgba(255,255,255,.6); }
+  .subscribe-form button { font-family:var(--font); font-size:15px; font-weight:600; color:#fff; background:var(--theme); border:none; padding:14px 28px; border-radius:var(--radius-pill); cursor:pointer; white-space:nowrap; box-shadow:var(--shadow); transition:transform .2s ease, background .2s ease; }
+  .subscribe-form button:hover { transform:translateY(-2px); background:var(--theme-deep); }
+  .subscribe-form button:disabled { opacity:.6; cursor:default; transform:none; }
+  .subscribe-msg { margin:12px 0 0; font-size:14px; line-height:1.5; word-break:keep-all; min-height:1em; }
+  .subscribe-msg.ok { color:var(--theme-deep); }
+  .subscribe-msg.err { color:#b3261e; }
+  .subscribe-msg a { color:var(--theme); font-weight:600; text-decoration:underline; }
+  .poster-link { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:500; color:var(--gray); background:var(--bg-soft); padding:7px 15px; border-radius:var(--radius-pill); transition:background .15s ease, color .15s ease; }
+  .poster-link:hover { background:var(--hairline); color:var(--ink); }
+
+  @media (max-width:640px){ .page-title { font-size:36px; } .wrap { padding:48px 20px 72px; } .subscribe-box { padding:26px 24px; } .subscribe-form button { flex:1 1 100%; } }
+</style>
+<style>:root{--theme:#2f7fd6;--theme-soft:#eaf2fb;--theme-deep:#1f5aa0;}</style>
+<link rel="stylesheet" href="assets/onboarding.css" />
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand"><span class="mark"></span>코웨이 스마트홈 트렌드</span>
+    <nav class="nav">
+      <a class="active" href="index.html">뉴스레터 모음</a>
+      <a href="guide.html" data-onboard="guide">이용 가이드</a>
+      <a class="poster-link" href="poster.pdf" download>↓ 포스터 PDF</a>
+      <a href="#subscribe">구독</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-kicker">NEWSLETTER · 격주 발행</div>
+  <h1 class="page-title">스마트홈 트렌드 뉴스레터 모음</h1>
+  <p class="page-desc">경쟁사 동향과 IoT 플랫폼·표준의 움직임을 업계 관찰자 시점으로 정리합니다. 코웨이 IoT개발실·기획팀을 위한 격주 카드뉴스.</p>
+
+  <div class="subscribe-box" id="subscribe">
+    <h2>격주 뉴스레터 구독</h2>
+    <p class="lead">새 호가 나오면 메일로 받아보세요. 이메일 주소만 입력하면 됩니다.</p>
+    <form class="subscribe-form" data-onboard="subscribe" id="subscribeForm" novalidate>
+      <input type="email" name="email" id="subscribeEmail" placeholder="이메일 주소" autocomplete="email" required aria-label="이메일 주소" />
+      <button type="submit" data-onboard="subscribe">구독하기</button>
+    </form>
+    <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
+  </div>
+
+  <div class="filters" data-onboard="filter">
+    <span class="chip on">전체</span>
+    <span class="chip">AI 루틴·자동화</span>
+    <span class="chip">웰니스·헬스케어</span>
+    <span class="chip">표준·규제</span>
+    <span class="chip">생태계·플랫폼</span>
+    <span class="chip">사업모델·온보딩</span>
+  </div>
+
+  <a class="featured" data-onboard="latest" href="issues/2026-06-02.html">
+      <div class="featured-tag">최신호 · Issue 04</div>
+      <h2 class="featured-title">Matter 1.5 본격 확장과 구독형 AI 홈의 분기점</h2>
+      <p class="featured-glance">Matter(스마트홈 기기 공통 연결 표준) 1.5가 카메라·에너지 관리 클러스터를 더하며 표준이 조명·플러그를 넘어 보안·전력 영역으로 확장됐다.</p>
+      <div class="featured-foot"><span class="read">이번 호 읽기 →</span><span class="date">2026-06-02</span></div>
+    </a>
+
+  <h2 class="grid-label">지난 호 (1)</h2>
+  <div class="grid">
+    <a class="icard" href="issues/2026-04-23.html">
+      <div class="icard-top"><span class="icard-no">Issue 03</span><span class="icard-fmt">카드뉴스</span></div>
+      <h3>경쟁사 재편과 Matter 1.4 본격화</h3>
+      <p>구글·삼성·애플이 같은 분기에 홈 허브에 AI 에이전트를 기본 탑재하며 경쟁축이 음성비서에서 온디바이스 AI로 이동했다.</p>
+      <div class="read"><span>읽기 →</span><span class="date">2026-04-23</span></div>
+    </a>
+  </div>
+
+  <div class="footer">코웨이 IoT기획팀 · 스마트홈 트렌드 뉴스레터 — 사내용. 격주 자동 발행. 문의: 김태현 (IoT기획팀)</div>
+</div>
+<script src="assets/onboarding.js" defer></script>
+<script>
+(function () {
+  var form = document.getElementById("subscribeForm");
+  if (!form) return;
+  var input = document.getElementById("subscribeEmail");
+  var msg = document.getElementById("subscribeMsg");
+  var btn = form.querySelector("button");
+  var MAILTO = "mailto:asderio@coway.com?subject=%5B스마트홈%20트렌드%5D%20뉴스레터%20구독%20신청";
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function show(text, cls) { msg.innerHTML = text; msg.className = "subscribe-msg " + cls; }
+  function mailtoFallback() {
+    return ' <a href="' + MAILTO + '">메일로 구독 신청하기</a>';
+  }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = (input.value || "").trim();
+    if (!EMAIL_RE.test(email)) { show("올바른 이메일 주소를 입력해 주세요.", "err"); return; }
+    btn.disabled = true;
+    show("처리 중…", "");
+    fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email }),
+    })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        if (res.ok && res.d && res.d.ok) {
+          show((res.d.message || "구독 완료") + " 🎉", "ok");
+          form.reset();
+        } else {
+          show((res.d && res.d.error) || "구독에 실패했습니다." + mailtoFallback(), "err");
+        }
+      })
+      .catch(function () {
+        show("지금은 자동 구독이 어렵습니다." + mailtoFallback(), "err");
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>

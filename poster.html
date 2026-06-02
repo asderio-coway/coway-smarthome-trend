@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Matter 1.5 본격 확장과 구독형 AI 홈의 분기점 · 코웨이 스마트홈 트렌드 (포스터)</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    /* 계절 테마 기본값(봄) — render.mjs 가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2f9e7d; --theme-soft:#eaf6f1; --theme-deep:#1f6f59;
+    --radius:16px; --radius-pill:980px;
+    --shadow:0 2px 8px rgba(0,0,0,.05),0 12px 32px rgba(20,20,40,.07);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:var(--font); background:#e9e9ef; display:flex; flex-direction:column; align-items:center; padding:40px; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  /* 화면 프리뷰: PDF 다운로드 바 */
+  .toolbar { width:1920px; max-width:100%; display:flex; justify-content:flex-end; margin-bottom:14px; }
+  .dl-btn { display:inline-flex; align-items:center; gap:7px; font-size:14px; font-weight:600; color:#fff; background:var(--ink); padding:9px 18px; border-radius:var(--radius-pill); box-shadow:0 2px 8px rgba(0,0,0,.18); transition:opacity .15s ease; }
+  .dl-btn:hover { opacity:.85; }
+
+  /* 고정 포스터 프레임 — 1920×1080 */
+  .frame {
+    width:1920px; height:1080px; background:linear-gradient(180deg,#fcfcfe 0%,#f1f1f6 100%);
+    border-radius:28px; box-shadow:0 30px 80px rgba(0,0,0,.25); overflow:hidden;
+    padding:48px 56px 40px; display:flex; flex-direction:column; gap:22px;
+  }
+
+  /* 헤더 */
+  .top { display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:12px; font-size:22px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
+  .brand .mark { width:13px; height:13px; border-radius:4px; background:var(--theme); }
+  .top-meta { display:flex; align-items:center; gap:14px; font-size:15px; color:var(--gray); font-variant-numeric:tabular-nums; }
+  .pill { font-size:13px; font-weight:700; padding:7px 16px; border-radius:var(--radius-pill); color:#fff; background:var(--theme); letter-spacing:0.01em; }
+
+  /* 타이틀 */
+  .kicker { font-size:15px; font-weight:700; letter-spacing:0.06em; color:var(--theme); text-transform:uppercase; }
+  .title { font-size:52px; font-weight:800; letter-spacing:-0.035em; line-height:1.05; color:var(--ink); margin-top:8px; word-break:keep-all; }
+
+  /* 이번 호 한눈에 — 시안 A 소프트 그라데이션 밴드 */
+  .glance-head { font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--theme); margin-bottom:14px; }
+  .glance { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-radius:24px; padding:30px 40px 32px; column-gap:40px;
+    background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .glance-item { display:flex; flex-direction:column; }
+  .glance-num { font-size:44px; font-weight:800; line-height:1; letter-spacing:-0.02em; color:var(--theme); font-variant-numeric:tabular-nums; }
+  .glance-num::before { content:""; display:block; width:40px; height:4px; border-radius:3px; background:var(--theme); margin-bottom:14px; }
+  .glance-text { font-size:19px; font-weight:600; line-height:1.5; color:var(--ink); letter-spacing:-0.01em; word-break:keep-all; margin-top:14px; }
+  .glance-text b { font-weight:800; }
+
+  /* 섹션 라벨 */
+  .sec { display:flex; align-items:baseline; gap:12px; }
+  .sec h2 { font-size:24px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
+  .sec span { font-size:14px; color:var(--gray); }
+
+  /* 6 카드 3×2 — compact */
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:20px; flex:1; min-height:0; }
+  .pcard { display:flex; flex-direction:column; background:var(--bg); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); min-height:0; }
+  .thumb { position:relative; height:110px; flex:none; overflow:hidden; background:var(--bg-soft); display:block; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  .cat-chip { position:absolute; top:11px; left:11px; z-index:2; font-size:11.5px; font-weight:700; padding:5px 11px 5px 9px; border-radius:var(--radius-pill); color:#fff; background:var(--cat,var(--gray)); display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 6px rgba(0,0,0,.18); }
+  .cat-chip::before { content:""; width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.9); }
+  .cat-ai { --cat:var(--cat-ai); } .cat-well { --cat:var(--cat-well); } .cat-std { --cat:var(--cat-std); } .cat-eco { --cat:var(--cat-eco); } .cat-biz { --cat:var(--cat-biz); }
+
+  .pbody { padding:15px 18px 15px; display:flex; flex-direction:column; flex:1; min-height:0; overflow:hidden; }
+  .pbody h3 { font-size:18px; font-weight:700; line-height:1.3; letter-spacing:-0.015em; color:var(--ink); margin:0 0 8px; word-break:keep-all; }
+  .pbody p { font-size:13.5px; line-height:1.55; color:var(--gray); margin:0 0 12px; word-break:keep-all; }
+  .src-row { margin-top:auto; }
+  .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:var(--ink); }
+  .src-btn .meta { color:var(--gray-light); font-weight:400; font-variant-numeric:tabular-nums; }
+  .src-btn:hover { color:var(--theme); }
+  .img-credit { display:none; }
+
+  /* 푸터 */
+  .foot { font-size:12.5px; font-weight:300; line-height:1.6; color:var(--gray-light); letter-spacing:0.01em; padding-top:2px; }
+
+  /* 인쇄 — A4 가로 1페이지. 1920×1080 프레임을 297×210mm(=16:9 아님이라 살짝 가로 여백) 페이지에 reflow.
+     transform:scale 은 레이아웃 박스를 줄이지 못해 페이지가 넘치므로, 프레임 크기를 물리 단위(mm)로
+     다시 지정해 한 페이지에 정확히 맞춘다. flex 레이아웃이라 카드/글랜스가 자동 reflow 된다. */
+  @page { size:A4 landscape; margin:0; }
+  @media print {
+    html, body { background:#fff; padding:0; margin:0; display:block; }
+    .toolbar { display:none; }
+    .frame {
+      width:297mm; height:210mm; border-radius:0; box-shadow:none;
+      padding:9mm 11mm 7mm; gap:4mm; page-break-after:avoid;
+    }
+    .title { font-size:32pt; }
+    .glance { padding:5mm 7mm 6mm; column-gap:7mm; }
+    .glance-num { font-size:26pt; }
+    .glance-text { font-size:11.5pt; margin-top:2.5mm; }
+    .glance-head { margin-bottom:2mm; }
+    .thumb { height:24mm; }
+    .pbody { padding:3mm 4mm; }
+    .pbody h3 { font-size:11.5pt; margin-bottom:1.5mm; }
+    .pbody p { font-size:8.5pt; line-height:1.45; margin-bottom:2mm; }
+    .src-btn { font-size:8pt; }
+    .grid { gap:4mm; }
+    .sec h2 { font-size:14pt; }
+    .sec span { font-size:8.5pt; }
+    .foot { font-size:7.5pt; }
+  }
+</style>
+<style>:root{--theme:#2f7fd6;--theme-soft:#eaf2fb;--theme-deep:#1f5aa0;}</style>
+</head>
+<body class="v-a">
+
+  <div class="toolbar">
+    <a class="dl-btn" href="poster.pdf" download>↓ PDF 다운로드</a>
+  </div>
+
+  <div class="frame">
+
+    <div class="top">
+      <div class="brand"><span class="mark"></span>코웨이 스마트홈 트렌드</div>
+      <div class="top-meta">
+        <span>Issue 04 · 2026.05.19–2026.06.02</span>
+        <span>·</span><span>발행 2026.06.02</span>
+        <span>·</span><span>기사 6건</span>
+        <span class="pill">포토 카드뉴스</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="kicker">SMART HOME TREND</div>
+      <h1 class="title">Matter 1.5 본격 확장과 구독형 AI 홈의 분기점</h1>
+    </div>
+
+    <div class="glance-head">이번 호 한눈에</div>
+    <section class="glance">
+      <div class="glance-item"><span class="glance-num">01</span><div class="glance-text">Matter(스마트홈 기기 공통 연결 표준) 1.5가 카메라·에너지 관리 클러스터를 더하며 표준이 조명·플러그를 넘어 보안·전력 영역으로 확장됐다.</div></div>
+      <div class="glance-item"><span class="glance-num">02</span><div class="glance-text">아마존 Alexa+(생성형 AI 음성비서)가 Prime 멤버십에 무료 편입되며, 스마트홈 경쟁이 기기 판매에서 구독형 AI 서비스 수익 모델로 이동했다.</div></div>
+      <div class="glance-item"><span class="glance-num">03</span><div class="glance-text">EU CRA(EU 사이버보안 규제)의 취약점 보고 의무가 2026년 9월 11일 발효되며, 커넥티드 가전의 출시·운영 전 과정에 보안 의무가 본격 적용된다.</div></div>
+    </section>
+
+    <div class="sec"><h2>주요 기사</h2><span>업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</span></div>
+
+    <div class="grid">
+      <article class="pcard">
+      <a class="thumb" href="https://www.techbuzz.ai/articles/amazon-opens-alexa-ai-assistant-free-to-all-prime-members" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="https://images.unsplash.com/photo-1558089687-f282ffcbc126?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NjYxMzZ8MHwxfHNlYXJjaHwxfHxzbWFydCUyMHNwZWFrZXIlMjB2b2ljZSUyMGFzc2lzdGFudCUyMGhvbWV8ZW58MXwwfHx8MTc4MDM3MjQ3M3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="아마존, Alexa+ AI 음성비서를 Prime 회원에 무료 개방" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>아마존, Alexa+ AI 음성비서를 Prime 회원에 무료 개방</h3>
+        <p>아마존이 생성형 AI 기반 Alexa+(자연어 대화형 음성비서)를 전국 출시 완료 후 Prime 멤버십에 무료로 편입했다. 비회원은 월 19.99달러 단독 구독이며, 능동 제안·기기 진단 같은 고급 기능은 멤버십에 묶여 있다. 적자였던 디바이스 부문을 반복 구독 수익 엔진으로 전환하려는 포석이라는 분석이 나온다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.techbuzz.ai/articles/amazon-opens-alexa-ai-assistant-free-to-all-prime-members" target="_blank" rel="noopener">TechBuzz <span class="meta">· 02.04</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@sebastian_s?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Sebastian Scholz (Nuki)</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.prnewswire.com/news-releases/dreame-launches-three-world-first-air-and-environmental-products-at-dreame-next-marking-north-american-expansion-302760019.html" target="_blank" rel="noopener">
+        <span class="cat-chip cat-well">웰니스·헬스케어</span>
+        <img src="https://images.unsplash.com/photo-1436473849883-bb3464c23e93?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NjYxMzZ8MHwxfHNlYXJjaHwxfHxhaXIlMjBwdXJpZmllciUyMGhvbWUlMjBoZWFsdGh8ZW58MXwwfHx8MTc4MDM3MjQ3NHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="드리미, 자가세척 공기청정기 FP10·할로 북미 출시" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>드리미, 자가세척 공기청정기 FP10·할로 북미 출시</h3>
+        <p>드리미가 샌프란시스코 DREAME NEXT 행사에서 반려동물 가정용 공기청정기 FP10(반려동물 털 99.5% 포집, 자가세척 롤러)와 청정·송풍·난방 3-in-1 무선 청정팬 할로를 공개하며 북미 환경가전 시장에 진입했다. 청정기에 로봇팔 기반 방향 송풍 제어 등 스마트 기능을 결합해 헬스케어 가전 경쟁을 자극한다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.prnewswire.com/news-releases/dreame-launches-three-world-first-air-and-environmental-products-at-dreame-next-marking-north-american-expansion-302760019.html" target="_blank" rel="noopener">PR Newswire <span class="meta">· 05.01</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@abn?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Álvaro Bernal</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.keysight.com/blogs/en/tech/nwvs/2025/09/11/one-year-countdown-to-eu-cra-compliance-september-11-2026-changes-everything" target="_blank" rel="noopener">
+        <span class="cat-chip cat-std">표준·규제</span>
+        <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NjYxMzZ8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5JTIwY29tcGxpYW5jZSUyMHJlZ3VsYXRpb258ZW58MXwwfHx8MTc4MDM3MjQ3NXww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="EU CRA 취약점 보고 의무, 9월 11일부터 발효" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>EU CRA 취약점 보고 의무, 9월 11일부터 발효</h3>
+        <p>CRA(EU 사이버보안 규제)의 핵심 보고 의무가 2026년 9월 11일 발효된다. 적극 악용된 취약점·중대 사고는 24시간 내 1차 보고, 72시간·14일·1개월 단위 후속 보고가 의무화된다. 스마트락·IP카메라·도어벨 등 디지털 요소를 가진 모든 커넥티드 제품이 대상으로, 2027년 12월에는 보안 설계·업데이트 의무까지 전면 적용된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.keysight.com/blogs/en/tech/nwvs/2025/09/11/one-year-countdown-to-eu-cra-compliance-september-11-2026-changes-everything" target="_blank" rel="noopener">Keysight <span class="meta">· 05.21</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@flyd2069?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">FlyD</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://csa-iot.org/newsroom/matter-1-5-introduces-cameras-closures-and-enhanced-energy-management-capabilities/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NjYxMzZ8MHwxfHNlYXJjaHwxfHxjb25uZWN0ZWQlMjBzbWFydCUyMGhvbWUlMjBkZXZpY2VzfGVufDF8MHx8fDE3ODAzNTc0NjN8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Matter 1.5, 카메라·에너지 관리로 표준 영역 확장" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>Matter 1.5, 카메라·에너지 관리로 표준 영역 확장</h3>
+        <p>CSA(스마트홈 표준 단체 Connectivity Standards Alliance)가 Matter(공통 연결 표준) 1.5를 공개하며 카메라·도어벨·양방향 오디오와 전기요금제(Tariff Information) 클러스터를 추가했다. 시간대별 요금(TOU)을 기기가 이해할 수 있는 형태로 구조화해, 단순 연결을 넘어 전력·보안까지 포괄하는 프레임워크로 진화했다.</p>
+        <div class="src-row"><a class="src-btn" href="https://csa-iot.org/newsroom/matter-1-5-introduces-cameras-closures-and-enhanced-energy-management-capabilities/" target="_blank" rel="noopener">CSA-IoT <span class="meta">· 05.19</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@sebastian_s?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Sebastian Scholz (Nuki)</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://smarthomeunlocked.com/articles/alexa-vs-google-home-2026/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-biz">사업모델·온보딩</span>
+        <img src="https://images.unsplash.com/photo-1659823300663-93084f1795d7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NjYxMzZ8MHwxfHNlYXJjaHwxfHxzdWJzY3JpcHRpb24lMjB0ZWNobm9sb2d5JTIwYnVzaW5lc3N8ZW58MXwwfHx8MTc4MDM3MjQ3N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="구글·아마존, 스마트홈 구독 2단계로 수익화 본격화" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글·아마존, 스마트홈 구독 2단계로 수익화 본격화</h3>
+        <p>구글은 Nest Aware를 Google Home Premium으로 개편해 월 10달러·20달러 2단계 구독으로 Gemini for Home과 카메라 이벤트 자동 요약을 제공한다. 아마존 Alexa+와 함께, 업계가 기기 마진 대신 AI 기반 구독 ARPU(가입자당 매출) 확보로 사업모델을 재편 중임을 보여준다.</p>
+        <div class="src-row"><a class="src-btn" href="https://smarthomeunlocked.com/articles/alexa-vs-google-home-2026/" target="_blank" rel="noopener">SmartHome Unlocked <span class="meta">· 05.26</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@jacob17pad?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Jacob Padilla</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://alternativeto.net/news/2026/5/homebridge-2-0-brings-matter-support-for-compatibility-with-google-home-alexa-and-more/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="https://images.unsplash.com/photo-1519558260268-cde7e03a0152?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NjYxMzZ8MHwxfHNlYXJjaHwxfHxzbWFydCUyMGhvbWUlMjBodWIlMjBnYWRnZXR8ZW58MXwwfHx8MTc4MDI5MzEwOHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="홈브릿지 2.0, Matter 브릿지로 생태계 장벽 허문다" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>홈브릿지 2.0, Matter 브릿지로 생태계 장벽 허문다</h3>
+        <p>오픈소스 홈브릿지(Homebridge) 2.0이 Matter(공통 연결 표준) 지원을 추가해, 구글 홈·알렉사·삼성 스마트싱스·아카라 기기를 애플 홈으로 끌어오거나 반대로 노출하는 양방향 Matter 브릿지로 동작한다. 다만 Matter 에뮬레이션 플러그인은 아직 부재해 커뮤니티 개발을 기다리는 초기 단계다.</p>
+        <div class="src-row"><a class="src-btn" href="https://alternativeto.net/news/2026/5/homebridge-2-0-brings-matter-support-for-compatibility-with-google-home-alexa-and-more/" target="_blank" rel="noopener">AlternativeTo <span class="meta">· 05.05</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@benceboros?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">BENCE BOROS</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    </div>
+
+    <div class="foot">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다.</div>
+
+  </div>
+</body>
+</html>

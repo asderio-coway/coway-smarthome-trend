@@ -1,0 +1,159 @@
+/* onboarding.css — 코치마크 온보딩 오버레이 (의존성 0)
+   디자인 시스템 토큰(var(--theme) 등)을 재사용. 토큰이 없는 페이지를 대비해 폴백 값 지정. */
+.cw-onb,
+.cw-onb-help {
+  --onb-theme: var(--theme, #2f9e7d);
+  --onb-theme-deep: var(--theme-deep, #1f6f59);
+  --onb-ink: var(--ink, #1d1d1f);
+  --onb-gray: var(--gray, #6e6e73);
+  --onb-bg: var(--bg, #fff);
+  --onb-hairline: var(--hairline, rgba(0, 0, 0, 0.08));
+  --onb-radius: var(--radius, 16px);
+  --onb-pill: var(--radius-pill, 980px);
+  --onb-shadow: var(--shadow, 0 1px 3px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.04));
+  --onb-shadow-hover: var(--shadow-hover, 0 4px 12px rgba(0,0,0,.08), 0 16px 40px rgba(0,0,0,.08));
+  font-family: var(--font, "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif);
+}
+
+/* 전체 화면 딤 + 타깃 하이라이트 */
+.cw-onb-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0, 0, 0, 0.42);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  -webkit-backdrop-filter: saturate(120%) blur(1px);
+  backdrop-filter: saturate(120%) blur(1px);
+}
+.cw-onb-overlay.cw-show { opacity: 1; }
+
+/* 타깃 강조 링 */
+.cw-onb-spot {
+  position: absolute;
+  z-index: 9001;
+  border-radius: var(--onb-radius);
+  box-shadow: 0 0 0 3px var(--onb-theme), 0 0 0 9999px rgba(0, 0, 0, 0.42);
+  transition: top 0.28s ease, left 0.28s ease, width 0.28s ease, height 0.28s ease;
+  pointer-events: none;
+}
+
+/* 말풍선 */
+.cw-onb-pop {
+  position: absolute;
+  z-index: 9002;
+  width: 290px;
+  max-width: calc(100vw - 32px);
+  background: var(--onb-bg);
+  color: var(--onb-ink);
+  border-radius: var(--onb-radius);
+  box-shadow: var(--onb-shadow-hover);
+  padding: 20px 20px 16px;
+  transition: top 0.28s ease, left 0.28s ease;
+  word-break: keep-all;
+}
+.cw-onb-pop::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--onb-bg);
+  transform: rotate(45deg);
+}
+.cw-onb-pop[data-arrow="top"]::after { top: -7px; left: var(--arrow-x, 28px); box-shadow: -2px -2px 4px rgba(0,0,0,.04); }
+.cw-onb-pop[data-arrow="bottom"]::after { bottom: -7px; left: var(--arrow-x, 28px); box-shadow: 2px 2px 4px rgba(0,0,0,.04); }
+
+.cw-onb-step {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--onb-theme);
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.cw-onb-text {
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--onb-ink);
+  margin: 0 0 16px;
+}
+
+/* 진행점 */
+.cw-onb-dots { display: flex; gap: 6px; margin-bottom: 16px; }
+.cw-onb-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--onb-hairline);
+  transition: background 0.2s ease, width 0.2s ease;
+}
+.cw-onb-dots span.on { background: var(--onb-theme); width: 18px; border-radius: var(--onb-pill); }
+
+/* 버튼 줄 */
+.cw-onb-actions { display: flex; align-items: center; gap: 8px; }
+.cw-onb-skip {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--onb-gray);
+  background: none;
+  border: 0;
+  padding: 8px 4px;
+  cursor: pointer;
+  margin-right: auto;
+  font-family: inherit;
+}
+.cw-onb-skip:hover { color: var(--onb-ink); }
+.cw-onb-btn {
+  font-size: 13.5px;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1px solid var(--onb-hairline);
+  background: var(--onb-bg);
+  color: var(--onb-ink);
+  padding: 9px 16px;
+  border-radius: var(--onb-pill);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.cw-onb-btn:hover { background: var(--onb-bg-soft, #f5f5f7); }
+.cw-onb-btn.cw-primary {
+  background: var(--onb-theme);
+  border-color: var(--onb-theme);
+  color: #fff;
+}
+.cw-onb-btn.cw-primary:hover { background: var(--onb-theme-deep); border-color: var(--onb-theme-deep); transform: translateY(-1px); }
+
+/* 다시 보기 도움말 버튼(우하단) */
+.cw-onb-help {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 8000;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--onb-hairline);
+  background: var(--onb-bg);
+  color: var(--onb-theme);
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--onb-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.cw-onb-help:hover { transform: translateY(-2px); box-shadow: var(--onb-shadow-hover); }
+
+@media (max-width: 640px) {
+  .cw-onb-pop { width: calc(100vw - 32px); }
+  .cw-onb-help { right: 16px; bottom: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-onb-overlay, .cw-onb-spot, .cw-onb-pop { transition: none; }
+}

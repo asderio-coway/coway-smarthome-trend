@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>경쟁사 재편과 Matter 1.4 본격화 · 코웨이 스마트홈 트렌드 (1920×1080)</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --ink:#16161a; --gray:#6e6e73; --gray-light:#9a9aa0;
+    --card:#fff; --hairline:rgba(0,0,0,0.07);
+    /* 계절 테마(봄) — 발행월 기준. 톤다운: 소프트 틴트 밴드 */
+    --theme:#2f9e7d; --theme-soft:#eaf6f1; --theme-deep:#1f6f59;
+    --cat-ai:#5b54e6; --cat-well:#1aa86b; --cat-eco:#f5800a; --cat-std:#1f6fe0; --cat-biz:#a23bd6;
+    --shadow:0 2px 8px rgba(0,0,0,.05),0 12px 32px rgba(20,20,40,.07);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:var(--font); background:#e9e9ef; display:flex; justify-content:center; padding:40px; -webkit-font-smoothing:antialiased; }
+  a { text-decoration:none; color:inherit; }
+
+  .frame {
+    width:1920px; min-height:1080px; background:linear-gradient(180deg,#fcfcfe 0%,#f1f1f6 100%);
+    border-radius:28px; box-shadow:0 30px 80px rgba(0,0,0,.25); overflow:hidden;
+    padding:48px 56px 40px; display:flex; flex-direction:column; gap:24px;
+  }
+
+  .top { display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:12px; font-size:22px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
+  .brand .mark { width:13px; height:13px; border-radius:4px; background:var(--theme); }
+  .top-meta { display:flex; align-items:center; gap:14px; font-size:15px; color:var(--gray); font-variant-numeric:tabular-nums; }
+  .pill { font-size:13px; font-weight:700; padding:7px 16px; border-radius:980px; color:#fff; background:var(--theme); letter-spacing:0.01em; }
+
+  .kicker { font-size:15px; font-weight:700; letter-spacing:0.06em; color:var(--theme); text-transform:uppercase; }
+  .title { font-size:54px; font-weight:800; letter-spacing:-0.035em; line-height:1.05; color:var(--ink); margin-top:8px; word-break:keep-all; }
+
+  /* 핵심 요약 밴드 — 톤다운: 소프트 틴트 + 큰 테마색 번호(이미지에 안 눌리도록 강조 유지) */
+  .glance { border-radius:24px; padding:32px 40px 36px; background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .glance-head { font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--theme); margin-bottom:18px; }
+  .glance-row { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+  .g-item { display:flex; flex-direction:column; }
+  .g-num { font-size:48px; font-weight:800; line-height:1; letter-spacing:-0.02em; color:var(--theme); font-variant-numeric:tabular-nums; }
+  .g-bar { width:40px; height:4px; border-radius:3px; background:var(--theme); margin:14px 0 16px; }
+  .g-text { font-size:20px; font-weight:600; line-height:1.5; color:var(--ink); letter-spacing:-0.01em; word-break:keep-all; }
+
+  .sec { display:flex; align-items:baseline; gap:12px; }
+  .sec h2 { font-size:24px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
+  .sec span { font-size:14px; color:var(--gray); }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; flex:1; }
+  .card { background:var(--card); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; }
+  .thumb { position:relative; height:118px; overflow:hidden; background:#e7e7ee; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  .chip { position:absolute; top:11px; left:11px; font-size:11.5px; font-weight:700; padding:5px 11px; border-radius:980px; color:#fff; box-shadow:0 2px 6px rgba(0,0,0,.18); }
+  .chip.ai { background:var(--cat-ai); } .chip.well { background:var(--cat-well); } .chip.eco { background:var(--cat-eco); } .chip.std { background:var(--cat-std); } .chip.biz { background:var(--cat-biz); }
+  .body { padding:16px 18px 16px; display:flex; flex-direction:column; flex:1; }
+  .body h3 { font-size:18px; font-weight:700; line-height:1.3; letter-spacing:-0.015em; color:var(--ink); margin-bottom:9px; word-break:keep-all; }
+  .body p { font-size:13.5px; line-height:1.55; color:var(--gray); margin-bottom:13px; word-break:keep-all; }
+  .src { margin-top:auto; display:flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--ink); }
+  .src .meta { color:var(--gray-light); font-weight:400; font-variant-numeric:tabular-nums; }
+  .src .arrow { color:var(--theme); }
+
+  .foot { font-size:12.5px; font-weight:300; line-height:1.6; color:var(--gray-light); letter-spacing:0.01em; padding-top:4px; }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="top">
+    <div class="brand"><span class="mark"></span>코웨이 스마트홈 트렌드</div>
+    <div class="top-meta">
+      <span>Issue 03 · 2026.04.06–2026.04.23</span>
+      <span>·</span><span>발행 2026.04.23</span>
+      <span>·</span><span>분석 6건</span>
+      <span class="pill">포토 카드뉴스</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="kicker">SMART HOME TREND</div>
+    <h1 class="title">경쟁사 재편과 Matter 1.4 본격화</h1>
+  </div>
+
+  <section class="glance">
+    <div class="glance-head">이번 호 한눈에</div>
+    <div class="glance-row">
+      <div class="g-item">
+        <div class="g-num">01</div><div class="g-bar"></div>
+        <div class="g-text">구글·삼성·애플이 같은 분기에 홈 허브에 AI 에이전트를 기본 탑재하며 경쟁축이 음성비서에서 온디바이스 AI로 이동했다.</div>
+      </div>
+      <div class="g-item">
+        <div class="g-num">02</div><div class="g-bar"></div>
+        <div class="g-text">Matter 1.4가 에너지·카메라 도메인까지 확장되며 단순 연결을 넘어 복합 가정 자동화 프레임워크로 전환됐다.</div>
+      </div>
+      <div class="g-item">
+        <div class="g-num">03</div><div class="g-bar"></div>
+        <div class="g-text">EU CRA·RED에 미국 FCC 인증까지 더해지며 커넥티드 제품의 사이버보안 이중 규제가 출시 게이트로 작동한다.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>주요 기사</h2><span>업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</span></div>
+
+  <div class="grid">
+    <a class="card" href="https://www.theverge.com/tech" target="_blank" rel="noopener">
+      <div class="thumb"><span class="chip ai">AI 루틴·자동화</span><img src="img/_preview/1.jpg" alt="구글, Gemini for Home 전 제품 기본 탑재" /></div>
+      <div class="body">
+        <h3>구글, Gemini for Home 전 제품 기본 탑재</h3>
+        <p>Nest·구글홈 전 라인업에 Gemini가 기본 탑재되고 개발자용 Home API가 공개됐다. 자연어 명령만으로 Matter 호환 타사 기기까지 묶은 루틴을 만들 수 있게 됐다.</p>
+        <div class="src">The Verge <span class="meta">· 04.09</span> <span class="arrow">원문 ↗</span></div>
+      </div>
+    </a>
+    <a class="card" href="https://news.samsung.com/global/" target="_blank" rel="noopener">
+      <div class="thumb"><span class="chip ai">AI 루틴·자동화</span><img src="img/_preview/2.jpg" alt="삼성, 갤럭시 통합 SmartThings AI Home" /></div>
+      <div class="body">
+        <h3>삼성, 갤럭시 통합 SmartThings AI Home</h3>
+        <p>갤럭시 AI가 학습한 사용자 패턴을 SmartThings 허브를 통해 TV·냉장고·에어케어로 확산하는 구조를 공식화했다. 연결은 개방하되 핵심 지능은 자사 기기에 묶는 방향이다.</p>
+        <div class="src">Samsung Newsroom <span class="meta">· 04.14</span> <span class="arrow">원문 ↗</span></div>
+      </div>
+    </a>
+    <a class="card" href="https://9to5mac.com/" target="_blank" rel="noopener">
+      <div class="thumb"><span class="chip ai">AI 루틴·자동화</span><img src="img/_preview/3.jpg" alt="애플, HomeKit에 Apple Intelligence 확대" /></div>
+      <div class="body">
+        <h3>애플, HomeKit에 Apple Intelligence 확대</h3>
+        <p>홈팟·애플TV를 프라이빗 인텔리전스 허브로 재정의하고 개인 맞춤 루틴 학습을 모두 기기 내부에서 처리한다. 프라이버시 우선 로컬 AI를 차별화 축으로 내세웠다.</p>
+        <div class="src">9to5Mac <span class="meta">· 04.11</span> <span class="arrow">원문 ↗</span></div>
+      </div>
+    </a>
+    <a class="card" href="https://www.lgnewsroom.com/" target="_blank" rel="noopener">
+      <div class="thumb"><span class="chip well">웰니스·헬스케어</span><img src="img/_preview/4.jpg" alt="LG, ThinQ Care 건강 루틴 유럽 출시" /></div>
+      <div class="body">
+        <h3>LG, ThinQ Care 건강 루틴 유럽 출시</h3>
+        <p>공기질·수면·식단 데이터를 묶어 건강 루틴을 제안하는 ThinQ Care를 유럽 전역에 출시했다. GDPR 준수를 위해 데이터는 로컬에서 처리한다.</p>
+        <div class="src">LG Newsroom <span class="meta">· 04.15</span> <span class="arrow">원문 ↗</span></div>
+      </div>
+    </a>
+    <a class="card" href="https://www.theverge.com/tech" target="_blank" rel="noopener">
+      <div class="thumb"><span class="chip eco">생태계·플랫폼</span><img src="img/_preview/5.jpg" alt="아카라 Hub M3, Matter 1.4 에너지 선제 대응" /></div>
+      <div class="body">
+        <h3>아카라 Hub M3, Matter 1.4 에너지 선제 대응</h3>
+        <p>독립 허브 가운데 가장 빠르게 Matter 1.4 에너지 관리와 Thread 1.4 보더라우터를 적용해 출시했다. 중화권 플레이어의 표준 대응 속도가 글로벌 3사와 대등해졌다.</p>
+        <div class="src">The Verge <span class="meta">· 04.17</span> <span class="arrow">원문 ↗</span></div>
+      </div>
+    </a>
+    <a class="card" href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act" target="_blank" rel="noopener">
+      <div class="thumb"><span class="chip std">표준·규제</span><img src="img/_preview/6.jpg" alt="EU CRA, 2027년 12월 본격 적용" /></div>
+      <div class="body">
+        <h3>EU CRA, 2027년 12월 본격 적용</h3>
+        <p>디지털 요소를 포함한 모든 제품에 수명주기 전반의 사이버보안 의무가 부과된다. RED 위임법과 중첩되며 유럽 수출 공청기·정수기 라인업에도 직접 영향을 준다.</p>
+        <div class="src">European Commission <span class="meta">· 04.10</span> <span class="arrow">원문 ↗</span></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="foot">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다. · 미리보기 이미지: Unsplash</div>
+
+</div>
+</body>
+</html>
