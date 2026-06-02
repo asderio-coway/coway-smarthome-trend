@@ -36,8 +36,11 @@
   .page-desc { font-size:19px; font-weight:400; line-height:1.55; color:var(--gray); max-width:620px; margin:0 0 40px; word-break:keep-all; }
 
   .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:48px; }
-  .chip { font-size:13px; font-weight:500; padding:7px 15px; border-radius:var(--radius-pill); color:var(--gray); background:var(--bg-soft); transition:background .15s ease, color .15s ease; }
+  .chip { font-family:inherit; border:none; cursor:pointer; font-size:13px; font-weight:500; padding:8px 15px; border-radius:var(--radius-pill); color:var(--gray); background:var(--bg-soft); transition:background .15s ease, color .15s ease; }
+  .chip:hover { background:var(--hairline); }
   .chip.on { background:var(--ink); color:#fff; }
+  .chip.on:hover { background:var(--ink); }
+  .filter-empty { color:var(--gray); font-size:15px; padding:32px 0; }
 
   /* 최신호 강조(featured) */
   .featured { display:block; background:var(--bg-soft); border-radius:24px; padding:44px 44px 40px; margin-bottom:56px; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
@@ -88,11 +91,11 @@
 <body class="v-a">
 <div class="topbar">
   <div class="topbar-inner">
-    <span class="brand"><span class="mark"></span>코웨이 스마트홈 트렌드</span>
+    <a class="brand" href="index.html"><span class="mark"></span>코웨이 스마트홈 트렌드</a>
     <nav class="nav">
       <a class="active" href="index.html">뉴스레터 모음</a>
       <a href="guide.html" data-onboard="guide">이용 가이드</a>
-      <a class="poster-link" href="poster.pdf" download>↓ 포스터 PDF</a>
+      <a class="poster-link" href="poster.pdf" download="2026-06-02_제4호_Matter 1.5 본격 확장과 구독형 AI 홈의 분기점.pdf">↓ 포스터 PDF</a>
       <a href="#subscribe">구독</a>
     </nav>
   </div>
@@ -114,15 +117,16 @@
   </div>
 
   <div class="filters" data-onboard="filter">
-    <span class="chip on">전체</span>
-    <span class="chip">AI 루틴·자동화</span>
-    <span class="chip">웰니스·헬스케어</span>
-    <span class="chip">표준·규제</span>
-    <span class="chip">생태계·플랫폼</span>
-    <span class="chip">사업모델·온보딩</span>
+    <button class="chip on" data-cat="all">전체</button>
+    <button class="chip" data-cat="ai-routine">AI 루틴·자동화</button>
+    <button class="chip" data-cat="wellness">웰니스·헬스케어</button>
+    <button class="chip" data-cat="standard-regulation">표준·규제</button>
+    <button class="chip" data-cat="ecosystem">생태계·플랫폼</button>
+    <button class="chip" data-cat="business-model">사업모델·온보딩</button>
   </div>
+  <p class="filter-empty" id="filterEmpty" hidden>이 카테고리를 다룬 호가 아직 없습니다.</p>
 
-  <a class="featured" data-onboard="latest" href="issues/2026-06-02.html">
+  <a class="featured" data-onboard="latest" data-categories="ai-routine wellness standard-regulation ecosystem business-model" href="issues/2026-06-02.html">
       <div class="featured-tag">최신호 · Issue 04</div>
       <h2 class="featured-title">Matter 1.5 본격 확장과 구독형 AI 홈의 분기점</h2>
       <p class="featured-glance">Matter(스마트홈 기기 공통 연결 표준) 1.5가 카메라·에너지 관리 클러스터를 더하며 표준이 조명·플러그를 넘어 보안·전력 영역으로 확장됐다.</p>
@@ -131,7 +135,7 @@
 
   <h2 class="grid-label">지난 호 (1)</h2>
   <div class="grid">
-    <a class="icard" href="issues/2026-04-23.html">
+    <a class="icard" data-categories="ai-routine wellness ecosystem standard-regulation" href="issues/2026-04-23.html">
       <div class="icard-top"><span class="icard-no">Issue 03</span><span class="icard-fmt">카드뉴스</span></div>
       <h3>경쟁사 재편과 Matter 1.4 본격화</h3>
       <p>구글·삼성·애플이 같은 분기에 홈 허브에 AI 에이전트를 기본 탑재하며 경쟁축이 음성비서에서 온디바이스 AI로 이동했다.</p>
@@ -179,6 +183,33 @@
         show("지금은 자동 구독이 어렵습니다." + mailtoFallback(), "err");
       })
       .finally(function () { btn.disabled = false; });
+  });
+})();
+
+// 카테고리 필터 — 선택한 카테고리의 기사를 포함한 호만 표시
+(function () {
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".filters .chip"));
+  var cards = Array.prototype.slice.call(document.querySelectorAll("[data-categories]"));
+  var emptyMsg = document.getElementById("filterEmpty");
+  if (!chips.length || !cards.length) return;
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      chips.forEach(function (c) { c.classList.remove("on"); });
+      chip.classList.add("on");
+      var cat = chip.getAttribute("data-cat");
+      var shown = 0;
+      cards.forEach(function (card) {
+        var cats = (card.getAttribute("data-categories") || "").split(" ");
+        var match = cat === "all" || cats.indexOf(cat) !== -1;
+        card.style.display = match ? "" : "none";
+        if (match) shown++;
+      });
+      // 같은 호가 featured/지난호 양쪽에 없으니 라벨도 함께 숨김 처리
+      document.querySelectorAll(".grid-label, .featured-label, .empty").forEach(function (el) {
+        el.style.display = cat === "all" ? "" : "none";
+      });
+      if (emptyMsg) emptyMsg.hidden = shown > 0;
+    });
   });
 })();
 </script>
