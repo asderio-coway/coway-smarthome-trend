@@ -1,6 +1,6 @@
 // [방식 1] Google Form 구독(코웨이 정책 권장) — 구독 버튼이 이 폼을 새 탭으로 엽니다.
 //   구글 폼 만들고 "보내기 → 링크"(https://docs.google.com/forms/d/e/.../viewform)를 붙여넣으세요.
-window.CW_SUBSCRIBE_FORM_URL = "";
+window.CW_SUBSCRIBE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScJ3RvnxIbYu6P75RVINGgKWTb4Qg6BFXeSbU2lNf7eAcaiLA/viewform";
 // [방식 2] (백업) 직접 POST 엔드포인트(익명 허용될 때만). 비우면 미사용.
 window.CW_SUBSCRIBE_URL = "";
 // 구독 해지 접수 메일(요청: 해지는 메일로 대응)
