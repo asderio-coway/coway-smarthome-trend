@@ -184,6 +184,8 @@
     e.preventDefault();
     var email = (input.value || "").trim();
     if (!EMAIL_RE.test(email)) { show("올바른 이메일 주소를 입력해 주세요.", "err"); return; }
+    var formUrl = window.CW_SUBSCRIBE_FORM_URL;
+    if (formUrl) { show("구독 신청 폼이 새 창에서 열립니다 — 이메일을 입력해 제출해 주세요. 🎉", "ok"); window.open(formUrl, "_blank", "noopener"); return; }
     var url = window.CW_SUBSCRIBE_URL;
     if (!url) { show("구독 신청 메일 작성 창을 엽니다." + mailtoFallback(), "ok"); window.location.href = MAILTO; return; }
     btn.disabled = true;
