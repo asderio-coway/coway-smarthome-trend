@@ -164,27 +164,31 @@
     e.preventDefault();
     var email = (input.value || "").trim();
     if (!EMAIL_RE.test(email)) { show("올바른 이메일 주소를 입력해 주세요.", "err"); return; }
-    var formUrl = window.CW_SUBSCRIBE_FORM_URL;
-    if (formUrl) { show("구독 신청 폼이 새 창에서 열립니다 — 이메일을 입력해 제출해 주세요. 🎉", "ok"); window.open(formUrl, "_blank", "noopener"); return; }
+    // 1순위: Apps Script 백그라운드 POST (이 페이지에서 바로 완료)
     var url = window.CW_SUBSCRIBE_URL;
-    if (!url) { show("구독 신청 메일 작성 창을 엽니다." + mailtoFallback(), "ok"); window.location.href = MAILTO; return; }
-    btn.disabled = true;
-    show("처리 중…", "");
-    // Apps Script 웹앱은 단순요청(text/plain)이면 프리플라이트 없이 적재됨. no-cors 라 응답은 못 읽어 낙관적 처리.
-    fetch(url, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify({ email: email }),
-    })
-      .then(function () {
-        show("구독 완료 🎉 새 호가 나오면 메일로 보내드려요.", "ok");
-        form.reset();
+    if (url) {
+      btn.disabled = true;
+      show("처리 중…", "");
+      fetch(url, {
+        method: "POST", mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ email: email }),
       })
-      .catch(function () {
-        show("지금은 자동 구독이 어렵습니다." + mailtoFallback(), "err");
-      })
-      .finally(function () { btn.disabled = false; });
+        .then(function () { show("구독 완료 🎉 새 호가 나오면 메일로 보내드려요.", "ok"); form.reset(); })
+        .catch(function () { show("지금은 자동 구독이 어렵습니다." + mailtoFallback(), "err"); })
+        .finally(function () { btn.disabled = false; });
+      return;
+    }
+    // 2순위: Google Form 새 탭(이메일 pre-fill)
+    var formUrl = window.CW_SUBSCRIBE_FORM_URL;
+    if (formUrl) {
+      show("구독 신청 폼이 새 창에서 열립니다 — 제출 버튼만 눌러주세요. 🎉", "ok");
+      window.open(formUrl + "?entry.264857782=" + encodeURIComponent(email), "_blank", "noopener");
+      return;
+    }
+    // 3순위: mailto 폴백
+    show("구독 신청 메일 작성 창을 엽니다." + mailtoFallback(), "ok");
+    window.location.href = MAILTO;
   });
 })();
 
