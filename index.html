@@ -24,11 +24,15 @@
 
   .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
   .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:9px; }
-  .brand .mark { width:7px; height:7px; border-radius:50%; background:var(--ink); display:inline-block; }
-  .nav { display:flex; gap:22px; font-size:14px; font-weight:500; color:var(--gray); }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:10px; transition:opacity .15s ease; }
+  .brand:hover { opacity:.75; }
+  .brand-mark { flex-shrink:0; display:block; }
+  .brand-text { font-weight:700; letter-spacing:-0.02em; }
+  .nav { display:flex; gap:20px; align-items:center; font-size:14px; font-weight:500; color:var(--gray); }
   .nav a { transition:color .15s ease; }
   .nav a:hover, .nav a.active { color:var(--ink); }
+  .nav-cta { background:var(--theme); color:#fff !important; padding:8px 20px; border-radius:var(--radius-pill); font-weight:600; font-size:13.5px; transition:background .2s ease, transform .2s ease; }
+  .nav-cta:hover { background:var(--theme-deep) !important; transform:translateY(-1px); opacity:1 !important; }
 
   .wrap { max-width:1120px; margin:0 auto; padding:72px 24px 96px; }
   .page-kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
@@ -64,7 +68,15 @@
   .icard .read .date { color:var(--gray-light); font-weight:400; font-variant-numeric:tabular-nums; }
 
   .empty { color:var(--gray); padding:40px 0; }
-  .footer { margin-top:80px; padding-top:32px; border-top:1px solid var(--hairline); font-size:12.5px; font-weight:300; line-height:1.7; letter-spacing:0.01em; color:var(--gray-light); max-width:100%; word-break:keep-all; overflow-wrap:break-word; }
+  .footer { margin-top:80px; padding-top:40px; border-top:1px solid var(--hairline); }
+  .footer-inner { display:flex; gap:48px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; }
+  .footer-brand { display:flex; align-items:flex-start; gap:14px; flex:1 1 240px; }
+  .footer-brand-text strong { display:block; font-size:15px; font-weight:700; color:var(--ink); letter-spacing:-0.01em; margin-bottom:4px; }
+  .footer-brand-text p { font-size:13px; color:var(--gray); line-height:1.55; margin:0; word-break:keep-all; max-width:30ch; }
+  .footer-links { display:flex; flex-direction:column; gap:10px; padding-top:2px; }
+  .footer-links a { font-size:13px; color:var(--gray); transition:color .15s ease; }
+  .footer-links a:hover { color:var(--ink); }
+  .footer-copy { font-size:12px; color:var(--gray-light); line-height:1.7; padding-top:24px; border-top:1px solid var(--hairline); word-break:keep-all; overflow-wrap:break-word; }
 
   /* 구독 폼 */
   .subscribe-box { background:var(--theme-soft); border-radius:24px; padding:32px 36px; margin-bottom:48px; }
@@ -92,6 +104,10 @@
     .subscribe-box { order:7; padding:26px 24px; }
     .footer { order:8; }
     .subscribe-form button { flex:1 1 100%; }
+    .footer-inner { gap:28px; }
+    .nav-cta { padding:7px 14px; font-size:12.5px; }
+    .brand-text { font-size:15px; }
+    .nav { gap:12px; }
   }
   .chip:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:var(--radius-pill); }
   *:focus-visible { outline:2px solid var(--theme); outline-offset:3px; border-radius:4px; }
@@ -103,12 +119,19 @@
 <body class="v-a">
 <div class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="index.html"><span class="mark"></span>코웨이 스마트홈 트렌드</a>
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="9" fill="#2f9e7d"/>
+        <path d="M16 9L7 16V25H13.5V20H18.5V25H25V16L16 9Z" fill="white" fill-opacity="0.95"/>
+        <circle cx="16" cy="22.5" r="1.5" fill="#2f9e7d"/>
+        <path d="M13 20a4.2 4.2 0 0 1 6 0" stroke="#2f9e7d" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="brand-text">코웨이 스마트홈 트렌드</span>
+    </a>
     <nav class="nav">
       <a class="active" href="index.html">뉴스레터 모음</a>
       <a href="guide.html" data-onboard="guide">이용 가이드</a>
-      <a class="poster-link" href="poster.pdf" download="2026-06-09_제5호_애플이 시리를 구글 AI로 새로 만들고, 집 안 카메라도 말로 검색할 수 있게 됐다.pdf">↓ 포스터 PDF</a>
-      <a href="#subscribe">구독</a>
+      <a href="#subscribe" class="nav-cta" data-onboard="subscribe">구독하기</a>
     </nav>
   </div>
 </div>
@@ -161,7 +184,29 @@
     </a>
   </div>
 
-  <div class="footer">코웨이 IoT기획팀 · 스마트홈 트렌드 뉴스레터 — 사내용. 격주 자동 발행. 문의: 김태현 (IoT기획팀)</div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:1px">
+          <rect width="32" height="32" rx="9" fill="#2f9e7d"/>
+          <path d="M16 9L7 16V25H13.5V20H18.5V25H25V16L16 9Z" fill="white" fill-opacity="0.95"/>
+          <circle cx="16" cy="22.5" r="1.5" fill="#2f9e7d"/>
+          <path d="M13 20a4.2 4.2 0 0 1 6 0" stroke="#2f9e7d" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="footer-brand-text">
+          <strong>코웨이 스마트홈 트렌드</strong>
+          <p>경쟁사 동향과 IoT 플랫폼·표준의 움직임을<br>격주로 정리하는 코웨이 IoT기획팀 사내 뉴스레터</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="사이트 링크">
+        <a href="guide.html">이용 가이드</a>
+        <a href="poster.pdf" download="2026-06-09_제5호_애플이 시리를 구글 AI로 새로 만들고, 집 안 카메라도 말로 검색할 수 있게 됐다.pdf">포스터 PDF 저장</a>
+        <a href="#subscribe">구독하기</a>
+        <a href="mailto:asderio@coway.com">문의하기</a>
+      </nav>
+    </div>
+    <div class="footer-copy">코웨이 IoT기획팀 사내용 · 격주 자동 발행 · 원문 저작권은 각 매체에 있습니다 · 문의: 김태현 (IoT기획팀)</div>
+  </footer>
 </div>
 <script src="assets/subscribe-config.js"></script>
 <script src="assets/onboarding.js" defer></script>
