@@ -145,6 +145,7 @@
 
   <div class="footer">코웨이 IoT기획팀 · 스마트홈 트렌드 뉴스레터 — 사내용. 격주 자동 발행. 문의: 김태현 (IoT기획팀)</div>
 </div>
+<script src="assets/subscribe-config.js"></script>
 <script src="assets/onboarding.js" defer></script>
 <script>
 (function () {
@@ -163,21 +164,20 @@
     e.preventDefault();
     var email = (input.value || "").trim();
     if (!EMAIL_RE.test(email)) { show("올바른 이메일 주소를 입력해 주세요.", "err"); return; }
+    var url = window.CW_SUBSCRIBE_URL;
+    if (!url) { show("구독 신청 메일 작성 창을 엽니다." + mailtoFallback(), "ok"); window.location.href = MAILTO; return; }
     btn.disabled = true;
     show("처리 중…", "");
-    fetch("/api/subscribe", {
+    // Apps Script 웹앱은 단순요청(text/plain)이면 프리플라이트 없이 적재됨. no-cors 라 응답은 못 읽어 낙관적 처리.
+    fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({ email: email }),
     })
-      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
-      .then(function (res) {
-        if (res.ok && res.d && res.d.ok) {
-          show((res.d.message || "구독 완료") + " 🎉", "ok");
-          form.reset();
-        } else {
-          show((res.d && res.d.error) || "구독에 실패했습니다." + mailtoFallback(), "err");
-        }
+      .then(function () {
+        show("구독 완료 🎉 새 호가 나오면 메일로 보내드려요.", "ok");
+        form.reset();
       })
       .catch(function () {
         show("지금은 자동 구독이 어렵습니다." + mailtoFallback(), "err");
