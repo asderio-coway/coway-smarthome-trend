@@ -164,29 +164,22 @@
     e.preventDefault();
     var email = (input.value || "").trim();
     if (!EMAIL_RE.test(email)) { show("올바른 이메일 주소를 입력해 주세요.", "err"); return; }
-    // 1순위: Apps Script 백그라운드 POST (이 페이지에서 바로 완료)
-    var url = window.CW_SUBSCRIBE_URL;
-    if (url) {
-      btn.disabled = true;
-      show("처리 중…", "");
-      fetch(url, {
-        method: "POST", mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ email: email }),
-      })
-        .then(function () { show("구독 완료 🎉 새 호가 나오면 메일로 보내드려요.", "ok"); form.reset(); })
-        .catch(function () { show("지금은 자동 구독이 어렵습니다." + mailtoFallback(), "err"); })
+    btn.disabled = true;
+    show("처리 중…", "");
+    // 1순위: Apps Script 백그라운드 POST
+    var postUrl = window.CW_SUBSCRIBE_URL || window.CW_FORM_RESPONSE_URL;
+    var fetchOpts = window.CW_SUBSCRIBE_URL
+      ? { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ email: email }) }
+      : { method: "POST", mode: "no-cors", credentials: "include", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: "entry.265348278=" + encodeURIComponent(email) };
+    if (postUrl) {
+      fetch(postUrl, fetchOpts)
+        .then(function () { show("등록했습니다 🎉 새 호가 나오면 메일로 보내드려요.", "ok"); form.reset(); })
+        .catch(function () { show("실패했습니다. 잠시 후 다시 시도해 주세요." + mailtoFallback(), "err"); })
         .finally(function () { btn.disabled = false; });
       return;
     }
-    // 2순위: Google Form 새 탭(이메일 pre-fill)
-    var formUrl = window.CW_SUBSCRIBE_FORM_URL;
-    if (formUrl) {
-      show("구독 신청 폼이 새 창에서 열립니다 — 제출 버튼만 눌러주세요. 🎉", "ok");
-      window.open(formUrl + "?entry.264857782=" + encodeURIComponent(email), "_blank", "noopener");
-      return;
-    }
-    // 3순위: mailto 폴백
+    // 폴백: mailto
+    btn.disabled = false;
     show("구독 신청 메일 작성 창을 엽니다." + mailtoFallback(), "ok");
     window.location.href = MAILTO;
   });
