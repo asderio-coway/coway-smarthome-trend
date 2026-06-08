@@ -83,7 +83,19 @@
   .poster-link { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:500; color:var(--gray); background:var(--bg-soft); padding:7px 15px; border-radius:var(--radius-pill); transition:background .15s ease, color .15s ease; }
   .poster-link:hover { background:var(--hairline); color:var(--ink); }
 
-  @media (max-width:640px){ .page-title { font-size:36px; } .wrap { padding:48px 20px 72px; } .subscribe-box { padding:26px 24px; } .subscribe-form button { flex:1 1 100%; } }
+  @media (max-width:640px){
+    .page-title { font-size:36px; }
+    .wrap { padding:48px 20px 72px; display:flex; flex-direction:column; }
+    .page-kicker { order:0; } .page-title { order:1; } .page-desc { order:2; }
+    .filters { order:3; } .filter-empty { order:4; } .featured-label { order:5; } .featured { order:5; }
+    .grid-label, .grid, .empty { order:6; }
+    .subscribe-box { order:7; padding:26px 24px; }
+    .footer { order:8; }
+    .subscribe-form button { flex:1 1 100%; }
+  }
+  .chip:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:var(--radius-pill); }
+  *:focus-visible { outline:2px solid var(--theme); outline-offset:3px; border-radius:4px; }
+  *:focus:not(:focus-visible) { outline:none; }
 </style>
 <style>:root{--theme:#2f7fd6;--theme-soft:#eaf2fb;--theme-deep:#1f5aa0;}</style>
 <link rel="stylesheet" href="assets/onboarding.css" />
@@ -108,7 +120,7 @@
 
   <div class="subscribe-box" id="subscribe">
     <h2>격주 뉴스레터 구독</h2>
-    <p class="lead">새 호가 나오면 메일로 받아보세요. 이메일 주소만 입력하면 됩니다.</p>
+    <p class="lead">코웨이 계정(@coway.com)으로 <strong>로그인된 상태</strong>에서 입력하시면 자동 등록됩니다. 미로그인 시 <a href="mailto:asderio@coway.com?subject=%5B%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%99%88%20%ED%8A%B8%EB%A0%8C%EB%93%9C%5D%20%EB%89%B4%EC%8A%A4%EB%A0%88%ED%84%B0%20%EA%B5%AC%EB%8F%85%20%EC%8B%A0%EC%B2%AD" style="color:var(--link)">메일로 구독 신청</a>해 주세요.</p>
     <form class="subscribe-form" data-onboard="subscribe" id="subscribeForm" novalidate>
       <input type="email" name="email" id="subscribeEmail" placeholder="이메일 주소" autocomplete="email" required aria-label="이메일 주소" />
       <button type="submit" data-onboard="subscribe">구독하기</button>
@@ -116,13 +128,13 @@
     <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
   </div>
 
-  <div class="filters" data-onboard="filter">
-    <button class="chip on" data-cat="all">전체</button>
-    <button class="chip" data-cat="ai-routine">AI 루틴·자동화</button>
-    <button class="chip" data-cat="wellness">웰니스·헬스케어</button>
-    <button class="chip" data-cat="standard-regulation">표준·규제</button>
-    <button class="chip" data-cat="ecosystem">생태계·플랫폼</button>
-    <button class="chip" data-cat="business-model">사업모델·온보딩</button>
+  <div class="filters" data-onboard="filter" role="group" aria-label="카테고리 필터">
+    <button class="chip on" data-cat="all" aria-pressed="true">전체</button>
+    <button class="chip" data-cat="ai-routine" aria-pressed="false">AI 루틴·자동화</button>
+    <button class="chip" data-cat="wellness" aria-pressed="false">웰니스·헬스케어</button>
+    <button class="chip" data-cat="standard-regulation" aria-pressed="false">표준·규제</button>
+    <button class="chip" data-cat="ecosystem" aria-pressed="false">생태계·플랫폼</button>
+    <button class="chip" data-cat="business-model" aria-pressed="false">사업모델·온보딩</button>
   </div>
   <p class="filter-empty" id="filterEmpty" hidden>이 카테고리를 다룬 호가 아직 없습니다.</p>
 
@@ -185,31 +197,36 @@
   });
 })();
 
-// 카테고리 필터 — 선택한 카테고리의 기사를 포함한 호만 표시
+// 카테고리 필터 — 선택한 카테고리의 기사를 포함한 호만 표시 (URL sync + aria-pressed)
 (function () {
   var chips = Array.prototype.slice.call(document.querySelectorAll(".filters .chip"));
   var cards = Array.prototype.slice.call(document.querySelectorAll("[data-categories]"));
   var emptyMsg = document.getElementById("filterEmpty");
   if (!chips.length || !cards.length) return;
-  chips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      chips.forEach(function (c) { c.classList.remove("on"); });
-      chip.classList.add("on");
-      var cat = chip.getAttribute("data-cat");
-      var shown = 0;
-      cards.forEach(function (card) {
-        var cats = (card.getAttribute("data-categories") || "").split(" ");
-        var match = cat === "all" || cats.indexOf(cat) !== -1;
-        card.style.display = match ? "" : "none";
-        if (match) shown++;
-      });
-      // 같은 호가 featured/지난호 양쪽에 없으니 라벨도 함께 숨김 처리
-      document.querySelectorAll(".grid-label, .featured-label, .empty").forEach(function (el) {
-        el.style.display = cat === "all" ? "" : "none";
-      });
-      if (emptyMsg) emptyMsg.hidden = shown > 0;
+  function applyFilter(cat) {
+    chips.forEach(function (c) {
+      var isOn = c.getAttribute("data-cat") === cat;
+      c.classList.toggle("on", isOn);
+      c.setAttribute("aria-pressed", isOn ? "true" : "false");
     });
+    var shown = 0;
+    cards.forEach(function (card) {
+      var cats = (card.getAttribute("data-categories") || "").split(" ");
+      var match = cat === "all" || cats.indexOf(cat) !== -1;
+      card.style.display = match ? "" : "none";
+      if (match) shown++;
+    });
+    document.querySelectorAll(".grid-label, .featured-label, .empty").forEach(function (el) {
+      el.style.display = cat === "all" ? "" : "none";
+    });
+    if (emptyMsg) emptyMsg.hidden = shown > 0;
+    history.replaceState(null, "", cat === "all" ? location.pathname : "?cat=" + encodeURIComponent(cat));
+  }
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () { applyFilter(chip.getAttribute("data-cat")); });
   });
+  var initCat = new URLSearchParams(location.search).get("cat") || "all";
+  applyFilter(initCat);
 })();
 </script>
 </body>

@@ -193,7 +193,7 @@
       : { method: "POST", mode: "no-cors", credentials: "include", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: "entry.265348278=" + encodeURIComponent(email) };
     if (postUrl) {
       fetch(postUrl, fetchOpts)
-        .then(function () { show("등록했습니다 🎉 새 호가 나오면 메일로 보내드려요.", "ok"); form.reset(); })
+        .then(function () { show("구독 신청이 접수됐습니다. 확인 메일이 오지 않으면" + mailtoFallback() + "해 주세요.", "ok"); form.reset(); })
         .catch(function () { show("실패했습니다. 잠시 후 다시 시도해 주세요." + mailtoFallback(), "err"); })
         .finally(function () { btn.disabled = false; });
       return;
