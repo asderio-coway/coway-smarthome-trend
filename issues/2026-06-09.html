@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>애플이 시리를 구글 AI로 새로 만들고, 집 안 카메라도 말로 검색할 수 있게 됐다 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2f9e7d; --theme-soft:#eaf6f1; --theme-deep:#1f6f59;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+  .topbar-left { display:flex; align-items:center; gap:20px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:9px; transition:opacity .15s ease; }
+  .brand:hover { opacity:0.65; }
+  .brand .mark { width:7px; height:7px; border-radius:50%; background:var(--theme); display:inline-block; }
+  .topbar a.back { font-size:14px; font-weight:600; color:var(--gray); transition:color .15s ease; white-space:nowrap; }
+  .topbar a.back:hover { color:var(--theme); }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:64px 24px 96px; }
+
+  .issue-head { margin-bottom:56px; }
+  .kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:var(--ink); margin:12px 0 20px; max-width:22ch; word-break:keep-all; text-wrap:balance; }
+  .issue-meta { font-size:14px; color:var(--gray); display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .badge { font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+  .issue-meta .dot { color:var(--gray-light); }
+
+  .glance-head { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--theme); margin-bottom:16px; }
+  .glance { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:72px; }
+  .glance-item { border-radius:18px; padding:28px 26px 30px; }
+  .glance-num { display:inline-block; font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1; }
+  .glance-num::before { content:""; display:block; width:26px; height:3px; border-radius:2px; margin-bottom:16px; }
+  .glance-text { font-size:16.5px; font-weight:500; line-height:1.55; margin-top:14px; letter-spacing:-0.01em; word-break:keep-all; }
+  .glance-text b { font-weight:700; }
+  /* 시안 A — 소프트 그라데이션 밴드(차분, 기본) */
+  .v-a .glance-item { background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .v-a .glance-num { color:var(--theme); }
+  .v-a .glance-num::before { background:var(--theme); }
+  .v-a .glance-text { color:var(--ink); }
+  /* 시안 B — 은은한 그라데이션 밴드 */
+  .v-b .glance-item { background:linear-gradient(135deg,var(--theme),var(--theme-deep)); box-shadow:0 14px 34px rgba(0,0,0,.16); }
+  .v-b .glance-num { color:#fff; }
+  .v-b .glance-num::before { background:rgba(255,255,255,.85); }
+  .v-b .glance-text { color:#fff; }
+  .v-b .glance-head { color:var(--theme); }
+
+  .section-label { font-size:28px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin:0 0 6px; }
+  .section-sub { font-size:14px; color:var(--gray); margin:0 0 32px; }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-bottom:64px; }
+  .pcard { display:flex; flex-direction:column; background:var(--bg); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .pcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .thumb { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--bg-soft); display:block; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .pcard:hover .thumb img { transform:scale(1.04); }
+  .cat-chip { position:absolute; top:12px; left:12px; z-index:2; font-size:11.5px; font-weight:600; padding:5px 11px 5px 9px; border-radius:var(--radius-pill); color:var(--ink); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-flex; align-items:center; gap:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-chip::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--cat, var(--gray)); }
+  .cat-ai { --cat:var(--cat-ai); } .cat-well { --cat:var(--cat-well); } .cat-std { --cat:var(--cat-std); } .cat-eco { --cat:var(--cat-eco); } .cat-biz { --cat:var(--cat-biz); }
+  .cat-chip { color:var(--cat, var(--ink)); }
+
+  .pbody { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1; }
+  .pbody h3 { font-size:19px; font-weight:600; line-height:1.32; letter-spacing:-0.015em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .pbody p { font-size:14.5px; line-height:1.65; color:var(--gray); margin:0 0 18px; }
+  .src-row { margin-top:auto; }
+  .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); transition:color .15s ease; }
+  .src-btn:hover { color:var(--theme); }
+  .src-btn .meta { color:var(--gray-light); }
+  .img-credit { font-size:11px; color:var(--gray-light); margin-top:9px; line-height:1.4; }
+  .img-credit a { color:var(--gray-light); transition:color .15s ease; }
+  .img-credit a:hover { color:var(--gray); text-decoration:underline; text-underline-offset:2px; }
+
+  .footer { margin-top:8px; padding-top:32px; border-top:1px solid var(--hairline); font-size:12.5px; font-weight:300; line-height:1.7; letter-spacing:0.01em; color:var(--gray-light); max-width:100%; word-break:keep-all; overflow-wrap:break-word; }
+
+  @media (max-width:980px){ .grid { grid-template-columns:repeat(2,1fr); } .glance { grid-template-columns:1fr; } }
+  @media (max-width:640px){ .grid { grid-template-columns:1fr; } .issue-title { font-size:32px; } .wrap { padding:44px 20px 72px; } .glance { grid-template-columns:1fr; gap:12px; margin-bottom:48px; } .glance-item { padding:20px 18px 22px; } .topbar-inner { padding-top:10px; padding-bottom:10px; } }
+  .chip:focus-visible, a:focus-visible, button:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:4px; }
+  *:focus:not(:focus-visible) { outline:none; }
+</style>
+<style>:root{--theme:#2f7fd6;--theme-soft:#eaf2fb;--theme-deep:#1f5aa0;}</style>
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a class="back" href="../index.html">← 뉴스레터 모음</a>
+      <a class="brand" href="../index.html"><span class="mark"></span>코웨이 스마트홈 트렌드</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="issue-head">
+    <div class="kicker">Issue 05 · 2026.06.03–2026.06.09</div>
+    <h1 class="issue-title">애플이 시리를 구글 AI로 새로 만들고, 집 안 카메라도 말로 검색할 수 있게 됐다</h1>
+    <div class="issue-meta">
+      <span class="badge">포토 카드뉴스</span>
+      <span>발행 2026.06.09</span>
+      <span class="dot">·</span>
+      <span>기사 6건</span>
+    </div>
+  </header>
+
+  <h2 class="glance-head" aria-label="이번 호 한눈에 요약">이번 호 한눈에</h2>
+  <section class="glance">
+      <div class="glance-item"><span class="glance-num">01</span><div class="glance-text">애플이 Siri를 구글 Gemini와 협력해 대폭 업그레이드했고, 홈 카메라 영상을 자연어로 검색하는 기능도 추가됐다.</div></div>
+      <div class="glance-item"><span class="glance-num">02</span><div class="glance-text">구글도 스마트 디스플레이의 AI 응답을 시각화하고, 기존 Nest 스피커를 단종하며 새 홈 스피커 출시를 준비하고 있다.</div></div>
+      <div class="glance-item"><span class="glance-num">03</span><div class="glance-text">메타 Ray-Ban 안경의 얼굴 인식 기능 검토 소식과 ChatGPT의 에이전트 플랫폼 전환 계획이 AI 기기·서비스의 경계 확장을 보여준다.</div></div>
+  </section>
+
+  <h2 class="section-label">주요 기사</h2>
+  <p class="section-sub">업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</p>
+
+  <div class="grid">
+    <article class="pcard">
+      <a class="thumb" href="https://www.theverge.com/tech/946032/apple-home-ai-camera-descriptions-search-4k" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/5/1.png" alt="애플 홈 카메라에 AI 탑재 — 영상 내용을 말로 검색" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>애플 홈 카메라에 AI 탑재 — 영상 내용을 말로 검색</h3>
+        <p>iOS 27부터 애플 홈(HomeKit)에 연결된 카메라가 영상 내용을 자동 분석해 텍스트로 설명해준다. '거실에서 아이가 넘어진 장면'처럼 자연어로 검색해 원하는 구간을 바로 찾을 수 있게 됐다. 집 안 보안 카메라가 단순 녹화에서 AI 기반 상황 인식 도구로 진화하는 시작점이다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.theverge.com/tech/946032/apple-home-ai-camera-descriptions-search-4k" target="_blank" rel="noopener">The Verge <span class="meta">· 06.08 · theverge.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5mac.com/2026/06/08/craig-federighi-details-apples-collaboration-with-google-for-siri-ai-in-ios-27/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/5/2.jpg" alt="애플 시리에 구글 AI가 들어갔다 — 두 회사의 이례적 협력" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>애플 시리에 구글 AI가 들어갔다 — 두 회사의 이례적 협력</h3>
+        <p>WWDC 2026에서 공개된 Siri AI는 애플 자체 모델과 구글 Gemini를 함께 사용한다. 온디바이스 처리(프라이버시 우선)와 클라우드 Gemini(복잡한 요청)를 용도에 따라 나눠 쓰는 구조로 설계됐다. 스마트홈 생태계의 두 축이 음성비서 영역에서 손을 잡은 점이 주목된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5mac.com/2026/06/08/craig-federighi-details-apples-collaboration-with-google-for-siri-ai-in-ios-27/" target="_blank" rel="noopener">9to5Mac <span class="meta">· 06.08 · 9to5mac.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/06/08/google-home-upgrades-weather-and-media-commands/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/5/3.jpg" alt="구글 홈 스피커, AI가 날씨·미디어 답변을 시각화" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글 홈 스피커, AI가 날씨·미디어 답변을 시각화</h3>
+        <p>구글이 Nest Hub 등 홈 기기의 Gemini 기능을 업데이트해 날씨·음악 재생 명령에 더 풍부한 시각 정보를 제공하기 시작했다. 말로 명령하면 단순 텍스트 대신 관련 이미지와 상세 정보가 화면에 표시된다. 가정용 AI 허브가 텍스트 응답에서 멀티미디어 경험으로 전환되는 흐름이다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/06/08/google-home-upgrades-weather-and-media-commands/" target="_blank" rel="noopener">9to5Google <span class="meta">· 06.08 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/06/05/nest-mini-audio-out-of-stock/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/5/4.jpg" alt="구글, Nest 미니·오디오 단종 수순 — 새 홈 스피커 출시 임박" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글, Nest 미니·오디오 단종 수순 — 새 홈 스피커 출시 임박</h3>
+        <p>구글 스토어에서 Nest Mini와 Nest Audio가 재고 소진 상태로 전환됐다. 이달 내 새 Google Home Speaker 발매가 예상되며, 스마트 스피커 라인업이 Gemini AI 중심으로 재편될 신호로 해석된다. 기존 기기 지원 정책도 주목해야 할 시점이다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/06/05/nest-mini-audio-out-of-stock/" target="_blank" rel="noopener">9to5Google <span class="meta">· 06.05 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/06/05/meta-ray-ban-glasses-may-soon-recognize-faces/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-well">웰니스·헬스케어</span>
+        <img src="../img/5/5.jpg" alt="메타 스마트 안경에 얼굴 인식 검토 — 프라이버시 경계선은 어디" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>메타 스마트 안경에 얼굴 인식 검토 — 프라이버시 경계선은 어디</h3>
+        <p>메타 Ray-Ban 스마트 안경의 앱이 착용자가 촬영한 영상에서 얼굴을 자동 식별하는 기능을 준비 중이라는 보도가 나왔다. 길거리에서 타인의 신원을 자동으로 알아내는 시나리오가 가능해질 수 있어 프라이버시 침해 논란이 커지고 있다. AI 웨어러블이 편의성과 감시 사이의 경계를 어떻게 설정할지 규제 논의가 시작됐다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/06/05/meta-ray-ban-glasses-may-soon-recognize-faces/" target="_blank" rel="noopener">9to5Google <span class="meta">· 06.05 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/06/08/chatgpt-redesign-report/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-biz">사업모델·온보딩</span>
+        <img src="../img/5/6.jpg" alt="&#39;채팅은 끝났다&#39; — ChatGPT, AI 에이전트 플랫폼으로 전면 개편 준비" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>'채팅은 끝났다' — ChatGPT, AI 에이전트 플랫폼으로 전면 개편 준비</h3>
+        <p>OpenAI가 ChatGPT를 대화형 채팅 도구에서 자율적으로 작업을 수행하는 AI 에이전트 플랫폼으로 재설계하고 있다는 보고서가 나왔다. 코딩·업무 자동화를 전면에 내세운 새 UI가 준비 중이며, 스마트홈 자동화 루틴을 AI가 스스로 설계하는 방향과 맥락이 닿아 있다. AI가 '도구'에서 '행위자'로 전환되는 흐름이 플랫폼 전반으로 확산되고 있다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/06/08/chatgpt-redesign-report/" target="_blank" rel="noopener">9to5Google <span class="meta">· 06.08 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="footer">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다.</div>
+</div>
+</body>
+</html>
