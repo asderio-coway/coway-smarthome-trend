@@ -13,7 +13,7 @@
     --hairline:rgba(0,0,0,0.08);
     --link:#0066cc;
     /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
-    --theme:#2f9e7d; --theme-soft:#eaf6f1; --theme-deep:#1f6f59;
+    --theme:#2CA3E1; --theme-soft:#e6f4fc; --theme-deep:#1a87c4;
     --radius:16px; --radius-sm:12px; --radius-pill:980px;
     --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
     --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
@@ -28,8 +28,8 @@
   .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:10px; transition:opacity .15s ease; text-decoration:none; }
   .brand:hover { opacity:.75; }
-  .brand-mark { flex-shrink:0; display:block; }
-  .brand-text { font-weight:700; letter-spacing:-0.02em; }
+  .brand-mark { flex-shrink:0; display:block; filter:drop-shadow(0 1px 3px rgba(0,0,0,.15)); }
+  .brand-text { font-weight:700; letter-spacing:-0.025em; }
   .nav { display:flex; gap:16px; align-items:center; font-size:14px; font-weight:500; color:var(--gray); }
   .nav a { transition:color .15s ease; white-space:nowrap; }
   .nav a:hover { color:var(--ink); }
@@ -43,7 +43,7 @@
 
   .issue-head { margin-bottom:56px; }
   .kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
-  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.03em; line-height:1.1; color:var(--ink); margin:12px 0 20px; max-width:22ch; word-break:keep-all; text-wrap:balance; }
+  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.04em; line-height:1.07; color:var(--ink); margin:12px 0 20px; max-width:24ch; word-break:keep-all; text-wrap:balance; }
   .issue-meta { font-size:14px; color:var(--gray); display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
   .badge { font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
   .issue-meta .dot { color:var(--gray-light); }
@@ -53,7 +53,7 @@
   .glance-item { border-radius:18px; padding:28px 26px 30px; }
   .glance-num { display:inline-block; font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1; }
   .glance-num::before { content:""; display:block; width:26px; height:3px; border-radius:2px; margin-bottom:16px; }
-  .glance-text { font-size:16.5px; font-weight:500; line-height:1.55; margin-top:14px; letter-spacing:-0.01em; word-break:keep-all; }
+  .glance-text { font-size:16.5px; font-weight:500; line-height:1.62; margin-top:14px; letter-spacing:-0.015em; word-break:keep-all; }
   .glance-text b { font-weight:700; }
   /* 시안 A — 소프트 그라데이션 밴드(차분, 기본) */
   .v-a .glance-item { background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
@@ -82,8 +82,8 @@
   .cat-chip { color:var(--cat, var(--ink)); }
 
   .pbody { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1; }
-  .pbody h3 { font-size:19px; font-weight:600; line-height:1.32; letter-spacing:-0.015em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
-  .pbody p { font-size:14.5px; line-height:1.65; color:var(--gray); margin:0 0 18px; }
+  .pbody h3 { font-size:19px; font-weight:600; line-height:1.28; letter-spacing:-0.025em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .pbody p { font-size:14.5px; letter-spacing:-0.01em; line-height:1.68; color:var(--gray); margin:0 0 18px; }
   .src-row { margin-top:auto; }
   .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); transition:color .15s ease; }
   .src-btn:hover { color:var(--theme); }
@@ -96,7 +96,7 @@
   .footer-inner { display:flex; gap:48px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; }
   .footer-brand { display:flex; align-items:flex-start; gap:14px; flex:1 1 240px; }
   .footer-brand-text strong { display:block; font-size:15px; font-weight:700; color:var(--ink); letter-spacing:-0.01em; margin-bottom:4px; }
-  .footer-brand-text p { font-size:13px; color:var(--gray); line-height:1.55; margin:0; word-break:keep-all; max-width:30ch; }
+  .footer-brand-text p { font-size:13px; color:var(--gray); line-height:1.58; margin:0; word-break:keep-all; max-width:36ch; }
   .footer-links { display:flex; flex-direction:column; gap:10px; padding-top:2px; }
   .footer-links a { font-size:13px; color:var(--gray); transition:color .15s ease; }
   .footer-links a:hover { color:var(--ink); }
@@ -107,17 +107,17 @@
   .chip:focus-visible, a:focus-visible, button:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:4px; }
   *:focus:not(:focus-visible) { outline:none; }
 </style>
-<style>:root{--theme:#2f9e7d;--theme-soft:#eaf6f1;--theme-deep:#1f6f59;}</style>
+<style>:root{--theme:#2CA3E1;--theme-soft:#e6f4fc;--theme-deep:#1a87c4;}</style>
 </head>
 <body class="v-a">
 <div class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="../index.html">
       <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <rect width="32" height="32" rx="9" fill="#2f9e7d"/>
-        <path d="M16 9L7 16V25H13.5V20H18.5V25H25V16L16 9Z" fill="white" fill-opacity="0.95"/>
-        <circle cx="16" cy="22.5" r="1.5" fill="#2f9e7d"/>
-        <path d="M13 20a4.2 4.2 0 0 1 6 0" stroke="#2f9e7d" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+        <path d="M9.5 17L16 7L22.5 17V26H18V21H14V26H9.5Z" stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/>
+        <circle cx="16" cy="22" r="1.5" fill="white"/>
+        <path d="M13 20a4 4 0 0 1 6 0" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
       </svg>
       <span class="brand-text">코웨이 스마트홈 트렌드</span>
     </a>
@@ -229,15 +229,15 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:1px">
-          <rect width="32" height="32" rx="9" fill="#2f9e7d"/>
-          <path d="M16 9L7 16V25H13.5V20H18.5V25H25V16L16 9Z" fill="white" fill-opacity="0.95"/>
-          <circle cx="16" cy="22.5" r="1.5" fill="#2f9e7d"/>
-          <path d="M13 20a4.2 4.2 0 0 1 6 0" stroke="#2f9e7d" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <svg width="44" height="44" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:1px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.15))">
+          <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+          <path d="M9.5 17L16 7L22.5 17V26H18V21H14V26H9.5Z" stroke="white" stroke-width="2" stroke-linejoin="round" fill="none"/>
+          <circle cx="16" cy="22" r="1.5" fill="white"/>
+          <path d="M13 20a4 4 0 0 1 6 0" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
         </svg>
         <div class="footer-brand-text">
           <strong>코웨이 스마트홈 트렌드</strong>
-          <p>경쟁사 동향과 IoT 플랫폼·표준의 움직임을<br>격주로 정리하는 코웨이 IoT기획팀 사내 뉴스레터</p>
+          <p>경쟁사 동향과 IoT 플랫폼·표준의 움직임을 격주로 정리하는 코웨이 IoT기획팀 사내 뉴스레터</p>
         </div>
       </div>
       <nav class="footer-links" aria-label="사이트 링크">
