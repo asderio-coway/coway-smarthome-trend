@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI가 업무를 바꾼다 — Coway AI Builders 8주 산출물 6선 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2CA3E1; --theme-soft:#e6f4fc; --theme-deep:#1a87c4;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:10px; transition:opacity .15s ease; text-decoration:none; }
+  .brand:hover { opacity:.75; }
+  .brand-mark { flex-shrink:0; display:block; filter:drop-shadow(0 1px 3px rgba(0,0,0,.15)); }
+  .brand-text { font-weight:700; letter-spacing:-0.025em; }
+  .nav { display:flex; gap:16px; align-items:center; font-size:14px; font-weight:500; color:var(--gray); }
+  .nav a { transition:color .15s ease; white-space:nowrap; }
+  .nav a:hover { color:var(--ink); }
+  .nav-back { color:var(--gray); }
+  .nav-dl { display:inline-flex; align-items:center; gap:5px; background:var(--bg-soft); padding:7px 16px; border-radius:var(--radius-pill); font-size:13px; color:var(--gray); transition:background .15s ease, color .15s ease; }
+  .nav-dl:hover { background:var(--hairline); color:var(--ink); }
+  .nav-subscribe { color:var(--theme) !important; font-weight:600; }
+  .nav-subscribe:hover { color:var(--theme-deep) !important; opacity:1; }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:64px 24px 96px; }
+
+  .issue-head { margin-bottom:56px; }
+  .kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.04em; line-height:1.07; color:var(--ink); margin:12px 0 20px; max-width:24ch; word-break:keep-all; text-wrap:balance; }
+  .issue-meta { font-size:14px; color:var(--gray); display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .badge { font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+  .issue-meta .dot { color:var(--gray-light); }
+
+  .glance-head { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--theme); margin-bottom:16px; }
+  .glance { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:72px; }
+  .glance-item { border-radius:18px; padding:28px 26px 30px; }
+  .glance-num { display:inline-block; font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1; }
+  .glance-num::before { content:""; display:block; width:26px; height:3px; border-radius:2px; margin-bottom:16px; }
+  .glance-text { font-size:16.5px; font-weight:500; line-height:1.62; margin-top:14px; letter-spacing:-0.015em; word-break:keep-all; }
+  .glance-text b { font-weight:700; }
+  /* 시안 A — 소프트 그라데이션 밴드(차분, 기본) */
+  .v-a .glance-item { background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .v-a .glance-num { color:var(--theme); }
+  .v-a .glance-num::before { background:var(--theme); }
+  .v-a .glance-text { color:var(--ink); }
+  /* 시안 B — 은은한 그라데이션 밴드 */
+  .v-b .glance-item { background:linear-gradient(135deg,var(--theme),var(--theme-deep)); box-shadow:0 14px 34px rgba(0,0,0,.16); }
+  .v-b .glance-num { color:#fff; }
+  .v-b .glance-num::before { background:rgba(255,255,255,.85); }
+  .v-b .glance-text { color:#fff; }
+  .v-b .glance-head { color:var(--theme); }
+
+  .section-label { font-size:28px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin:0 0 6px; }
+  .section-sub { font-size:14px; color:var(--gray); margin:0 0 32px; }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-bottom:64px; }
+  .pcard { display:flex; flex-direction:column; background:var(--bg); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .pcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .thumb { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--bg-soft); display:block; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .pcard:hover .thumb img { transform:scale(1.04); }
+  .cat-chip { position:absolute; top:12px; left:12px; z-index:2; font-size:11.5px; font-weight:600; padding:5px 11px 5px 9px; border-radius:var(--radius-pill); color:var(--ink); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-flex; align-items:center; gap:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-chip::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--cat, var(--gray)); }
+  .cat-ai { --cat:var(--cat-ai); } .cat-well { --cat:var(--cat-well); } .cat-std { --cat:var(--cat-std); } .cat-eco { --cat:var(--cat-eco); } .cat-biz { --cat:var(--cat-biz); }
+  .cat-chip { color:var(--cat, var(--ink)); }
+
+  .pbody { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1; }
+  .pbody h3 { font-size:19px; font-weight:600; line-height:1.28; letter-spacing:-0.025em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .pbody p { font-size:14.5px; letter-spacing:-0.01em; line-height:1.68; color:var(--gray); margin:0 0 18px; }
+  .src-row { margin-top:auto; }
+  .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); transition:color .15s ease; }
+  .src-btn:hover { color:var(--theme); }
+  .src-btn .meta { color:var(--gray-light); }
+  .img-credit { font-size:11px; color:var(--gray-light); margin-top:9px; line-height:1.4; }
+  .img-credit a { color:var(--gray-light); transition:color .15s ease; }
+  .img-credit a:hover { color:var(--gray); text-decoration:underline; text-underline-offset:2px; }
+
+  .footer { margin-top:8px; padding-top:40px; border-top:1px solid var(--hairline); }
+  .footer-inner { display:flex; gap:48px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; }
+  .footer-brand { display:flex; align-items:flex-start; gap:14px; flex:1 1 240px; }
+  .footer-brand-text strong { display:block; font-size:15px; font-weight:700; color:var(--ink); letter-spacing:-0.01em; margin-bottom:4px; }
+  .footer-brand-text p { font-size:13px; color:var(--gray); line-height:1.58; margin:0; word-break:keep-all; max-width:36ch; }
+  .footer-links { display:flex; flex-direction:column; gap:10px; padding-top:2px; }
+  .footer-links a { font-size:13px; color:var(--gray); transition:color .15s ease; }
+  .footer-links a:hover { color:var(--ink); }
+  .footer-copy { font-size:12px; color:var(--gray-light); line-height:1.7; padding-top:24px; border-top:1px solid var(--hairline); word-break:keep-all; overflow-wrap:break-word; }
+
+  @media (max-width:980px){ .grid { grid-template-columns:repeat(2,1fr); } .glance { grid-template-columns:1fr; } }
+  @media (max-width:640px){ .grid { grid-template-columns:1fr; } .issue-title { font-size:32px; } .wrap { padding:44px 20px 72px; } .glance { grid-template-columns:1fr; gap:12px; margin-bottom:48px; } .glance-item { padding:20px 18px 22px; } .topbar-inner { padding-top:10px; padding-bottom:10px; } .nav-dl { display:none; } .brand-text { font-size:15px; } .footer-inner { gap:28px; } }
+  .chip:focus-visible, a:focus-visible, button:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:4px; }
+  *:focus:not(:focus-visible) { outline:none; }
+</style>
+<style>:root{--theme:#2CA3E1;--theme-soft:#e6f4fc;--theme-deep:#1a87c4;}</style>
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+        <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+        <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+        <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+        <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">코웨이 스마트홈 트렌드</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html" class="nav-back">← 뉴스레터 모음</a>
+      <a href="../index.html#subscribe" class="nav-subscribe">구독</a>
+      <a href="../poster.pdf" download="" class="nav-dl">↓ PDF 저장</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="issue-head">
+    <div class="kicker">Issue 06 · 2026.04.01–2026.06.10</div>
+    <h1 class="issue-title">AI가 업무를 바꾼다 — Coway AI Builders 8주 산출물 6선</h1>
+    <div class="issue-meta">
+      <span class="badge">포토 카드뉴스</span>
+      <span>발행 2026.06.10</span>
+      <span class="dot">·</span>
+      <span>프로젝트 6선</span>
+    </div>
+  </header>
+
+  <h2 class="glance-head" aria-label="이번 호 한눈에 요약">이번 호 한눈에</h2>
+  <section class="glance">
+      <div class="glance-item"><span class="glance-num">01</span><div class="glance-text">코웨이 IoT·앱개발·서비스 팀원 9명이 8주간 AI를 업무에 직접 적용하며 실제 작동하는 도구 9개를 만들었다.</div></div>
+      <div class="glance-item"><span class="glance-num">02</span><div class="glance-text">WQA 모니터링 자동화·Figma 다국어 번역·macOS 코드 팝업 앱 등 외주 없이 0원으로 구현한 사례가 포함됐다.</div></div>
+      <div class="glance-item"><span class="glance-num">03</span><div class="glance-text">IoCare+ AI 루틴부터 NotebookLM 에이전트까지, 사내 AI 활용의 범위가 스마트홈 제품 영역으로도 확장됐다.</div></div>
+  </section>
+
+  <h2 class="section-label">주요 기사</h2>
+  <p class="section-sub">업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</p>
+
+  <div class="grid">
+    <article class="pcard">
+      <a class="thumb" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p3" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/6/1.jpg" alt="IoCare+ AI 루틴 2.0 — 생활 패턴을 학습해 스마트홈을 선제적으로 제안" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>IoCare+ AI 루틴 2.0 — 생활 패턴을 학습해 스마트홈을 선제적으로 제안</h3>
+        <p>IoT 기획팀이 사용자 생활 패턴 인식 알고리즘과 디바이스 피드백 루프를 결합해 IoCare+ 루틴 추천 엔진을 고도화했다. 정수기·공기청정기 등 코웨이 제품군의 루틴 설정 성공률을 85%까지 끌어올렸으며, AI가 사용자 행동 맥락을 분석해 루틴을 스스로 제안하는 방식으로 설정 허들을 낮췄다.</p>
+        <div class="src-row"><a class="src-btn" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p3" target="_blank" rel="noopener">Coway AI Builders <span class="meta">· 06.08 · asderio-coway.github.io</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@sebastian_s?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Sebastian Scholz (Nuki)</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p4" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/6/2.jpg" alt="AI-Ready Spec Bot — AI와 사람이 함께 읽는 기획서 표준" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>AI-Ready Spec Bot — AI와 사람이 함께 읽는 기획서 표준</h3>
+        <p>IoT 기획팀이 사람과 AI 모두가 이해할 수 있는 기획서 표준안을 정립하고, 사양 질의에 자동 응답하는 RAG 기반 챗봇을 구축했다. 기획서 내 사양 확인 커뮤니케이션 비용을 60% 줄였으며, 문서를 구조화된 데이터로 변환해 AI가 직접 쿼리할 수 있는 파이프라인을 완성했다.</p>
+        <div class="src-row"><a class="src-btn" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p4" target="_blank" rel="noopener">Coway AI Builders <span class="meta">· 06.08 · asderio-coway.github.io</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@prashantbh13?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">prashant hiremath</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p6" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/6/3.jpg" alt="NotebookLM 자동화 에이전트 — 리서치부터 슬라이드까지 원클릭" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>NotebookLM 자동화 에이전트 — 리서치부터 슬라이드까지 원클릭</h3>
+        <p>IoT 기획팀장이 NotebookLM MCP CLI와 에이전트 스킬을 결합해 자료 취합·핵심 질문 실행·음성 개요·멀티 스타일 슬라이드를 원클릭으로 생성하는 자동화 파이프라인을 구축했다. 연구·보고서 작성 공수의 90%를 자동화해 기존 2시간 작업을 10분으로 단축했다.</p>
+        <div class="src-row"><a class="src-btn" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p6" target="_blank" rel="noopener">Coway AI Builders <span class="meta">· 06.08 · asderio-coway.github.io</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@leafybirdy?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">kris</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p7" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/6/4.jpg" alt="WQA 모니터 대시보드 — 이메일 수천 통을 AI가 실시간 분류" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>WQA 모니터 대시보드 — 이메일 수천 통을 AI가 실시간 분류</h3>
+        <p>AI 전략팀이 Gmail 수신 WQA 인증 메일을 AI가 자동 분류해 인증 진행 현황을 한눈에 보여주는 실시간 대시보드를 개발했다. 수동 이메일 확인 대비 현황 파악 속도를 10배 높이고 누락을 제로화했으며, Cloudflare Workers 기반으로 무료 운영 중이다.</p>
+        <div class="src-row"><a class="src-btn" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p7" target="_blank" rel="noopener">Coway AI Builders <span class="meta">· 06.08 · asderio-coway.github.io</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@lukechesser?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Luke Chesser</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p8" target="_blank" rel="noopener">
+        <span class="cat-chip cat-biz">사업모델·온보딩</span>
+        <img src="../img/6/5.jpg" alt="Codepop — 드래그 한 번으로 어디서나 코드를 즉시 이해" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>Codepop — 드래그 한 번으로 어디서나 코드를 즉시 이해</h3>
+        <p>IoT 서비스개발팀이 macOS 전역 단축키로 선택한 코드를 즉시 AI 해설 팝업으로 보여주는 오픈소스 앱 Codepop을 개발했다. Rust·Tauri 기반으로 브라우저·VS Code·Slack 어디서나 동작하며, Gemini 2.5 무료 티어를 써서 운영비 $0을 달성했다. 기획부터 배포까지 전 과정을 Claude Code와의 대화만으로 완성했다.</p>
+        <div class="src-row"><a class="src-btn" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p8" target="_blank" rel="noopener">Coway AI Builders <span class="meta">· 06.08 · asderio-coway.github.io</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@vmxhu?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Szabo Viktor</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p9" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/6/6.jpg" alt="Figma 다국어 번역 플러그인 — 9개 언어 번역과 UI 검증을 한 곳에서" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>Figma 다국어 번역 플러그인 — 9개 언어 번역과 UI 검증을 한 곳에서</h3>
+        <p>IoT 앱개발팀이 Figma 플러그인 안에서 Claude API를 직접 호출해 한국어 텍스트 레이어를 9개 언어로 일괄 번역하고 UI 오버플로까지 자동 감지하는 파이프라인을 구현했다. 외부 번역 툴 전환 없이 Figma 내에서 번역~검증~배포를 완결하며 작업 사이클을 80% 단축했다.</p>
+        <div class="src-row"><a class="src-btn" href="https://asderio-coway.github.io/ai-builders-portfolio/work/p9" target="_blank" rel="noopener">Coway AI Builders <span class="meta">· 06.08 · asderio-coway.github.io</span> 원문 ↗</a></div>
+        <div class="img-credit">사진 <a href="https://unsplash.com/@teamnocoloco?utm_source=coway_smarthome_trend&amp;utm_medium=referral" target="_blank" rel="noopener">Team Nocoloco</a> / <a href="https://unsplash.com?utm_source=coway_smarthome_trend&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></div>
+      </div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="44" height="44" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:1px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.15))">
+          <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+          <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+          <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+          <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+          <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div class="footer-brand-text">
+          <strong>코웨이 스마트홈 트렌드</strong>
+          <p>경쟁사 동향과 IoT 플랫폼·표준의 움직임을 격주로 정리하는 코웨이 IoT기획팀 사내 뉴스레터</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="사이트 링크">
+        <a href="../index.html">뉴스레터 모음</a>
+        <a href="../guide.html">이용 가이드</a>
+        <a href="../poster.pdf" download="">포스터 PDF 저장</a>
+        <a href="../index.html#subscribe">구독하기</a>
+      </nav>
+    </div>
+    <div class="footer-copy">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다.</div>
+  </footer>
+</div>
+</body>
+</html>
