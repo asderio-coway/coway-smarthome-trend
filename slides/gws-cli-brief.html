@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GWS CLI & Jira Automation — IoT기획팀 AI Native 운영 허브</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 24px; color: #1a1a2e; line-height: 1.7; }
+    h1 { font-size: 2.2em; font-weight: 900; margin-bottom: 0.3em; color: #0f0f23; }
+    h2 { font-size: 1.4em; font-weight: 800; margin-top: 2em; border-left: 4px solid #3b82f6; padding-left: 12px; }
+    h3 { font-size: 1.1em; font-weight: 700; color: #1d4ed8; }
+    .tag { display: inline-block; background: #eff6ff; color: #1d4ed8; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-right: 6px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+    .stat { background: #f8fafc; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #e2e8f0; }
+    .stat-num { font-size: 2em; font-weight: 900; color: #2563eb; display: block; }
+    .stat-label { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.1em; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+    .service { background: #f1f5f9; border-radius: 10px; padding: 14px; border: 1px solid #cbd5e1; }
+    .service-name { font-weight: 800; font-size: 14px; color: #0f172a; }
+    .service-desc { font-size: 12px; color: #475569; margin-top: 4px; }
+    .pipeline { background: #0f172a; color: #e2e8f0; padding: 20px 24px; border-radius: 12px; font-family: monospace; font-size: 13px; margin: 16px 0; }
+    .pipeline span { color: #60a5fa; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th { background: #1e3a5f; color: #fff; padding: 10px 14px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+    tr:nth-child(even) { background: #f8fafc; }
+    .highlight { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 16px 20px; margin: 16px 0; }
+    .ide-badge { display: inline-block; background: #1e40af; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-right: 6px; margin-bottom: 6px; }
+    code { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-family: monospace; color: #be185d; }
+  </style>
+</head>
+<body>
+
+  <div>
+    <span class="tag">Work Ops</span>
+    <span class="tag">AI Native</span>
+    <span class="tag">Terminal Automation</span>
+    <span class="tag">IoT기획팀</span>
+  </div>
+
+  <h1>GWS CLI & Jira Automation<br>조종사처럼, 모든 서비스를 터미널 하나로</h1>
+  <p><strong>팀:</strong> IoT기획팀 AI Builders — 김태현(크루장), 홍민재 | <strong>기간:</strong> 2026년 1~4월</p>
+
+  <div class="stat-grid">
+    <div class="stat"><span class="stat-num">15h</span><span class="stat-label">주당 절감</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-label">연결 서비스</span></div>
+    <div class="stat"><span class="stat-num">2분</span><span class="stat-label">Jira 자동응답</span></div>
+    <div class="stat"><span class="stat-num">$0</span><span class="stat-label">운영 비용</span></div>
+  </div>
+
+  <h2>프로젝트 개요</h2>
+  <p>IoT기획팀이 매일 반복적으로 사용하는 <strong>Gmail, Google Sheets, Jira, Confluence, Google Drive</strong>를 단일 터미널 명령어로 통합 제어하는 AI Native 자동화 허브를 구축했다. 이 시스템은 터미널 환경에서뿐만 아니라 <strong>Claude Code, Cursor, AntiGravity</strong> 같은 AI IDE에서도 동일하게 호출되어, 팀원 누구나 자신이 쓰는 개발 환경에서 같은 자동화 파이프라인을 사용할 수 있다.</p>
+
+  <p>핵심 철학은 <em>"조종사(Pilot)"</em> 메타포다. 비행기 조종사가 하나의 콕핏(Cockpit)에서 수십 개의 계기판을 동시에 제어하듯, 개발자·기획자가 터미널 하나에서 Gmail 수신함·Jira 보드·Confluence 위키·Google Sheets 데이터를 실시간으로 조작하고 AI 자동응답을 실행한다.</p>
+
+  <h2>연결된 6개 서비스 (Cockpit Map)</h2>
+  <div class="service-grid">
+    <div class="service">
+      <div class="service-name">📧 Gmail</div>
+      <div class="service-desc">수신 메일 AI 분류, 라벨 자동 적용, 발송 자동화. <code>gws gmail messages list</code>로 CLI에서 바로 조회.</div>
+    </div>
+    <div class="service">
+      <div class="service-name">📊 Google Sheets</div>
+      <div class="service-desc">분류된 데이터를 실시간 적재. WQA 인증현황·이슈 트래킹이 자동으로 시트에 기록됨.</div>
+    </div>
+    <div class="service">
+      <div class="service-name">🎫 Jira</div>
+      <div class="service-desc">신규 QA Inquiry 이슈 감지 → Claude API 응답 초안 → 자동 댓글 또는 담당자 메일. 평균 응답 2분.</div>
+    </div>
+    <div class="service">
+      <div class="service-name">📚 Confluence</div>
+      <div class="service-desc">회의록·정의서 AI 요약 후 자동 게시. MCP Confluence 연동으로 Claude가 직접 페이지를 생성·수정.</div>
+    </div>
+    <div class="service">
+      <div class="service-name">🤖 Claude / Cursor</div>
+      <div class="service-desc">IDE 내 터미널에서 동일 CLI 파이프라인 호출. 코드 컨텍스트와 결합해 더 정확한 자동응답 생성.</div>
+    </div>
+    <div class="service">
+      <div class="service-name">⚡ AntiGravity</div>
+      <div class="service-desc">사내 AI 플랫폼. 동일 gws 명령어로 연동, 팀원들이 UI 없이 터미널에서 AG 파이프라인 실행.</div>
+    </div>
+  </div>
+
+  <h2>자동화 파이프라인 (End-to-End)</h2>
+  <div class="pipeline">
+    <span>수신 메일</span> → Gmail API 조회 → <span>Claude AI 분류</span> (카테고리·담당자·우선순위)<br>
+    → <span>Jira 이슈 자동생성</span> → Claude 응답 초안 → <span>자동 댓글</span><br>
+    → <span>Google Sheets 기록</span> → WQA 대시보드 실시간 반영 → <span>알림 발송</span>
+  </div>
+
+  <h2>핵심 자동화 시나리오</h2>
+  <table>
+    <tr><th>시나리오</th><th>트리거</th><th>자동화 동작</th><th>절감 효과</th></tr>
+    <tr><td>WQA QA Inquiry 처리</td><td>새 Jira 이슈 등록</td><td>Claude 응답 초안 → 자동 댓글 → 담당자 메일</td><td>응답 2h → 2분</td></tr>
+    <tr><td>인증 현황 모니터링</td><td>Gmail 라벨 수신</td><td>AI 분류 → Sheets 적재 → 대시보드 갱신</td><td>수작업 30분 → 0</td></tr>
+    <tr><td>회의록 Wiki 등록</td><td>회의 종료 후 텍스트 입력</td><td>Claude 요약 → Confluence 페이지 자동 생성</td><td>정리 1h → 5분</td></tr>
+    <tr><td>주간 리포트 발송</td><td>크론 스케줄 (금 17시)</td><td>Sheets 집계 → 리포트 생성 → 메일 발송</td><td>주간 2h → 0</td></tr>
+  </table>
+
+  <h2>기술 스택 및 명령어</h2>
+  <h3>GWS CLI 핵심 명령어</h3>
+  <div class="pipeline">
+    <span># 인증</span><br>
+    gws auth login --account asderio@coway.com -s gmail,sheets<br><br>
+    <span># Gmail 동기화</span><br>
+    npm run wqa:gws:sync          <span># 실제 적재</span><br>
+    WQA_DRY_RUN=1 npm run wqa:gws:sync  <span># 드라이런 테스트</span><br><br>
+    <span># Sheets 데이터 조회</span><br>
+    gws sheets spreadsheets values get --params '{"spreadsheetId":"...","range":"A1:E20"}'<br><br>
+    <span># Jira 이슈 처리 (MCP)</span><br>
+    python3 air/scripts/jira_auto_responder.py --issues-json issues.json<br><br>
+    <span># Confluence 페이지 생성 (MCP)</span><br>
+    # mcp__mcp-atlassian__confluence_create_page 직접 호출
+  </div>
+
+  <h3>IDE 통합</h3>
+  <p>아래 도구들에서 동일 CLI를 호출할 수 있어 "도구 불문 AI Native" 환경이 구성된다:</p>
+  <div>
+    <span class="ide-badge">Claude Code (CLI)</span>
+    <span class="ide-badge">Cursor Terminal</span>
+    <span class="ide-badge">AntiGravity</span>
+    <span class="ide-badge">cmux (AI 전용 터미널)</span>
+    <span class="ide-badge">VS Code Terminal</span>
+  </div>
+
+  <h2>IoT기획팀 AI Native 철학</h2>
+  <div class="highlight">
+    <h3>연결 가능한 모든 것은 연결한다</h3>
+    <p>IoT기획팀은 2026년부터 <em>"연결 가능한 모든 서비스를 AI로 묶어 팀 전체를 AI Native화"</em>하는 방향으로 업무 환경을 전환하고 있다. GWS CLI & Jira Automation은 그 첫 번째 성과다.</p>
+    <ul>
+      <li><strong>터미널 우선:</strong> 모든 반복 업무는 CLI 명령어 한 줄로 실행 가능하게 설계</li>
+      <li><strong>IDE 동등:</strong> Claude Code·Cursor·AntiGravity 어디서든 동일 파이프라인 실행</li>
+      <li><strong>제로 수동:</strong> 판단이 필요한 업무만 사람이 처리, 나머지는 전부 자동화</li>
+      <li><strong>비용 제로:</strong> GWS 무료 티어 + Claude CLI + 오픈소스 조합으로 운영비 $0</li>
+    </ul>
+  </div>
+
+  <h2>Before / After 비교</h2>
+  <table>
+    <tr><th>항목</th><th>Before (수동)</th><th>After (자동화)</th></tr>
+    <tr><td>QA Inquiry 응답</td><td>Gmail 확인 → Jira 탭 전환 → 수동 댓글 → 메일 (평균 2시간)</td><td>CLI 명령어 1개 → 2분 내 자동 처리</td></tr>
+    <tr><td>인증 현황 파악</td><td>여러 메일 열고 엑셀에 직접 입력 (30분/회)</td><td>대시보드 URL 접속 → 실시간 현황 (0분)</td></tr>
+    <tr><td>회의록 작성</td><td>메모 정리 → Confluence 로그인 → 수동 입력 (1시간)</td><td>텍스트 붙여넣기 → Claude 요약+등록 (5분)</td></tr>
+    <tr><td>주간 리포트</td><td>Sheets 집계 → 리포트 작성 → 메일 발송 (2시간)</td><td>크론 스케줄 자동 실행 (0시간)</td></tr>
+  </table>
+
+  <h2>성과 요약</h2>
+  <ul>
+    <li>주당 업무 시간 <strong>15시간 절감</strong> (팀 전체 합산)</li>
+    <li>6개 외부 서비스 단일 CLI로 통합 제어</li>
+    <li>QA Inquiry 응답 SLA: 평균 2시간 → <strong>2분 이내</strong></li>
+    <li>9인 팀 전원이 터미널·IDE에서 동일 도구 사용 중</li>
+    <li>운영 비용 <strong>$0</strong> — 무료 티어 + 오픈소스 조합</li>
+  </ul>
+
+  <h2>다음 단계 (로드맵)</h2>
+  <ul>
+    <li>NAVER WORKS 메신저 연동 — 팀 채널에 자동 브리핑</li>
+    <li>Google Meet 회의 자동 녹취·요약 → Confluence 직행</li>
+    <li>Jira 이슈 완료 시 자동 Slack/NAVER WORKS 완료 보고</li>
+    <li>팀 내 다른 프로젝트(IoCare+, RED 인증)로 파이프라인 확장</li>
+  </ul>
+
+</body>
+</html>
