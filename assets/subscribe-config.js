@@ -1,5 +1,7 @@
-// [방식 1] Apps Script 백그라운드 POST (코웨이 계정 로그인 필요)
-window.CW_SUBSCRIBE_URL = "https://script.google.com/a/macros/coway.com/s/AKfycbx8sULf-DmLdzfle4E7Eq2-_YIpBWpZiAp7Xu8YavbIMgkW-K5PWF2Sq4ewjJ1WEa7wUA/exec";
+// [방식 1] Apps Script POST — 코웨이 조직 도메인 배포라 SSO에 막힘. 비활성화.
+// window.CW_SUBSCRIBE_URL = "https://script.google.com/a/macros/coway.com/s/AKfycbx8sULf-DmLdzfle4E7Eq2-_YIpBWpZiAp7Xu8YavbIMgkW-K5PWF2Sq4ewjJ1WEa7wUA/exec";
+// 비워두면 index.html이 자동으로 방식 2(Google Form POST)를 사용 — SSO 불필요
+window.CW_SUBSCRIBE_URL = "";
 // [방식 2] Google Form 백그라운드 POST (코웨이 계정 로그인 시 동작)
 window.CW_FORM_RESPONSE_URL = "https://docs.google.com/forms/d/e/1FAIpQLScJ3RvnxIbYu6P75RVINGgKWTb4Qg6BFXeSbU2lNf7eAcaiLA/formResponse";
 // [방식 3] viewform URL (폴백용, 직접 사용 안 함)
