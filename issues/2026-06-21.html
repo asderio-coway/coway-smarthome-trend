@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>구글이 오래된 스마트 스피커를 교체하고, AI 어시스턴트가 이전 대화를 기억하기 시작했다 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2CA3E1; --theme-soft:#e6f4fc; --theme-deep:#1a87c4;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:10px; transition:opacity .15s ease; text-decoration:none; }
+  .brand:hover { opacity:.75; }
+  .brand-mark { flex-shrink:0; display:block; filter:drop-shadow(0 1px 3px rgba(0,0,0,.15)); }
+  .brand-text { font-weight:700; letter-spacing:-0.025em; }
+  .nav { display:flex; gap:16px; align-items:center; font-size:14px; font-weight:500; color:var(--gray); }
+  .nav a { transition:color .15s ease; white-space:nowrap; }
+  .nav a:hover { color:var(--ink); }
+  .nav-back { color:var(--gray); }
+  .nav-dl { display:inline-flex; align-items:center; gap:5px; background:var(--bg-soft); padding:7px 16px; border-radius:var(--radius-pill); font-size:13px; color:var(--gray); transition:background .15s ease, color .15s ease; }
+  .nav-dl:hover { background:var(--hairline); color:var(--ink); }
+  .nav-subscribe { color:var(--theme) !important; font-weight:600; }
+  .nav-subscribe:hover { color:var(--theme-deep) !important; opacity:1; }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:64px 24px 96px; }
+
+  .issue-head { margin-bottom:56px; }
+  .kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.04em; line-height:1.07; color:var(--ink); margin:12px 0 20px; max-width:24ch; word-break:keep-all; text-wrap:balance; }
+  .issue-meta { font-size:14px; color:var(--gray); display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .badge { font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+  .issue-meta .dot { color:var(--gray-light); }
+
+  .glance-head { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--theme); margin-bottom:16px; }
+  .glance { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:72px; }
+  .glance-item { border-radius:18px; padding:28px 26px 30px; }
+  .glance-num { display:inline-block; font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1; }
+  .glance-num::before { content:""; display:block; width:26px; height:3px; border-radius:2px; margin-bottom:16px; }
+  .glance-text { font-size:16.5px; font-weight:500; line-height:1.62; margin-top:14px; letter-spacing:-0.015em; word-break:keep-all; }
+  .glance-text b { font-weight:700; }
+  /* 시안 A — 소프트 그라데이션 밴드(차분, 기본) */
+  .v-a .glance-item { background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .v-a .glance-num { color:var(--theme); }
+  .v-a .glance-num::before { background:var(--theme); }
+  .v-a .glance-text { color:var(--ink); }
+  /* 시안 B — 은은한 그라데이션 밴드 */
+  .v-b .glance-item { background:linear-gradient(135deg,var(--theme),var(--theme-deep)); box-shadow:0 14px 34px rgba(0,0,0,.16); }
+  .v-b .glance-num { color:#fff; }
+  .v-b .glance-num::before { background:rgba(255,255,255,.85); }
+  .v-b .glance-text { color:#fff; }
+  .v-b .glance-head { color:var(--theme); }
+
+  .section-label { font-size:28px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin:0 0 6px; }
+  .section-sub { font-size:14px; color:var(--gray); margin:0 0 32px; }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-bottom:64px; }
+  .pcard { display:flex; flex-direction:column; background:var(--bg); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .pcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .thumb { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--bg-soft); display:block; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .pcard:hover .thumb img { transform:scale(1.04); }
+  .cat-chip { position:absolute; top:12px; left:12px; z-index:2; font-size:11.5px; font-weight:600; padding:5px 11px 5px 9px; border-radius:var(--radius-pill); color:var(--ink); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-flex; align-items:center; gap:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-chip::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--cat, var(--gray)); }
+  .cat-ai { --cat:var(--cat-ai); } .cat-well { --cat:var(--cat-well); } .cat-std { --cat:var(--cat-std); } .cat-eco { --cat:var(--cat-eco); } .cat-biz { --cat:var(--cat-biz); }
+  .cat-chip { color:var(--cat, var(--ink)); }
+
+  .pbody { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1; }
+  .pbody h3 { font-size:19px; font-weight:600; line-height:1.28; letter-spacing:-0.025em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .pbody p { font-size:14.5px; letter-spacing:-0.01em; line-height:1.68; color:var(--gray); margin:0 0 18px; }
+  .src-row { margin-top:auto; }
+  .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); transition:color .15s ease; }
+  .src-btn:hover { color:var(--theme); }
+  .src-btn .meta { color:var(--gray-light); }
+  .img-credit { font-size:11px; color:var(--gray-light); margin-top:9px; line-height:1.4; }
+  .img-credit a { color:var(--gray-light); transition:color .15s ease; }
+  .img-credit a:hover { color:var(--gray); text-decoration:underline; text-underline-offset:2px; }
+
+  .footer { margin-top:8px; padding-top:40px; border-top:1px solid var(--hairline); }
+  .footer-inner { display:flex; gap:48px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; }
+  .footer-brand { display:flex; align-items:flex-start; gap:14px; flex:1 1 240px; }
+  .footer-brand-text strong { display:block; font-size:15px; font-weight:700; color:var(--ink); letter-spacing:-0.01em; margin-bottom:4px; }
+  .footer-brand-text p { font-size:13px; color:var(--gray); line-height:1.58; margin:0; word-break:keep-all; max-width:36ch; }
+  .footer-links { display:flex; flex-direction:column; gap:10px; padding-top:2px; }
+  .footer-links a { font-size:13px; color:var(--gray); transition:color .15s ease; }
+  .footer-links a:hover { color:var(--ink); }
+  .footer-copy { font-size:12px; color:var(--gray-light); line-height:1.7; padding-top:24px; border-top:1px solid var(--hairline); word-break:keep-all; overflow-wrap:break-word; }
+
+  @media (max-width:980px){ .grid { grid-template-columns:repeat(2,1fr); } .glance { grid-template-columns:1fr; } }
+  @media (max-width:640px){ .grid { grid-template-columns:1fr; } .issue-title { font-size:32px; } .wrap { padding:44px 20px 72px; } .glance { grid-template-columns:1fr; gap:12px; margin-bottom:48px; } .glance-item { padding:20px 18px 22px; } .topbar-inner { padding-top:10px; padding-bottom:10px; } .nav-dl { display:none; } .brand-text { font-size:15px; } .footer-inner { gap:28px; } }
+  .chip:focus-visible, a:focus-visible, button:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:4px; }
+  *:focus:not(:focus-visible) { outline:none; }
+</style>
+<style>:root{--theme:#2CA3E1;--theme-soft:#e6f4fc;--theme-deep:#1a87c4;}</style>
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+        <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+        <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+        <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+        <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">코웨이 스마트홈 트렌드</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html" class="nav-back">← 뉴스레터 모음</a>
+      <a href="../index.html#subscribe" class="nav-subscribe">구독</a>
+      <a href="../poster.pdf" download="" class="nav-dl">↓ PDF 저장</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="issue-head">
+    <div class="kicker">Issue 06 · 2026.06.21</div>
+    <h1 class="issue-title">구글이 오래된 스마트 스피커를 교체하고, AI 어시스턴트가 이전 대화를 기억하기 시작했다</h1>
+    <div class="issue-meta">
+      <span class="badge">포토 카드뉴스</span>
+      <span>발행 2026.06.21</span>
+      <span class="dot">·</span>
+      <span>분석 6건</span>
+    </div>
+  </header>
+
+  <h2 class="glance-head" aria-label="이번 호 한눈에 요약">이번 호 한눈에</h2>
+  <section class="glance">
+      <div class="glance-item"><span class="glance-num">01</span><div class="glance-text">구글이 Nest Mini를 단종하고 신형 스마트 스피커를 출시하면서 가정용 AI 허브 경쟁이 새 단계로 접어들었다.</div></div>
+      <div class="glance-item"><span class="glance-num">02</span><div class="glance-text">구글 Gemini Live가 대화 기억 기능을 추가하며 AI 어시스턴트가 단발성 명령 도구에서 벗어나고 있다.</div></div>
+      <div class="glance-item"><span class="glance-num">03</span><div class="glance-text">가정용 보안 소프트웨어가 AI 기반 행동 예측 방식으로 진화하면서 스마트홈 기기 보급 확대와 함께 홈 사이버보안이 주요 의제로 부상하고 있다.</div></div>
+  </section>
+
+  <h2 class="section-label">주요 기사</h2>
+  <p class="section-sub">업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</p>
+
+  <div class="grid">
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/06/18/gemini-live-memory/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/6/1.jpg" alt="구글 AI 어시스턴트, 이제 이전 대화까지 기억한다" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글 AI 어시스턴트, 이제 이전 대화까지 기억한다</h3>
+        <p>구글 Gemini Live가 이전 대화 내용과 연동 앱 정보를 기억할 수 있도록 업데이트됐다. 이번 변경으로 AI 어시스턴트가 사용자의 맥락과 기기 연결 상태를 더 정확하게 파악해 응답할 수 있게 됐다. 음성 기반 AI 어시스턴트가 단순 명령 처리를 넘어 지속적인 사용자 이해로 나아가고 있다는 점에서 주목된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/06/18/gemini-live-memory/" target="_blank" rel="noopener">9to5Google <span class="meta">· 06.18 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/06/21/nest-mini-google-home-speaker-replacement-new-era/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/6/2.jpg" alt="구글, 신형 스마트 스피커 내놓으며 Nest Mini 단종" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글, 신형 스마트 스피커 내놓으며 Nest Mini 단종</h3>
+        <p>구글이 신형 Google Home Speaker의 출시일을 공식 확정하면서 오랫동안 라인업을 이끌던 Nest Mini의 판매를 종료했다. 신제품이 기존 Nest Mini의 직접적인 후속작 역할을 하지 않아, 구글의 스마트홈 스피커 전략이 새 방향으로 전환됐다는 분석이 나온다. 스마트홈 허브 시장에서 구글이 어떤 포지셔닝을 가져갈지에 관심이 쏠리고 있다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/06/21/nest-mini-google-home-speaker-replacement-new-era/" target="_blank" rel="noopener">9to5Google <span class="meta">· 06.21 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.theverge.com/podcast/953275/roomba-robot-vacuum-version-history" target="_blank" rel="noopener">
+        <span class="cat-chip cat-biz">사업모델·온보딩</span>
+        <img src="../img/6/3.jpg" alt="룸바 20년, 가정용 로봇이 일상으로 들어온 과정" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>룸바 20년, 가정용 로봇이 일상으로 들어온 과정</h3>
+        <p>2002년 첫 출시 이후 룸바는 가정용 로봇이라는 새로운 시장 범주 자체를 만들어낸 제품으로 평가받는다. 처음에는 단순히 바닥을 돌아다니는 기계에 불과했지만, 점차 자율 가전의 가능성을 소비자에게 각인시키며 이 분야의 기술 경쟁 구도를 열어놓았다. 현재 로봇청소기 시장에서 이어지는 AI·자율화 경쟁은 룸바가 만들어 놓은 토대 위에 있다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.theverge.com/podcast/953275/roomba-robot-vacuum-version-history" target="_blank" rel="noopener">The Verge <span class="meta">· 06.21 · theverge.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/06/19/philips-hue-debuts-table-floor-lamps-with-tv-sync-new-candle-bulb/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/6/4.jpg" alt="필립스 휴, TV 화면 색상 연동 기능 탑재한 스탠드·플로어 조명 출시" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>필립스 휴, TV 화면 색상 연동 기능 탑재한 스탠드·플로어 조명 출시</h3>
+        <p>필립스 휴가 TV 화면과 색상을 실시간으로 동기화하는 기능을 갖춘 테이블 램프와 플로어 램프 신제품을 선보였다. 기존에 TV 주변 스트립 조명 위주였던 TV 싱크 기능이 독립형 조명 기기로 확장되면서 스마트 조명 연동 경험의 범위가 넓어지고 있다. 소비자 입장에서는 설치 자유도가 높아지고 스마트 조명 입문 장벽도 낮아질 것으로 관측된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/06/19/philips-hue-debuts-table-floor-lamps-with-tv-sync-new-candle-bulb/" target="_blank" rel="noopener">9to5Google <span class="meta">· 06.19 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.cnet.com/health/best-led-face-masks/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-well">웰니스·헬스케어</span>
+        <img src="../img/6/5.jpg" alt="FDA 승인 가정용 LED 마스크, 피부 관리 기기의 새 기준이 되다" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>FDA 승인 가정용 LED 마스크, 피부 관리 기기의 새 기준이 되다</h3>
+        <p>FDA 승인을 받은 가정용 LED 광선 마스크 여러 제품이 실사용 테스트를 거쳐 비교 평가됐다. 피부 관리를 목적으로 한 가정용 뷰티 디바이스 시장이 성숙 단계에 접어들면서 공인 인증 여부가 소비자의 주요 선택 기준으로 자리잡아 가고 있다. 의료 등급 기술이 가정용으로 전환되는 웰니스 기기 트렌드를 보여주는 대표 사례로 주목된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.cnet.com/health/best-led-face-masks/" target="_blank" rel="noopener">CNET Smart Home <span class="meta">· 06.21 · cnet.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.cnet.com/tech/services-and-software/how-antivirus-software-becoming-more-advanced-detecting-threats/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-std">표준·규제</span>
+        <img src="../img/6/6.jpg" alt="악성코드도, 보안 소프트웨어도 AI로 진화한다" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>악성코드도, 보안 소프트웨어도 AI로 진화한다</h3>
+        <p>기존 백신 소프트웨어가 알려진 악성코드 목록에 의존하던 방식에서 벗어나, AI를 활용해 이상 행동 패턴을 사전에 감지하는 방향으로 진화하고 있다. 사이버 위협 자체도 고도화되면서 보안 솔루션이 반응적 대응을 넘어 예측형으로 전환되는 추세가 확인된다. 가정용 스마트 기기 보급이 늘어날수록 엔드포인트 보안에 대한 관심도 함께 높아질 전망이다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.cnet.com/tech/services-and-software/how-antivirus-software-becoming-more-advanced-detecting-threats/" target="_blank" rel="noopener">CNET Smart Home <span class="meta">· 06.20 · cnet.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="44" height="44" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:1px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.15))">
+          <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+          <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+          <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+          <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+          <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div class="footer-brand-text">
+          <strong>코웨이 스마트홈 트렌드</strong>
+          <p>경쟁사 동향과 IoT 플랫폼·표준의 움직임을 격주로 정리하는 코웨이 IoT기획팀 사내 뉴스레터</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="사이트 링크">
+        <a href="../index.html">뉴스레터 모음</a>
+        <a href="../guide.html">이용 가이드</a>
+        <a href="../poster.pdf" download="">포스터 PDF 저장</a>
+        <a href="../index.html#subscribe">구독하기</a>
+      </nav>
+    </div>
+    <div class="footer-copy">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다.</div>
+  </footer>
+</div>
+</body>
+</html>
