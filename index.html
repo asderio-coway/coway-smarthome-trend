@@ -92,8 +92,10 @@
   .subscribe-msg.ok { color:var(--theme-deep); }
   .subscribe-msg.err { color:#b3261e; }
   .subscribe-msg a { color:var(--theme); font-weight:600; text-decoration:underline; }
-  .poster-link { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:500; color:var(--gray); background:var(--bg-soft); padding:7px 15px; border-radius:var(--radius-pill); transition:background .15s ease, color .15s ease; }
-  .poster-link:hover { background:var(--hairline); color:var(--ink); }
+  .media-link { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:500; color:var(--gray); background:var(--bg-soft); padding:7px 15px; border-radius:var(--radius-pill); transition:background .15s ease, color .15s ease; }
+  .media-link:hover { background:var(--hairline); color:var(--ink); }
+  .media-video { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:#fff; background:var(--theme); padding:7px 15px; border-radius:var(--radius-pill); transition:background .15s ease; }
+  .media-video:hover { background:var(--theme-deep); }
 
   @media (max-width:640px){
     .page-title { font-size:36px; }
@@ -208,7 +210,8 @@
       </div>
       <nav class="footer-links" aria-label="사이트 링크">
         <a href="guide.html">이용 가이드</a>
-        <a href="poster.pdf" download="2026-06-21_제6호_구글이 오래된 스마트 스피커를 교체하고, AI 어시스턴트가 이전 대화를 기억하기 시작했다.pdf">포스터 PDF 저장</a>
+        <a href="hyperframe-6ho.html" class="media-link">📄 보고서 보기</a>
+        <a href="../video/%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%99%88%ED%8A%B8%EB%A0%8C%EB%93%9C_%EC%A0%9C6%ED%98%B8_2026-06-21.mp4" class="media-video" target="_blank" rel="noopener">▶ 영상 보기</a>
         <a href="#subscribe">구독하기</a>
         <a href="mailto:asderio@coway.com">문의하기</a>
       </nav>
