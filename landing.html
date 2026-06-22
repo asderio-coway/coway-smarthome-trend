@@ -83,9 +83,13 @@
   .subscribe-msg.ok { color:var(--theme-deep); }
   .subscribe-msg.err { color:#b3261e; }
   .subscribe-msg a { color:var(--theme); font-weight:600; text-decoration:underline; }
-  .poster-link { display:inline-flex; align-items:center; gap:7px; font-size:13.5px; font-weight:500; color:var(--gray); background:var(--bg-soft); padding:9px 18px; border-radius:var(--radius-pill); transition:background .15s ease, color .15s ease; }
-  .poster-link:hover { background:var(--hairline); color:var(--ink); }
-  .nav .poster-link { padding:7px 15px; }
+  .media-link { display:inline-flex; align-items:center; gap:7px; font-size:13.5px; font-weight:500; color:var(--gray); background:var(--bg-soft); padding:9px 18px; border-radius:var(--radius-pill); transition:background .15s ease, color .15s ease; }
+  .media-link:hover { background:var(--hairline); color:var(--ink); }
+  .nav .media-link { padding:7px 15px; font-size:13px; }
+  .media-video { display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600; color:#fff; background:var(--theme); padding:9px 18px; border-radius:var(--radius-pill); transition:background .15s ease; }
+  .media-video:hover { background:var(--theme-deep); }
+  .nav .media-video { padding:7px 15px; font-size:13px; }
+  .media-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
 
   @media (max-width:980px){ .steps { grid-template-columns:1fr; } }
   @media (max-width:640px){ .hero-title { font-size:40px; } .hero { padding:64px 0 56px; } .featured { padding:32px 28px; } .featured-title { font-size:26px; } .subscribe-form button { flex:1 1 100%; } }
@@ -100,7 +104,8 @@
     <nav class="nav">
       <a href="index.html">뉴스레터 모음</a>
       <a href="guide.html" data-onboard="guide">이용 가이드</a>
-      <a class="poster-link" href="poster.pdf" download="2026-06-21_제6호_구글이 오래된 스마트 스피커를 교체하고, AI 어시스턴트가 이전 대화를 기억하기 시작했다.pdf">↓ 포스터 PDF</a>
+      <a class="media-link" href="hyperframe-6ho.html">📄 보고서 보기</a>
+      <a class="media-video" href="../video/%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%99%88%ED%8A%B8%EB%A0%8C%EB%93%9C_%EC%A0%9C6%ED%98%B8_2026-06-21.mp4" target="_blank" rel="noopener">▶ 영상 보기</a>
       <a href="#subscribe">구독</a>
     </nav>
   </div>
@@ -118,7 +123,10 @@
       </form>
       <p class="subscribe-msg" id="subscribeMsg" role="status" aria-live="polite"></p>
       <div class="hero-note">격주로 발행되는 스마트홈 트렌드를 메일로 받아보세요 · 코웨이 IoT기획팀 운영</div>
-      <p style="margin-top:14px;"><a class="poster-link" href="poster.pdf" download="2026-06-21_제6호_구글이 오래된 스마트 스피커를 교체하고, AI 어시스턴트가 이전 대화를 기억하기 시작했다.pdf">↓ 포스터 PDF 다운로드</a></p>
+      <div class="media-row">
+        <a class="media-link" href="hyperframe-6ho.html">📄 보고서 보기</a>
+        <a class="media-video" href="../video/%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%99%88%ED%8A%B8%EB%A0%8C%EB%93%9C_%EC%A0%9C6%ED%98%B8_2026-06-21.mp4" target="_blank" rel="noopener">▶ 영상 보기</a>
+      </div>
     </div>
   </section>
 
