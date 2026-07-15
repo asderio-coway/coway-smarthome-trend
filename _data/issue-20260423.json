@@ -1,0 +1,82 @@
+{
+  "issue": 3,
+  "slug": "2026-04-23",
+  "publishedAt": "2026-04-23",
+  "period": {
+    "start": "2026-04-06",
+    "end": "2026-04-23"
+  },
+  "issue_title": "구글·삼성·애플이 AI를 집 안에 본격 탑재했다 — 연결 표준과 보안 규제도 따라왔다",
+  "glance": [
+    "구글·삼성·애플이 같은 분기에 홈 허브에 AI 에이전트를 기본 탑재하며 경쟁축이 음성비서에서 온디바이스 AI로 이동했다.",
+    "Matter 1.4가 에너지·카메라 도메인까지 확장되며 단순 연결을 넘어 복합 가정 자동화 프레임워크로 전환됐다.",
+    "EU CRA·RED에 미국 FCC 인증까지 더해지며 커넥티드 제품의 사이버보안 이중 규제가 출시 게이트로 작동한다."
+  ],
+  "stats": "분석 6건",
+  "imageStats": {
+    "ok": 0,
+    "fallback": 6
+  },
+  "articles": [
+    {
+      "title_ko": "구글, Gemini for Home 전 제품 기본 탑재",
+      "summary_ko": "Nest·구글홈 전 라인업에 Gemini가 기본 탑재되고 개발자용 Home API가 공개됐다. 자연어 명령만으로 Matter 호환 타사 기기까지 묶은 루틴을 만들 수 있게 됐다.",
+      "category": "ai-routine",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/tech",
+      "publishedAt": "2026-04-09",
+      "img": "img/3/1.jpg",
+      "image_query": "google AI smart home assistant"
+    },
+    {
+      "title_ko": "삼성, 갤럭시 통합 SmartThings AI Home",
+      "summary_ko": "갤럭시 AI가 학습한 사용자 패턴을 SmartThings 허브를 통해 TV·냉장고·에어케어로 확산하는 구조를 공식화했다. 연결은 개방하되 핵심 지능은 자사 기기에 묶는 방향이다.",
+      "category": "ai-routine",
+      "source": "Samsung Newsroom",
+      "url": "https://news.samsung.com/global/",
+      "publishedAt": "2026-04-14",
+      "img": "img/3/2.jpg",
+      "image_query": "samsung galaxy smartthings home"
+    },
+    {
+      "title_ko": "애플, HomeKit에 Apple Intelligence 확대",
+      "summary_ko": "홈팟·애플TV를 프라이빗 인텔리전스 허브로 재정의하고 개인 맞춤 루틴 학습을 모두 기기 내부에서 처리한다. 프라이버시 우선 로컬 AI를 차별화 축으로 내세웠다.",
+      "category": "ai-routine",
+      "source": "9to5Mac",
+      "url": "https://9to5mac.com/",
+      "publishedAt": "2026-04-11",
+      "img": "img/3/3.jpg",
+      "image_query": "apple homekit smart home"
+    },
+    {
+      "title_ko": "LG, ThinQ Care 건강 루틴 유럽 출시",
+      "summary_ko": "공기질·수면·식단 데이터를 묶어 건강 루틴을 제안하는 ThinQ Care를 유럽 전역에 출시했다. GDPR 준수를 위해 데이터는 로컬에서 처리한다.",
+      "category": "wellness",
+      "source": "LG Newsroom",
+      "url": "https://www.lgnewsroom.com/",
+      "publishedAt": "2026-04-15",
+      "img": "img/3/4.jpg",
+      "image_query": "LG health wellness smart home"
+    },
+    {
+      "title_ko": "아카라 Hub M3, Matter 1.4 에너지 선제 대응",
+      "summary_ko": "독립 허브 가운데 가장 빠르게 Matter 1.4 에너지 관리와 Thread 1.4 보더라우터를 적용해 출시했다. 중화권 플레이어의 표준 대응 속도가 글로벌 3사와 대등해졌다.",
+      "category": "ecosystem",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/tech",
+      "publishedAt": "2026-04-17",
+      "img": "img/3/5.jpg",
+      "image_query": "smart home hub matter ecosystem"
+    },
+    {
+      "title_ko": "EU CRA, 2027년 12월 본격 적용",
+      "summary_ko": "디지털 요소를 포함한 모든 제품에 수명주기 전반의 사이버보안 의무가 부과된다. RED 위임법과 중첩되며 유럽 수출 공청기·정수기 라인업에도 직접 영향을 준다.",
+      "category": "standard-regulation",
+      "source": "European Commission",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act",
+      "publishedAt": "2026-04-10",
+      "img": "img/3/6.jpg",
+      "image_query": "EU cybersecurity regulation digital"
+    }
+  ]
+}

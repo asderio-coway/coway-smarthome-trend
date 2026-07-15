@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>애플 AI 비서가 모두에게 열리고, 삼성 헬스는 건강 데이터를 요구했다 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2CA3E1; --theme-soft:#e6f4fc; --theme-deep:#1a87c4;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:10px; transition:opacity .15s ease; text-decoration:none; }
+  .brand:hover { opacity:.75; }
+  .brand-mark { flex-shrink:0; display:block; filter:drop-shadow(0 1px 3px rgba(0,0,0,.15)); }
+  .brand-text { font-weight:700; letter-spacing:-0.025em; }
+  .nav { display:flex; gap:16px; align-items:center; font-size:14px; font-weight:500; color:var(--gray); }
+  .nav a { transition:color .15s ease; white-space:nowrap; }
+  .nav a:hover { color:var(--ink); }
+  .nav-back { color:var(--gray); }
+  .nav-dl { display:inline-flex; align-items:center; gap:5px; background:var(--bg-soft); padding:7px 16px; border-radius:var(--radius-pill); font-size:13px; color:var(--gray); transition:background .15s ease, color .15s ease; }
+  .nav-dl:hover { background:var(--hairline); color:var(--ink); }
+  .nav-video { display:inline-flex; align-items:center; gap:5px; background:var(--theme); color:#fff; padding:7px 16px; border-radius:var(--radius-pill); font-size:13px; font-weight:600; transition:background .15s ease; }
+  .nav-video:hover { background:var(--theme-deep); }
+  .nav-subscribe { color:var(--theme) !important; font-weight:600; }
+  .nav-subscribe:hover { color:var(--theme-deep) !important; opacity:1; }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:64px 24px 96px; }
+
+  .issue-head { margin-bottom:56px; }
+  .kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.04em; line-height:1.07; color:var(--ink); margin:12px 0 20px; max-width:24ch; word-break:keep-all; text-wrap:balance; }
+  .issue-meta { font-size:14px; color:var(--gray); display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .badge { font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+  .issue-meta .dot { color:var(--gray-light); }
+
+  .glance-head { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--theme); margin-bottom:16px; }
+  .glance { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:72px; }
+  .glance-item { border-radius:18px; padding:28px 26px 30px; }
+  .glance-num { display:inline-block; font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1; }
+  .glance-num::before { content:""; display:block; width:26px; height:3px; border-radius:2px; margin-bottom:16px; }
+  .glance-text { font-size:16.5px; font-weight:500; line-height:1.62; margin-top:14px; letter-spacing:-0.015em; word-break:keep-all; }
+  .glance-text b { font-weight:700; }
+  /* 시안 A — 소프트 그라데이션 밴드(차분, 기본) */
+  .v-a .glance-item { background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .v-a .glance-num { color:var(--theme); }
+  .v-a .glance-num::before { background:var(--theme); }
+  .v-a .glance-text { color:var(--ink); }
+  /* 시안 B — 은은한 그라데이션 밴드 */
+  .v-b .glance-item { background:linear-gradient(135deg,var(--theme),var(--theme-deep)); box-shadow:0 14px 34px rgba(0,0,0,.16); }
+  .v-b .glance-num { color:#fff; }
+  .v-b .glance-num::before { background:rgba(255,255,255,.85); }
+  .v-b .glance-text { color:#fff; }
+  .v-b .glance-head { color:var(--theme); }
+
+  .section-label { font-size:28px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin:0 0 6px; }
+  .section-sub { font-size:14px; color:var(--gray); margin:0 0 32px; }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-bottom:64px; }
+  .pcard { display:flex; flex-direction:column; background:var(--bg); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .pcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .thumb { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--bg-soft); display:block; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .pcard:hover .thumb img { transform:scale(1.04); }
+  .cat-chip { position:absolute; top:12px; left:12px; z-index:2; font-size:11.5px; font-weight:600; padding:5px 11px 5px 9px; border-radius:var(--radius-pill); color:var(--ink); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-flex; align-items:center; gap:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-chip::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--cat, var(--gray)); }
+  .cat-ai { --cat:var(--cat-ai); } .cat-well { --cat:var(--cat-well); } .cat-std { --cat:var(--cat-std); } .cat-eco { --cat:var(--cat-eco); } .cat-biz { --cat:var(--cat-biz); }
+  .cat-chip { color:var(--cat, var(--ink)); }
+
+  .pbody { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1; }
+  .pbody h3 { font-size:19px; font-weight:600; line-height:1.28; letter-spacing:-0.025em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .pbody p { font-size:14.5px; letter-spacing:-0.01em; line-height:1.68; color:var(--gray); margin:0 0 18px; }
+  .src-row { margin-top:auto; }
+  .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); transition:color .15s ease; }
+  .src-btn:hover { color:var(--theme); }
+  .src-btn .meta { color:var(--gray-light); }
+  .img-credit { font-size:11px; color:var(--gray-light); margin-top:9px; line-height:1.4; }
+  .img-credit a { color:var(--gray-light); transition:color .15s ease; }
+  .img-credit a:hover { color:var(--gray); text-decoration:underline; text-underline-offset:2px; }
+
+  .footer { margin-top:8px; padding-top:40px; border-top:1px solid var(--hairline); }
+  .footer-inner { display:flex; gap:48px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; }
+  .footer-brand { display:flex; align-items:flex-start; gap:14px; flex:1 1 240px; }
+  .footer-brand-text strong { display:block; font-size:15px; font-weight:700; color:var(--ink); letter-spacing:-0.01em; margin-bottom:4px; }
+  .footer-brand-text p { font-size:13px; color:var(--gray); line-height:1.58; margin:0; word-break:keep-all; max-width:36ch; }
+  .footer-links { display:flex; flex-direction:column; gap:10px; padding-top:2px; }
+  .footer-links a { font-size:13px; color:var(--gray); transition:color .15s ease; }
+  .footer-links a:hover { color:var(--ink); }
+  .footer-copy { font-size:12px; color:var(--gray-light); line-height:1.7; padding-top:24px; border-top:1px solid var(--hairline); word-break:keep-all; overflow-wrap:break-word; }
+
+  @media (max-width:980px){ .grid { grid-template-columns:repeat(2,1fr); } .glance { grid-template-columns:1fr; } }
+  @media (max-width:640px){ .grid { grid-template-columns:1fr; } .issue-title { font-size:32px; } .wrap { padding:44px 20px 72px; } .glance { grid-template-columns:1fr; gap:12px; margin-bottom:48px; } .glance-item { padding:20px 18px 22px; } .topbar-inner { padding-top:10px; padding-bottom:10px; } .nav-dl { display:none; } .brand-text { font-size:15px; } .footer-inner { gap:28px; } }
+  .chip:focus-visible, a:focus-visible, button:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:4px; }
+  *:focus:not(:focus-visible) { outline:none; }
+</style>
+<style>:root{--theme:#2CA3E1;--theme-soft:#e6f4fc;--theme-deep:#1a87c4;}</style>
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+        <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+        <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+        <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+        <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">코웨이 스마트홈 트렌드</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html" class="nav-back">← 뉴스레터 모음</a>
+      <a href="../index.html#subscribe" class="nav-subscribe">구독</a>
+      <a href="../hyperframe-7ho.html" class="nav-dl" title="같은 내용을 슬라이드 보고서로 보기">📄 보고서 보기</a>
+      
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="issue-head">
+    <div class="kicker">Issue 07 · 2026.07.15</div>
+    <h1 class="issue-title">애플 AI 비서가 모두에게 열리고, 삼성 헬스는 건강 데이터를 요구했다</h1>
+    <div class="issue-meta">
+      <span class="badge">포토 카드뉴스</span>
+      <span>발행 2026.07.15</span>
+      <span class="dot">·</span>
+      <span>분석 6건</span>
+    </div>
+  </header>
+
+  <h2 class="glance-head" aria-label="이번 호 한눈에 요약">이번 호 한눈에</h2>
+  <section class="glance">
+      <div class="glance-item"><span class="glance-num">01</span><div class="glance-text">애플이 iOS 27 퍼블릭 베타로 새로 만든 AI 비서 시리를 일반 이용자 모두에게 개방했다.</div></div>
+      <div class="glance-item"><span class="glance-num">02</span><div class="glance-text">삼성헬스가 앱 개편과 함께 건강 데이터를 AI 학습에 제공하지 않으면 기능을 쓰기 어렵게 만드는 방식을 도입했다.</div></div>
+      <div class="glance-item"><span class="glance-num">03</span><div class="glance-text">필립스 휴의 허브 업데이트 결함으로 조명과 연결기기 전체가 먹통이 되는 사고가 발생해 스마트홈 허브의 취약성이 다시 부각됐다.</div></div>
+  </section>
+
+  <h2 class="section-label">주요 기사</h2>
+  <p class="section-sub">업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</p>
+
+  <div class="grid">
+    <article class="pcard">
+      <a class="thumb" href="https://techcrunch.com/2026/07/14/apple-opens-its-new-siri-ai-to-everyone-with-the-ios-27-public-beta/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/7/1.jpg" alt="애플, 새 시리 AI 일반 공개 베타로 전면 개방" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>애플, 새 시리 AI 일반 공개 베타로 전면 개방</h3>
+        <p>애플이 iOS 27 퍼블릭 베타를 통해 대화형으로 재설계된 시리를 개발자 등록 없이 누구나 써볼 수 있게 열었다. 이번 베타에는 화면 사용 시간 기능 개편과 성능 개선도 함께 담겨, 정식 출시 전 폭넓은 사용자 반응을 확인하려는 행보로 풀이된다. 구글·아마존 등 경쟁 음성비서 진영과의 AI 격차 좁히기 경쟁이 본격적으로 달아오르고 있다.</p>
+        <div class="src-row"><a class="src-btn" href="https://techcrunch.com/2026/07/14/apple-opens-its-new-siri-ai-to-everyone-with-the-ios-27-public-beta/" target="_blank" rel="noopener">TechCrunch <span class="meta">· 07.14 · techcrunch.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/07/13/samsung-health-ai-training-data-consent/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-well">웰니스·헬스케어</span>
+        <img src="../img/7/2.jpg" alt="삼성헬스, AI 학습용 데이터 제공 안 하면 기능 사실상 제한" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>삼성헬스, AI 학습용 데이터 제공 안 하면 기능 사실상 제한</h3>
+        <p>삼성헬스가 새 디자인 개편과 함께 이용자에게 건강 데이터를 AI 학습용으로 제공하거나, 거부할 경우 장기적으로 앱을 사실상 쓸 수 없게 되는 선택지를 제시했다. 헬스 플랫폼이 개인 건강 데이터를 AI 학습 자원으로 끌어들이려는 흐름이 구체화되면서 데이터 주권과 프라이버시 논쟁이 다시 불거지고 있다. 유사한 동의 방식이 다른 헬스케어·웰니스 서비스로 번질지 업계의 관심이 쏠린다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/07/13/samsung-health-ai-training-data-consent/" target="_blank" rel="noopener">9to5Google <span class="meta">· 07.13 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/07/14/philips-hue-bridge-pro-update-seems-to-be-breaking-the-hub-taking-lights-down-with-it/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/7/3.jpg" alt="필립스 휴 브리지 프로 업데이트 결함으로 허브 먹통 사태" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>필립스 휴 브리지 프로 업데이트 결함으로 허브 먹통 사태</h3>
+        <p>필립스 휴의 최신 브리지 프로 펌웨어 업데이트가 일부 이용자의 허브를 완전히 마비시켜 조명과 연결 기기를 제어할 수 없게 만드는 문제를 일으켰다. 제조사는 뒤늦게 수정 패치를 배포했지만, 허브 하나의 소프트웨어 결함이 가정 내 모든 연결기기에 연쇄적으로 영향을 줄 수 있다는 위험성이 다시 확인된 사례로 거론된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/07/14/philips-hue-bridge-pro-update-seems-to-be-breaking-the-hub-taking-lights-down-with-it/" target="_blank" rel="noopener">9to5Google <span class="meta">· 07.14 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5mac.com/2026/07/10/lndu-hk01w/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/7/4.jpg" alt="애플 홈키 지원하는 보급형 스마트 도어락 등장" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>애플 홈키 지원하는 보급형 스마트 도어락 등장</h3>
+        <p>애플 홈키와 와이파이를 함께 지원하는 저가형 스마트 도어락 LNDU HK01W가 출시돼, 그동안 고가 제품에만 한정됐던 홈키 기능의 진입 장벽을 낮췄다. 스마트폰이나 워치를 태그해 문을 여는 방식이 보급형 라인업까지 확대되면서 출입 제어 기기 시장의 가격 경쟁이 심화될 것으로 보인다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5mac.com/2026/07/10/lndu-hk01w/" target="_blank" rel="noopener">9to5Mac <span class="meta">· 07.10 · 9to5mac.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5mac.com/2026/07/10/us-eases-restrictions-on-apples-access-to-ai-chips-and-data-center-equipment-in-the-uae/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-std">표준·규제</span>
+        <img src="../img/7/5.jpg" alt="미국, 애플 등 UAE향 AI 반도체 수출 규제 완화" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>미국, 애플 등 UAE향 AI 반도체 수출 규제 완화</h3>
+        <p>미국 정부가 애플을 포함한 8개 기업에 대해 아랍에미리트로의 첨단 컴퓨팅 칩과 데이터센터 장비 반출 시 개별 수출 허가 절차를 면제하기로 했다. 이는 AI 인프라를 둘러싼 미국의 대중동 수출 통제 기조가 완화되는 신호로 해석되며, 글로벌 AI 서버·데이터센터 공급망 전반에 영향을 줄 수 있다는 관측이 나온다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5mac.com/2026/07/10/us-eases-restrictions-on-apples-access-to-ai-chips-and-data-center-equipment-in-the-uae/" target="_blank" rel="noopener">9to5Mac <span class="meta">· 07.10 · 9to5mac.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://techcrunch.com/2026/07/14/metas-adam-mosseri-says-ai-token-budgets-could-soon-be-capped-per-engineer/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-biz">사업모델·온보딩</span>
+        <img src="../img/7/6.jpg" alt="메타 임원, AI 사용량도 급여처럼 예산 관리 대상 될 것" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>메타 임원, AI 사용량도 급여처럼 예산 관리 대상 될 것</h3>
+        <p>인스타그램 총괄 아담 모세리는 기업들이 조만간 급여나 운영비를 다루듯 AI 사용 비용을 관리하게 될 것이라며, 엔지니어별로 AI 토큰 사용 한도가 생길 수 있다고 전망했다. AI 기능이 각종 소프트웨어와 기기에 깊숙이 내재화되면서, 사용량 기반 비용 통제가 기업의 새로운 운영 과제로 떠오르고 있음을 보여주는 발언이다.</p>
+        <div class="src-row"><a class="src-btn" href="https://techcrunch.com/2026/07/14/metas-adam-mosseri-says-ai-token-budgets-could-soon-be-capped-per-engineer/" target="_blank" rel="noopener">TechCrunch <span class="meta">· 07.14 · techcrunch.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="44" height="44" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:1px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.15))">
+          <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+          <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+          <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+          <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+          <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div class="footer-brand-text">
+          <strong>코웨이 스마트홈 트렌드</strong>
+          <p>경쟁사 동향과 IoT 플랫폼·표준의 움직임을 격주로 정리하는 코웨이 IoT기획팀 사내 뉴스레터</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="사이트 링크">
+        <a href="../index.html">뉴스레터 모음</a>
+        <a href="../guide.html">이용 가이드</a>
+        <a href="../hyperframe-7ho.html">보고서 보기</a>
+        
+        <a href="../index.html#subscribe">구독하기</a>
+      </nav>
+    </div>
+    <div class="footer-copy">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다.</div>
+  </footer>
+</div>
+</body>
+</html>
