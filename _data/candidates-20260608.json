@@ -1,0 +1,326 @@
+{
+  "generatedAt": "2026-06-08T22:53:44.128Z",
+  "count": 40,
+  "candidates": [
+    {
+      "title": "Apple announces watchOS 27, now with Siri AI",
+      "url": "https://www.theverge.com/tech/943145/apple-watch-watchos-27-wwdc-2026",
+      "source": "The Verge",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple just announced watchOS 27, the next version of its Apple Watch operating system, introducing support for Siri AI, a redesigned \"dynamic\" app grid, and improvements to health and fitness tracking. The watchOS 27 update will be available \"this fall,\" according to Apple, thoug",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "WWDC 2026 bonus live blog: Tech Talk with Craig Federighi",
+      "url": "https://www.theverge.com/tech/946046/wwdc-2026-live-blog-tech-talk-with-craig-federighi",
+      "source": "The Verge",
+      "publishedAt": "2026-06-08",
+      "snippet": "Fresh off the WWDC keynote presentation, The Verge has been invited to an \"on-the-record technical deep dive into the bold new architecture enabling Apple Intelligence capabilities.\" Apple SVP of Software Engineering Craig Federighi and his team will be there, and so will we. The",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Cameras get an Apple Intelligence boost in Apple Home",
+      "url": "https://www.theverge.com/tech/946032/apple-home-ai-camera-descriptions-search-4k",
+      "source": "The Verge",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple Intelligence is coming to cameras connected to Apple Home. At WWDC, Apple announced that with iOS27, its HomeKit Secure Video service will use Apple Intelligence to analyze footage and generate descriptions summarizing what the camera saw. You can also search footage with n",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "The Sideload 036: Accidentally sponsored by Planet Fitness",
+      "url": "https://9to5google.com/2026/06/08/the-sideload-036-accidentally-sponsored-by-planet-fitness/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-08",
+      "snippet": "Welcome to episode 36 of The Sideload, a 9to5Google podcast. This week, Will is joined by Android Authority ‘s Joe Maring to discuss Health Coach, Google’s latest fitness-focused chatbot launched alongside the Fitbit Air. Sponsored (for real) by NordVPN : Listeners to The Sideloa",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "How the new Siri AI compares to existing Gemini features on Android",
+      "url": "https://9to5google.com/2026/06/08/siri-ai-gemini-comparison/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-08",
+      "snippet": "At WWDC 2026, Apple announced Siri AI and a new wave of Apple Intelligence features powered by Gemini at the underlying level. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Google Home update upgrades Gemini weather forecasts, media on Nest Hub, and voice commands as a whole",
+      "url": "https://9to5google.com/2026/06/08/google-home-upgrades-weather-and-media-commands/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-08",
+      "snippet": "Google is rolling out another Gemini for Home update, offering more detailed visuals to smart displays when you ask about the weather or media. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Galaxy Z Fold 7 owners say battery life is much worse following latest updates",
+      "url": "https://9to5google.com/2026/06/08/galaxy-z-fold-7-battery-life-updates-problems/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-08",
+      "snippet": "The Galaxy Z Fold 7 is a great foldable, but battery life has never really been its strong suit. Making matters worse, recent updates such as One UI 8.5 seem to have had a major impact on battery life. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "ChatGPT reportedly prepares major redesign focused on agents as &#8216;chat is dead&#8217;",
+      "url": "https://9to5google.com/2026/06/08/chatgpt-redesign-report/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-08",
+      "snippet": "A new report reveals that OpenAI is planning a major redesign to ChatGPT that focuses on AI agents and coding, rather than its roots as a chatbot. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Craig Federighi details Apple’s collaboration with Google for Siri AI in iOS 27",
+      "url": "https://9to5mac.com/2026/06/08/craig-federighi-details-apples-collaboration-with-google-for-siri-ai-in-ios-27/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple’s Siri team, led by Craig Federighi, held a post-WWDC keynote tech talk with members of the press this afternoon to talk through iOS 27 and the new Siri AI. During the talk, Federighi shared more details about Apple’s collaboration with Google. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "iOS 27: Here&#8217;s all the new Apple Music features",
+      "url": "https://9to5mac.com/2026/06/08/ios-27-heres-all-the-new-apple-music-features/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple Music has a few new features with iOS 27, which Apple just announced today at its annual WWDC conference. Perhaps the most immediately visible change is a newly-redesigned artist page featuring prominent shuffle play button, new artist name display, and other smaller layout",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "iOS 27 has new app icon designs for many iPhone apps",
+      "url": "https://9to5mac.com/2026/06/08/ios-27-has-new-app-icon-designs-for-many-iphone-apps/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-08",
+      "snippet": "Last year with iOS 26, Apple redesigned its full lineup of app icons for iPhone. But just one year later, iOS 27 has even more design changes for many app icons. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "AI photo editing in iOS 27: revamped Clean Up and two new AI tools for iPhone Photos app",
+      "url": "https://9to5mac.com/2026/06/08/new-ai-photo-editing-ios-27/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple today announced a significant upgrade to the editing features available in Apple Photos on iPhone, Mac and Vision Pro. Powered by new artificial intelligence models, Apple announced a significant improvement to Clean Up as well as new Extend and Reframe tools. These feature",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Five things to expect from today’s WWDC keynote",
+      "url": "https://9to5mac.com/2026/06/08/five-things-to-expect-from-todays-wwdc-keynote/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-08",
+      "snippet": "With the WWDC 26 keynote just hours away, the main story this year is expected to be Siri and its Gemini-powered revamp. But if the rumors hold up, Apple will have more than that in store across iOS 27 and its other operating systems. Here’s what to expect. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Tim Cook posts comedic ‘Good morning’ video to mark final Apple event as CEO",
+      "url": "https://9to5mac.com/2026/06/08/tim-cook-posts-comedic-good-morning-video-to-mark-final-apple-event-as-ceo/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple’s CEO Tim Cook will step down from his current role on September 1. All expectations are that today’s WWDC keynote will be his final Apple event to say, “Good morning,” and Cook has just shared a special video ahead of the event kickoff. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Hackers tricked Instagram AI into letting them take over 20,000 accounts [U]",
+      "url": "https://9to5mac.com/2026/06/08/hackers-tricked-instagram-ai-into-letting-them-take-over-high-profile-accounts-video/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-08",
+      "snippet": "Hackers managed to trick Meta’s AI-powered support bot into allowing them to take over a number of Instagram accounts, including some high-profile ones. This included accounts belonging to the White House, US Space Force, and security researcher Jane Wong. Update: Meta has now re",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Apple reintroduces the AI-powered Siri it announced at WWDC 2024",
+      "url": "https://www.engadget.com/2189744/apple-reintroduces-the-ai-powered-siri-it-announced-at-wwdc-2024/",
+      "source": "Engadget",
+      "publishedAt": "2026-06-08",
+      "snippet": "At WWDC 2026, Apple resurrected its AI-powered voice assistant, now named Siri AI.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Say hi to \"Siri AI\"—Apple announces new, more \"conversational\" voice assistant",
+      "url": "https://arstechnica.com/apple/2026/06/say-hi-to-siri-ai-apple-announces-new-more-conversational-voice-assistant/",
+      "source": "Ars Technica",
+      "publishedAt": "2026-06-08",
+      "snippet": "New features coming this fall alongside two-tiered, Google-powered AI model overhaul.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "For the 2nd time in weeks, Microsoft packages laced with credential stealer",
+      "url": "https://arstechnica.com/security/2026/06/for-the-2nd-time-in-weeks-microsoft-packages-laced-with-credential-stealer/",
+      "source": "Ars Technica",
+      "publishedAt": "2026-06-08",
+      "snippet": "73 packages run self-replicating stealer as soon as they're opened by an AI agent.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Man jailed for a month despite Flock showing he was 5 miles from crime scene",
+      "url": "https://arstechnica.com/tech-policy/2026/06/man-jailed-for-a-month-despite-flock-showing-he-was-5-miles-from-crime-scene/",
+      "source": "Ars Technica",
+      "publishedAt": "2026-06-08",
+      "snippet": "Cop seemingly ignored Flock camera timestamp to justify arrests.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Apple plays catch-up at WWDC",
+      "url": "https://techcrunch.com/2026/06/08/apple-plays-catch-up-at-wwdc/",
+      "source": "TechCrunch",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple spent much of its WWDC keynote highlighting fixes, performance improvements, and long-requested features before unveiling its upgraded AI-powered Siri, signaling that the company wants users to see AI as just one part of a broader effort to improve its software.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Waymo bought Apple&#8217;s self-driving car proving ground for $220M",
+      "url": "https://techcrunch.com/2026/06/08/waymo-bought-apples-self-driving-car-proving-ground-for-220m/",
+      "source": "TechCrunch",
+      "publishedAt": "2026-06-08",
+      "snippet": "Waymo has acquired a massive 5,500-acre proving ground in Arizona owned by Route 14 Investment Partners LLC, a Delaware shell company associated with Apple, according to documents filed with Maricopa County.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Apple just taught your iPhone to finish your sentences, your photos, and your workflows",
+      "url": "https://techcrunch.com/2026/06/08/apple-just-taught-your-iphone-to-finish-your-sentences-your-photos-and-your-workflows/",
+      "source": "TechCrunch",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple is adding new AI-powered features to Safari, Shortcuts, and Password apps.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Apple is fixing the headache of splitting the bill with its new Siri in Camera feature",
+      "url": "https://techcrunch.com/2026/06/08/apple-is-fixing-the-headache-of-splitting-the-bill-with-its-new-siri-in-camera-feature/",
+      "source": "TechCrunch",
+      "publishedAt": "2026-06-08",
+      "snippet": "\"If you're grabbing a bite with friends and point your iPhone at the bill, then [you can] select what you ordered to split the tab with Apple Cash,\" said Apple VP of Software Sebastien Marineau-Mes.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Apple&#039;s New Siri AI Has Customization That Other Voice Assistants Need (Badly)",
+      "url": "https://www.cnet.com/home/smart-home/apples-new-siri-ai-brings-customization-other-voice-assistants-badly-need/",
+      "source": "CNET Smart Home",
+      "publishedAt": "2026-06-08",
+      "snippet": "The new Siri announced at WWDC 2026 comes with personalization options. My take: Voice assistants like Alexa and Gemini should have had these for years.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Apple&#039;s New AI Models Are Built With Gemini but Designed for Privacy",
+      "url": "https://www.cnet.com/tech/services-and-software/apple-intelligence-models-wwdc-2026/",
+      "source": "CNET Smart Home",
+      "publishedAt": "2026-06-08",
+      "snippet": "Apple Intelligence is getting an upgrade after the company partnered with Google.",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Seriously, how do we not have more Android phones with Qi2 yet?",
+      "url": "https://9to5google.com/2026/06/07/seriously-how-do-we-not-have-more-android-phones-with-qi2-yet/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-07",
+      "snippet": "Ever since the Pixel 10 was released last year, Qi2 magnets have been a love-hate relationship – I love using them, but I hate that, somehow, the Pixel 10 is the only Android phone that has them. It’s crazy to me that no other Android brand has taken this feature seriously, and t",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Gemini overlay rolls out Dynamic Color, integrates ‘Screen content’ [U]",
+      "url": "https://9to5google.com/2026/06/06/gemini-overlay-dynamic-color/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-06",
+      "snippet": "Following the big Neural Expressive redesign at I/O 2026 last month, Google is rolling out some tweaks to the Gemini overlay on Android. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Viaim RecDots earbuds are the sleekest AI recording tool yet",
+      "url": "https://9to5google.com/2026/06/06/viaim-recdots-earbuds-sleekest-ai-recording-tool-yet/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-06",
+      "snippet": "There are tons of earbuds and a growing number of AI-powered note-taking hardware, but what if they were combined into one neat package? That’s where Viaim and the RecDot earbuds come in. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Android Auto redesigned Google Maps alerts to be less distracting – it&#8217;s a huge upgrade [Gallery]",
+      "url": "https://9to5google.com/2026/06/05/android-auto-google-maps-alerts-redesign/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-06",
+      "snippet": "If you’ve spent any time behind the wheel on Android Auto in the past couple of years, you’ve probably encountered the pop-up alerts on Google Maps and realized just how distracting they can be. Now, Google is rolling out a redesign and it’s a huge improvement. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Indie App Spotlight: ‘Grit Method’ builds character with 4 daily goals",
+      "url": "https://9to5mac.com/2026/06/06/grit-method-app-builds-character-with-4-daily-goals/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-06",
+      "snippet": "Welcome to Indie App Spotlight . This is a weekly 9to5Mac series where we showcase the latest apps in the indie app world. If you’re a developer and would like your app featured, get in contact . Habit tracking apps are a dime a dozen, but Grit Method sets itself apart by requiri",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "iOS 27: Seven new iPhone features are coming soon",
+      "url": "https://9to5mac.com/2026/06/06/ios-27-seven-new-features-are-coming-soon/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-06",
+      "snippet": "Apple will unveil iOS 27 on Monday during WWDC’s kickoff . Here are seven new iPhone features rumored to be coming in iOS 27. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Nest Mini and Audio are out of stock ahead of Google Home Speaker",
+      "url": "https://9to5google.com/2026/06/05/nest-mini-audio-out-of-stock/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-05",
+      "snippet": "With the Google Home Speaker likely shipping this month , the Nest Mini and Nest Audio are now out of stock on the Google Store. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Friday Android app deals and freebies: MEGA MAN X, Ace Attorney Trilogy, GHOST TRICK, more",
+      "url": "https://9to5toys.com/2026/06/05/friday-android-app-deals-mega-man-x/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-05",
+      "snippet": "Your Friday afternoon lineup of the best Android game and app deals is now ready to go, including titles like MEGA MAN X, Ace Attorney Trilogy, GHOST TRICK, Slaps And Beans, Alien Shooter – Last Hope, Super Onion Boy 2, Crashlands 2, and more. Just be sure to dive into the now li",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Meta Ray-Ban glasses may soon identify faces using AI",
+      "url": "https://9to5google.com/2026/06/05/meta-ray-ban-glasses-may-soon-recognize-faces/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-05",
+      "snippet": "A new report indicates the Meta Ray-Ban companion app is capable of face recognition and is designed to identify users from images and videos taken on its paired smart glasses. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Google shuts down Pixel Studio with the latest app update",
+      "url": "https://9to5google.com/2026/06/05/google-shuts-down-pixel-studio-with-the-latest-app-update/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-05",
+      "snippet": "Google is shutting down its AI-powered Pixel Studio app less than two years after its debut and instead pushing users over to Gemini and Nano Banana for image generation. more…",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "HomeKit Weekly: SwitchBot launches a battery-powered standing fan with Apple Home integration",
+      "url": "https://9to5mac.com/2026/06/05/switchbot-standing-circulator-fan/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-05",
+      "snippet": "Fans are one of those categories where true innovation is kind of hard to find. Ultimately, it’s just there to cool things and circulate air. SwitchBot recently launched its new SwitchBot Standing Circulator Fan, which caught my eye for its built-in battery and Matter (and theref",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Smart home diary: A fresh look as I start again in my new home",
+      "url": "https://9to5mac.com/2026/06/05/smart-home-diary-a-fresh-look-as-i-start-again-in-my-new-home/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-05",
+      "snippet": "I’ve recently completed what must be a strong contender for the longest-running saga in selling one home and buying another. I won’t bore you with the details, but the entire process from start to finish was two years almost exactly to the day. I have sadly sacrificed my former s",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Disguised Russian banking app surged to top three on the US App Store",
+      "url": "https://9to5mac.com/2026/06/05/disguised-russian-banking-app-surges-to-top-three-on-the-us-app-store/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-05",
+      "snippet": "Update: The app appears to have been removed two hours after our story was published. The third most popular free iPhone app in the U.S. App Store today is a mysterious productivity app that’s only available in Russian. That’s a pretty obvious red flag that something isn’t quite ",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Apple TV debuts a new series remake of thriller Cape Fear, stream now",
+      "url": "https://9to5mac.com/2026/06/04/apple-tv-new-thriller-cape-fear/",
+      "source": "9to5Mac",
+      "publishedAt": "2026-06-05",
+      "snippet": "Apple TV debuts a new remake of thriller Cape Fear . This latest limited series adaptation is star-studded, with Amy Adams, Javier Bardem and Patrick Wilson headlining the cast. Inspired by the 1991 movie, in Cape Fear, the world of a married couple of attorneys is turned upside ",
+      "tier": "global-tier1"
+    },
+    {
+      "title": "Google Health 5.01 rolling out with 16 nutrition, fitness, &#038; sleep fixes",
+      "url": "https://9to5google.com/2026/06/04/google-health-5-01-release-notes/",
+      "source": "9to5Google",
+      "publishedAt": "2026-06-04",
+      "snippet": "The first big update (version 5.01) to the Google Health app is beginning to roll out with 16 additions and fixes to improve on the initial redesign. more…",
+      "tier": "global-tier1"
+    }
+  ]
+}
