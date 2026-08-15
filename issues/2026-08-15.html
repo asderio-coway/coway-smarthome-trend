@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>잔디는 로봇이 깎고, 낡은 아이패드가 집 전체를 제어하는 시대가 왔다 · 코웨이 스마트홈 트렌드</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+  :root {
+    --font:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    --bg:#fff; --bg-soft:#f5f5f7; --bg-soft2:#fafafa;
+    --ink:#1d1d1f; --gray:#6e6e73; --gray-light:#86868b;
+    --hairline:rgba(0,0,0,0.08);
+    --link:#0066cc;
+    /* 계절 테마 기본값(봄) — render.mjs가 head 의 테마 토큰으로 회차 계절에 맞게 덮어씀 */
+    --theme:#2CA3E1; --theme-soft:#e6f4fc; --theme-deep:#1a87c4;
+    --radius:16px; --radius-sm:12px; --radius-pill:980px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.04);
+    --shadow-hover:0 4px 12px rgba(0,0,0,.08),0 16px 40px rgba(0,0,0,.08);
+    --cat-ai:#5856d6; --cat-well:#34c759; --cat-std:#8e8e93; --cat-eco:#ff9500; --cat-biz:#af52de;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; letter-spacing:-0.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  a { text-decoration:none; color:inherit; }
+
+  .topbar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.8); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--hairline); }
+  .topbar-inner { max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:var(--ink); display:flex; align-items:center; gap:10px; transition:opacity .15s ease; text-decoration:none; }
+  .brand:hover { opacity:.75; }
+  .brand-mark { flex-shrink:0; display:block; filter:drop-shadow(0 1px 3px rgba(0,0,0,.15)); }
+  .brand-text { font-weight:700; letter-spacing:-0.025em; }
+  .nav { display:flex; gap:16px; align-items:center; font-size:14px; font-weight:500; color:var(--gray); }
+  .nav a { transition:color .15s ease; white-space:nowrap; }
+  .nav a:hover { color:var(--ink); }
+  .nav-back { color:var(--gray); }
+  .nav-dl { display:inline-flex; align-items:center; gap:5px; background:var(--bg-soft); padding:7px 16px; border-radius:var(--radius-pill); font-size:13px; color:var(--gray); transition:background .15s ease, color .15s ease; }
+  .nav-dl:hover { background:var(--hairline); color:var(--ink); }
+  .nav-video { display:inline-flex; align-items:center; gap:5px; background:var(--theme); color:#fff; padding:7px 16px; border-radius:var(--radius-pill); font-size:13px; font-weight:600; transition:background .15s ease; }
+  .nav-video:hover { background:var(--theme-deep); }
+  .nav-subscribe { color:var(--theme) !important; font-weight:600; }
+  .nav-subscribe:hover { color:var(--theme-deep) !important; opacity:1; }
+
+  .wrap { max-width:1120px; margin:0 auto; padding:64px 24px 96px; }
+
+  .issue-head { margin-bottom:56px; }
+  .kicker { font-size:13px; font-weight:600; letter-spacing:0.02em; color:var(--gray); }
+  .issue-title { font-size:46px; font-weight:800; letter-spacing:-0.04em; line-height:1.07; color:var(--ink); margin:12px 0 20px; max-width:24ch; word-break:keep-all; text-wrap:balance; }
+  .issue-meta { font-size:14px; color:var(--gray); display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .badge { font-size:12.5px; font-weight:600; padding:5px 13px; border-radius:var(--radius-pill); background:var(--bg-soft); color:var(--gray); }
+  .issue-meta .dot { color:var(--gray-light); }
+
+  .glance-head { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--theme); margin-bottom:16px; }
+  .glance { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:72px; }
+  .glance-item { border-radius:18px; padding:28px 26px 30px; }
+  .glance-num { display:inline-block; font-size:30px; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; line-height:1; }
+  .glance-num::before { content:""; display:block; width:26px; height:3px; border-radius:2px; margin-bottom:16px; }
+  .glance-text { font-size:16.5px; font-weight:500; line-height:1.62; margin-top:14px; letter-spacing:-0.015em; word-break:keep-all; }
+  .glance-text b { font-weight:700; }
+  /* 시안 A — 소프트 그라데이션 밴드(차분, 기본) */
+  .v-a .glance-item { background:linear-gradient(140deg, var(--theme-soft) 0%, #ffffff 82%); box-shadow:var(--shadow); border:1px solid var(--hairline); }
+  .v-a .glance-num { color:var(--theme); }
+  .v-a .glance-num::before { background:var(--theme); }
+  .v-a .glance-text { color:var(--ink); }
+  /* 시안 B — 은은한 그라데이션 밴드 */
+  .v-b .glance-item { background:linear-gradient(135deg,var(--theme),var(--theme-deep)); box-shadow:0 14px 34px rgba(0,0,0,.16); }
+  .v-b .glance-num { color:#fff; }
+  .v-b .glance-num::before { background:rgba(255,255,255,.85); }
+  .v-b .glance-text { color:#fff; }
+  .v-b .glance-head { color:var(--theme); }
+
+  .section-label { font-size:28px; font-weight:700; letter-spacing:-0.02em; color:var(--ink); margin:0 0 6px; }
+  .section-sub { font-size:14px; color:var(--gray); margin:0 0 32px; }
+
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-bottom:64px; }
+  .pcard { display:flex; flex-direction:column; background:var(--bg); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+  .pcard:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); }
+  .thumb { position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--bg-soft); display:block; }
+  .thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .pcard:hover .thumb img { transform:scale(1.04); }
+  .cat-chip { position:absolute; top:12px; left:12px; z-index:2; font-size:11.5px; font-weight:600; padding:5px 11px 5px 9px; border-radius:var(--radius-pill); color:var(--ink); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-flex; align-items:center; gap:6px; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-chip::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--cat, var(--gray)); }
+  .cat-ai { --cat:var(--cat-ai); } .cat-well { --cat:var(--cat-well); } .cat-std { --cat:var(--cat-std); } .cat-eco { --cat:var(--cat-eco); } .cat-biz { --cat:var(--cat-biz); }
+  .cat-chip { color:var(--cat, var(--ink)); }
+
+  .pbody { padding:20px 20px 22px; display:flex; flex-direction:column; flex:1; }
+  .pbody h3 { font-size:19px; font-weight:600; line-height:1.28; letter-spacing:-0.025em; color:var(--ink); margin:0 0 10px; word-break:keep-all; }
+  .pbody p { font-size:14.5px; letter-spacing:-0.01em; line-height:1.68; color:var(--gray); margin:0 0 18px; }
+  .src-row { margin-top:auto; }
+  .src-btn { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--gray); transition:color .15s ease; }
+  .src-btn:hover { color:var(--theme); }
+  .src-btn .meta { color:var(--gray-light); }
+  .img-credit { font-size:11px; color:var(--gray-light); margin-top:9px; line-height:1.4; }
+  .img-credit a { color:var(--gray-light); transition:color .15s ease; }
+  .img-credit a:hover { color:var(--gray); text-decoration:underline; text-underline-offset:2px; }
+
+  .footer { margin-top:8px; padding-top:40px; border-top:1px solid var(--hairline); }
+  .footer-inner { display:flex; gap:48px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; }
+  .footer-brand { display:flex; align-items:flex-start; gap:14px; flex:1 1 240px; }
+  .footer-brand-text strong { display:block; font-size:15px; font-weight:700; color:var(--ink); letter-spacing:-0.01em; margin-bottom:4px; }
+  .footer-brand-text p { font-size:13px; color:var(--gray); line-height:1.58; margin:0; word-break:keep-all; max-width:36ch; }
+  .footer-links { display:flex; flex-direction:column; gap:10px; padding-top:2px; }
+  .footer-links a { font-size:13px; color:var(--gray); transition:color .15s ease; }
+  .footer-links a:hover { color:var(--ink); }
+  .footer-copy { font-size:12px; color:var(--gray-light); line-height:1.7; padding-top:24px; border-top:1px solid var(--hairline); word-break:keep-all; overflow-wrap:break-word; }
+
+  @media (max-width:980px){ .grid { grid-template-columns:repeat(2,1fr); } .glance { grid-template-columns:1fr; } }
+  @media (max-width:640px){ .grid { grid-template-columns:1fr; } .issue-title { font-size:32px; } .wrap { padding:44px 20px 72px; } .glance { grid-template-columns:1fr; gap:12px; margin-bottom:48px; } .glance-item { padding:20px 18px 22px; } .topbar-inner { padding-top:10px; padding-bottom:10px; } .nav-dl { display:none; } .brand-text { font-size:15px; } .footer-inner { gap:28px; } }
+  .chip:focus-visible, a:focus-visible, button:focus-visible { outline:2px solid var(--theme); outline-offset:2px; border-radius:4px; }
+  *:focus:not(:focus-visible) { outline:none; }
+</style>
+<style>:root{--theme:#2CA3E1;--theme-soft:#e6f4fc;--theme-deep:#1a87c4;}</style>
+</head>
+<body class="v-a">
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+        <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+        <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+        <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+        <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">코웨이 스마트홈 트렌드</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html" class="nav-back">← 뉴스레터 모음</a>
+      <a href="../index.html#subscribe" class="nav-subscribe">구독</a>
+      <a href="../hyperframe-9ho.html" class="nav-dl" title="같은 내용을 슬라이드 보고서로 보기">📄 보고서 보기</a>
+      <a href="../video/%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%99%88%ED%8A%B8%EB%A0%8C%EB%93%9C_%EC%A0%9C9%ED%98%B8_2026-08-15.mp4" class="nav-video" target="_blank" rel="noopener" title="나레이션 포함 영상으로 보기">▶ 영상 보기</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="issue-head">
+    <div class="kicker">Issue 09 · 2026.08.15</div>
+    <h1 class="issue-title">잔디는 로봇이 깎고, 낡은 아이패드가 집 전체를 제어하는 시대가 왔다</h1>
+    <div class="issue-meta">
+      <span class="badge">포토 카드뉴스</span>
+      <span>발행 2026.08.15</span>
+      <span class="dot">·</span>
+      <span>분석 6건</span>
+    </div>
+  </header>
+
+  <h2 class="glance-head" aria-label="이번 호 한눈에 요약">이번 호 한눈에</h2>
+  <section class="glance">
+      <div class="glance-item"><span class="glance-num">01</span><div class="glance-text">애플이 홈팟 미니 후속 모델과 아이패드 기반 홈 대시보드 앱 등 스마트홈 제어 생태계를 다시 강화하고 있다.</div></div>
+      <div class="glance-item"><span class="glance-num">02</span><div class="glance-text">아이폰으로 조종하는 로봇 잔디깎이가 실외 영역까지 가전 자동화를 넓히고 있다.</div></div>
+      <div class="glance-item"><span class="glance-num">03</span><div class="glance-text">구글은 픽셀 신제품 판매를 위해 AI 구독 무료 혜택을 줄이는 대신 스마트 스피커·워치를 끼워주는 전략을 동시에 펼치고 있다.</div></div>
+  </section>
+
+  <h2 class="section-label">주요 기사</h2>
+  <p class="section-sub">업계 관찰자 시점 · 이미지를 누르면 원문으로 이동합니다</p>
+
+  <div class="grid">
+    <article class="pcard">
+      <a class="thumb" href="https://9to5mac.com/2026/08/13/homepod-mini-2-release-date-features-price-rumors/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/9/1.jpg" alt="애플, 6년 만에 홈팟 미니 2세대 출시 준비" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>애플, 6년 만에 홈팟 미니 2세대 출시 준비</h3>
+        <p>애플이 2020년 출시된 홈팟 미니의 후속 모델을 준비하고 있다는 보도가 나왔다. 스마트 스피커 라인업이 오랫동안 정체되어 있었던 만큼, 이번 리프레시는 애플의 홈 허브 전략 재가동으로 해석된다. 구체적 출시 시기와 사양은 아직 루머 단계다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5mac.com/2026/08/13/homepod-mini-2-release-date-features-price-rumors/" target="_blank" rel="noopener">9to5Mac <span class="meta">· 08.13 · 9to5mac.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5mac.com/2026/08/14/dashboard-for-your-home/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-eco">생태계·플랫폼</span>
+        <img src="../img/9/2.jpg" alt="낡은 아이패드가 스마트홈 벽걸이 관제센터로" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>낡은 아이패드가 스마트홈 벽걸이 관제센터로</h3>
+        <p>애플 홈 생태계 이용자들 사이에서 오래된 아이패드를 벽에 고정해 카메라, 온도조절기, 조명, 날씨, 일정을 한 화면에서 관리하는 홈 대시보드 앱 활용이 주목받고 있다. 별도 하드웨어 구매 없이 기존 기기를 재활용해 통합 제어 화면을 구성하는 트렌드로 풀이된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5mac.com/2026/08/14/dashboard-for-your-home/" target="_blank" rel="noopener">9to5Mac <span class="meta">· 08.14 · 9to5mac.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5mac.com/2026/08/14/review-terramow-v1000-is-the-easiest-iphone-controlled-robot-lawn-mower-ive-tested/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-ai">AI 루틴·자동화</span>
+        <img src="../img/9/3.jpg" alt="아이폰으로 조종하는 로봇 잔디깎이, 사용성 호평" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>아이폰으로 조종하는 로봇 잔디깎이, 사용성 호평</h3>
+        <p>아이폰 앱으로 마당 지도를 그리고 제어하는 로봇 잔디깎이 테라모우 V1000이 기존 배터리형 제품을 대체할 만큼 편리하다는 리뷰가 나왔다. 최초 설정 후에는 정해진 일정에 따라 자동으로 작업을 수행해, 실외 영역까지 확장되는 스마트홈 자동화 기기의 사례로 꼽힌다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5mac.com/2026/08/14/review-terramow-v1000-is-the-easiest-iphone-controlled-robot-lawn-mower-ive-tested/" target="_blank" rel="noopener">9to5Mac <span class="meta">· 08.14 · 9to5mac.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/08/12/google-drops-the-ai-pro-to-6-months-with-pixel-11-pro-ditches-free-plan-for-base-model/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-biz">사업모델·온보딩</span>
+        <img src="../img/9/4.jpg" alt="구글, 픽셀 구매자에게 주던 AI 무료 혜택 축소" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글, 픽셀 구매자에게 주던 AI 무료 혜택 축소</h3>
+        <p>구글이 픽셀 9 구매자에게 제공하던 12개월 무료 AI 프로 구독 혜택을 픽셀 11 시리즈부터 6개월로 줄이고, 기본 모델에는 무료 플랜 자체를 없앴다. 하드웨어 판매를 위한 AI 서비스 무료 제공 전략이 유료 전환을 유도하는 방향으로 조정되고 있음을 보여준다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/08/12/google-drops-the-ai-pro-to-6-months-with-pixel-11-pro-ditches-free-plan-for-base-model/" target="_blank" rel="noopener">9to5Google <span class="meta">· 08.12 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://9to5google.com/2026/08/14/deals-pixel-11-free-google-home-speaker-legion-tab/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-biz">사업모델·온보딩</span>
+        <img src="../img/9/5.jpg" alt="구글, 픽셀 예약구매에 스마트 스피커·워치 무료 증정" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>구글, 픽셀 예약구매에 스마트 스피커·워치 무료 증정</h3>
+        <p>구글이 픽셀 11 시리즈 사전예약 고객에게 구글 홈 스피커나 픽셀 워치 5를 무료로 얹어주는 프로모션을 진행 중이다. 스마트폰 판매와 연계해 스마트 스피커·웨어러블 보급을 동시에 늘리려는 번들링 전략으로 풀이된다.</p>
+        <div class="src-row"><a class="src-btn" href="https://9to5google.com/2026/08/14/deals-pixel-11-free-google-home-speaker-legion-tab/" target="_blank" rel="noopener">9to5Google <span class="meta">· 08.14 · 9to5google.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+    <article class="pcard">
+      <a class="thumb" href="https://www.engadget.com/2237530/waymo-receives-permission-to-offer-rides-in-sacramento-and-san-diego/" target="_blank" rel="noopener">
+        <span class="cat-chip cat-std">표준·규제</span>
+        <img src="../img/9/6.jpg" alt="웨이모, 새크라멘토·샌디에이고서 자율주행 택시 승인" loading="lazy" />
+      </a>
+      <div class="pbody">
+        <h3>웨이모, 새크라멘토·샌디에이고서 자율주행 택시 승인</h3>
+        <p>웨이모가 새크라멘토와 샌디에이고에서 자율주행 유상 운송 서비스를 제공할 수 있는 규제당국의 승인을 획득했다. 기존 샌프란시스코 베이 지역과 로스앤젤레스에서도 차량 운행 범위를 확대할 수 있게 되면서, 자율주행 기술이 일상 생활 반경으로 넓어지는 흐름을 보여준다.</p>
+        <div class="src-row"><a class="src-btn" href="https://www.engadget.com/2237530/waymo-receives-permission-to-offer-rides-in-sacramento-and-san-diego/" target="_blank" rel="noopener">Engadget <span class="meta">· 08.14 · engadget.com</span> 원문 ↗</a></div>
+        
+      </div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg width="44" height="44" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:1px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.15))">
+          <rect width="32" height="32" rx="10" fill="#2CA3E1"/>
+          <path d="M16 7L9 16V27H23V16L16 7Z" fill="white" fill-opacity="0.9"/>
+          <rect x="13.5" y="23" width="5" height="4" rx="1" fill="#2CA3E1"/>
+          <circle cx="16" cy="20" r="1.3" fill="#2CA3E1"/>
+          <path d="M13 18a4 4 0 0 1 6 0" stroke="#2CA3E1" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div class="footer-brand-text">
+          <strong>코웨이 스마트홈 트렌드</strong>
+          <p>경쟁사 동향과 IoT 플랫폼·표준의 움직임을 격주로 정리하는 코웨이 IoT기획팀 사내 뉴스레터</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="사이트 링크">
+        <a href="../index.html">뉴스레터 모음</a>
+        <a href="../guide.html">이용 가이드</a>
+        <a href="../hyperframe-9ho.html">보고서 보기</a>
+        <a href="../video/%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%99%88%ED%8A%B8%EB%A0%8C%EB%93%9C_%EC%A0%9C9%ED%98%B8_2026-08-15.mp4" target="_blank" rel="noopener">영상 보기</a>
+        <a href="../index.html#subscribe">구독하기</a>
+      </nav>
+    </div>
+    <div class="footer-copy">스마트홈 트렌드 카드뉴스 · 코웨이 OpenWork — 격주 자동 발행. 업계 관찰자 시점, 코웨이 실행 액션 미포함. 원문 저작권은 각 매체에 있습니다.</div>
+  </footer>
+</div>
+</body>
+</html>
