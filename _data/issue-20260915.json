@@ -1,0 +1,89 @@
+{
+  "issue": 11,
+  "slug": "2026-09-15",
+  "publishedAt": "2026-09-15",
+  "period": {
+    "start": "",
+    "end": "2026-09-15"
+  },
+  "issue_title": "애플 홈캠 AI 기능이 유료 구독으로 나오고, 시리 자리엔 챗GPT가 들어올 수도 있다",
+  "glance": [
+    "애플 홈의 보안카메라 AI 영상 요약 기능이 아이클라우드+ 프리미어 구독(월 최대 6만원대)에 포함되는 것으로 확인됐다.",
+    "iOS 27 코드 분석에서 시리 대신 클로드나 챗GPT 같은 외부 AI를 쓸 수 있는 기능이 발견됐다.",
+    "오픈AI·구글·앤스로픽 등 AI 기업 수장들이 개발 속도 조절에 합의했지만 업계 담합 아니냐는 시각도 나온다."
+  ],
+  "articles": [
+    {
+      "title_ko": "애플 홈 보안카메라 AI 영상 요약, 월 6만원대 구독 상품으로 등장",
+      "summary_ko": "iOS 27과 tvOS 27 정식 출시와 함께 애플 홈에 AI 기능인 '애플 인텔리전스 포 홈'이 적용되면서 홈킷 시큐어 비디오에 방문자·상황을 텍스트로 요약해주는 기능이 추가됐다. 다만 이 기능은 아이클라우드+ 상위 요금제 가입자에게만 제공되며, 최상위 구간은 월 6만원 수준에 달해 스마트홈 AI 기능의 유료화 흐름을 보여준다.",
+      "category": "business-model",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/tech/994949/apple-intelligence-apple-home-icloud-plus-cost-subscription",
+      "publishedAt": "2026-09-14",
+      "image_query": "security camera app subscription smartphone",
+      "img": "img/11/1.jpg",
+      "imgUrl": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/268594_iOS_27_home_app_first_look_CVirginia2.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200"
+    },
+    {
+      "title_ko": "iOS 27 코드에서 시리 대신 클로드·챗GPT 탑재 가능성 발견",
+      "summary_ko": "iOS 27과 macOS 27 코드를 분석한 개발자가 시리 AI를 클로드나 챗GPT 같은 외부 대화형 AI로 대체할 수 있는 옵션의 흔적을 발견했다고 전해졌다. 이용자들이 자신이 원하는 AI 비서를 선택하고 싶다는 요구는 1년 넘게 이어져 온 것으로, 실제 도입 시 음성비서 시장 구도에 변화를 줄 수 있다.",
+      "category": "ai-routine",
+      "source": "9to5Mac",
+      "url": "https://9to5mac.com/2026/09/14/ios-27-code-shows-you-may-be-able-to-replace-siri-ai-with-claude-or-chatgpt-poll/",
+      "publishedAt": "2026-09-14",
+      "image_query": "voice assistant smartphone chat interface",
+      "img": "img/11/2.jpg",
+      "imgUrl": "https://9to5mac.com/wp-content/uploads/sites/6/2026/09/You-can-replace-Siri-AI-with-Claude-or-ChatGPT.jpg?quality=82&strip=all&resize=1200,628"
+    },
+    {
+      "title_ko": "오픈AI·구글·앤스로픽 수장들, AI 개발 속도 조절 합의…담합 논란도",
+      "summary_ko": "오픈AI, 앤스로픽, 구글 딥마인드, 스페이스X 등 주요 AI 기업 수장들이 주말 사이 AI 개발 속도를 늦추기로 느슨하게 합의했다는 소식이 전해졌다. 안전을 이유로 내세웠지만 일부 업계 관계자들은 이를 경쟁 제한을 위한 담합으로 해석하며 의구심을 제기하고 있다.",
+      "category": "standard-regulation",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/995186/is-big-techs-ai-slowdown-a-safety-pact-or-a-cartel",
+      "publishedAt": "2026-09-14",
+      "image_query": "tech executives meeting boardroom",
+      "img": "img/11/3.jpg",
+      "imgUrl": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/11/STKS522_AGI_A.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200"
+    },
+    {
+      "title_ko": "구글, 웨어OS 기반 신규 웨어러블 기기 FCC 인증 통과",
+      "summary_ko": "미국 FCC 인증 데이터베이스에 등록된 신규 기기가 구글의 웨어OS 기반 제품으로 추정되면서, 새로운 피트니스 트래커 출시 가능성이 제기됐다. 구체적인 사양은 아직 공개되지 않았지만 건강관리 웨어러블 라인업 확장 신호로 해석된다.",
+      "category": "wellness",
+      "source": "9to5Google",
+      "url": "https://9to5google.com/2026/09/10/google-wear-os-tracker/",
+      "publishedAt": "2026-09-10",
+      "image_query": "wearable fitness tracker wrist device",
+      "img": "img/11/4.jpg",
+      "imgUrl": "https://9to5google.com/wp-content/uploads/sites/4/2026/05/google-fitbit-air-hands-on-10.jpg?quality=82&strip=all&resize=1200,628"
+    },
+    {
+      "title_ko": "저가형 매터 누수 감지 센서, 애플 홈과 호환되며 3만원대 출시",
+      "summary_ko": "셸리(Shelly)의 신제품 '플러드 S 젠4'가 매터(Matter) 표준을 지원하는 누수 감지 센서로 출시돼 애플 홈에서도 바로 사용할 수 있게 됐다. 30달러 미만의 가격으로 저렴한 편에 속해, 수해 예방용 스마트홈 센서 시장의 가격 경쟁이 이어지고 있음을 보여준다.",
+      "category": "ecosystem",
+      "source": "9to5Mac",
+      "url": "https://9to5mac.com/2026/09/11/homekit-weekly-shellys-flood-s-gen4-is-a-low-cost-matter-leak-sensor-for-apple-home/",
+      "publishedAt": "2026-09-11",
+      "image_query": "water leak sensor smart home",
+      "img": "img/11/5.jpg",
+      "imgUrl": "https://9to5mac.com/wp-content/uploads/sites/6/2026/08/Shelly-leak-sensor-2.jpg?quality=82&strip=all&resize=1200,628"
+    },
+    {
+      "title_ko": "삼성 갤럭시 스마트태그3, 유출 정보서 에어태그 단점 그대로 답습",
+      "summary_ko": "유출된 정보에 따르면 곧 출시될 삼성 갤럭시 스마트태그3가 애플 에어태그의 아쉬운 점으로 꼽혀온 디자인 요소를 그대로 이어받을 것으로 전해졌다. 위치추적기 시장에서 삼성과 애플 제품 간 차별화가 크지 않다는 평가가 나온다.",
+      "category": "ecosystem",
+      "source": "9to5Google",
+      "url": "https://9to5google.com/2026/09/11/samsung-galaxy-smarttag-3-copies-the-worst-part-of-apples-airtag-in-leak/",
+      "publishedAt": "2026-09-11",
+      "image_query": "bluetooth tracker tag keychain",
+      "img": "img/11/6.jpg",
+      "imgUrl": "https://9to5google.com/wp-content/uploads/sites/4/2026/09/galaxy-smarttag-3-sg-leak-5.webp?resize=1200,628"
+    }
+  ],
+  "stats": "분석 6건",
+  "imageStats": {
+    "og": 6,
+    "stock": 0,
+    "fallback": 0
+  }
+}
