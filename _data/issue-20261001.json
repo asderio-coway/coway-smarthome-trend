@@ -1,0 +1,89 @@
+{
+  "issue": 12,
+  "slug": "2026-10-01",
+  "publishedAt": "2026-10-01",
+  "period": {
+    "start": "",
+    "end": "2026-10-01"
+  },
+  "issue_title": "애플이 아이맥 모양 AI 스마트홈 허브를 내놓고, 아마존·구글도 집안 AI 비서를 키운다",
+  "glance": [
+    "애플이 아이맥 G4 디자인의 스마트홈 허브 '홈패드'를 10월 13일 공개할 예정이다.",
+    "아마존과 구글이 각각 알렉사+와 제미나이 기반 음성 비서를 집안 기기에 확대 적용하고 있다.",
+    "트럼프 행정부의 AI 안전 협약이 전문가들로부터 실효성 부족이라는 평가를 받았다."
+  ],
+  "articles": [
+    {
+      "title_ko": "애플 스마트홈 허브 '홈패드', 아이맥 G4 디자인으로 10월 13일 공개",
+      "summary_ko": "블룸버그 보도에 따르면 애플이 오랫동안 소문으로만 떠돌던 스마트홈 허브 '홈패드'를 10월 13일 출시할 예정이며, 6인치 디스플레이와 과거 아이맥 G4를 연상시키는 디자인을 채택한 것으로 알려졌다. 동시에 새로운 AI 기반 음성비서를 탑재한 홈팟 미니 업데이트도 함께 공개될 것으로 전해지며, 애플이 구글·아마존이 선점해온 스마트홈 허브 시장에 본격 진출함을 시사한다.",
+      "category": "ecosystem",
+      "source": "9to5Mac",
+      "url": "https://9to5mac.com/2026/09/30/apples-homepad-smart-home-hub-launching-on-oct-13-bloomberg/",
+      "publishedAt": "2026-09-30",
+      "image_query": "smart home hub display device",
+      "img": "img/12/1.jpg",
+      "imgUrl": "https://9to5mac.com/wp-content/uploads/sites/6/2026/09/Apples-HomePad-smart-home-hub-reportedly-launching-on-Oct-13.webp?resize=1200,628"
+    },
+    {
+      "title_ko": "아마존, 파이어TV에 차세대 AI 비서 '알렉사+' 전용 허브 탑재",
+      "summary_ko": "아마존이 11월 파이어TV 인터페이스와 모바일 앱을 전면 개편하면서 생성형 AI 비서 '알렉사+'를 위한 전용 허브를 추가한다고 밝혔다. 거실 스마트 스피커에 머물렀던 알렉사+ 경험을 TV와 모바일 기기로 확장하려는 시도로 해석된다.",
+      "category": "ai-routine",
+      "source": "Engadget",
+      "url": "https://www.engadget.com/2273042/amazons-new-fire-tv-interface-and-mobile-app-will-come-with-alexa-upgrades/",
+      "publishedAt": "2026-09-30",
+      "image_query": "smart tv remote living room",
+      "img": "img/12/2.jpg",
+      "imgUrl": "https://www.engadget.com/img/gallery/amazons-new-fire-tv-interface-and-mobile-app-will-come-with-alexa-upgrades/l-intro-1790771374.jpg"
+    },
+    {
+      "title_ko": "구글 홈, '내 폰 찾기' 음성 명령과 스마트홈 기능 대거 개선",
+      "summary_ko": "구글이 제미나이 스피커를 대상으로 '내 폰 찾기' 음성 명령의 인식률을 높이고 다양한 스마트홈 기능을 보완한 구글 홈 업데이트를 배포하기 시작했다. 연말 성수기를 앞두고 네스트 초인종 벨소리 미리듣기 기능도 함께 추가되는 등 구글은 홈 생태계 전반의 사용성 개선에 속도를 내는 모습이다.",
+      "category": "ai-routine",
+      "source": "9to5Google",
+      "url": "https://9to5google.com/2026/09/30/google-home-update-find-my-phone-improvements/",
+      "publishedAt": "2026-09-30",
+      "image_query": "voice assistant smart speaker home",
+      "img": "img/12/3.jpg",
+      "imgUrl": "https://9to5google.com/wp-content/uploads/sites/4/2026/06/Google-Home-Speaker-9.jpg?quality=82&strip=all&resize=1200,628"
+    },
+    {
+      "title_ko": "공기청정기, 산불 연기 제거 효과는 제품마다 천차만별",
+      "summary_ko": "CNET 자체 실험실 테스트 결과 공기청정기의 산불 연기 제거 성능이 제품별로 큰 편차를 보이는 것으로 나타났다. 기후 변화로 산불 발생이 잦아지면서 실내 공기질 관리에 대한 소비자 관심이 커지는 가운데, 성능을 검증하는 데이터에 대한 수요도 함께 늘고 있는 것으로 풀이된다.",
+      "category": "wellness",
+      "source": "CNET Smart Home",
+      "url": "https://www.cnet.com/home/kitchen-and-household/air-purifiers-wildfire-smoke-lab-data/",
+      "publishedAt": "2026-09-30",
+      "image_query": "air purifier living room device",
+      "img": "img/12/4.jpg",
+      "imgUrl": "https://www.cnet.com/wp-content/uploads/sites/2/air-purifier.jpg"
+    },
+    {
+      "title_ko": "트럼프 AI 안전협약, 전문가들 \"실효성 부족\" 지적",
+      "summary_ko": "트럼프 대통령이 빅테크 경영진들과 함께 AI 안전 관리를 위한 자율 협약에 서명했지만, 전문가들은 구체적 규제나 집행 수단이 빠져 있어 실질적인 안전장치로 보기 어렵다고 평가했다. AI 안전 문제가 정부 규제가 아닌 기업 자율에 맡겨지는 흐름이 이어지면서, AI 탑재 기기 전반의 안전 기준 공백에 대한 우려도 함께 제기된다.",
+      "category": "standard-regulation",
+      "source": "CNET Smart Home",
+      "url": "https://www.cnet.com/tech/services-and-software/trumps-ai-voluntary-accord-wont-make-ai-safe-experts-say/",
+      "publishedAt": "2026-09-30",
+      "image_query": "government policy technology regulation",
+      "img": "img/12/5.jpg",
+      "imgUrl": "https://www.cnet.com/wp-content/uploads/sites/2/GettyImages-2297756462.jpg"
+    },
+    {
+      "title_ko": "삼성 스마트싱스, 10월부터 '트래커' 분실물 찾기 서비스 종료",
+      "summary_ko": "삼성이 스마트싱스 앱 내 갤럭시 스마트태그 전용 '트래커' 위치 찾기 기능을 10월부로 종료하기로 확정했다. 태그 자체의 기본 위치추적 기능은 유지되지만 전용 서비스는 사라지면서, 스마트홈 플랫폼 기업들이 운영 비용 등을 이유로 부가 서비스를 선별적으로 축소하는 사례로 주목받는다.",
+      "category": "business-model",
+      "source": "9to5Google",
+      "url": "https://9to5google.com/2026/09/29/samsung-smartthings-is-shutting-down-support-for-galaxy-smarttag-in-october/",
+      "publishedAt": "2026-09-29",
+      "image_query": "smart tag tracker device",
+      "img": "img/12/6.jpg",
+      "imgUrl": "https://9to5google.com/wp-content/uploads/sites/4/2024/01/samsung-logo-2.jpg?quality=82&strip=all&resize=1200,628"
+    }
+  ],
+  "stats": "분석 6건",
+  "imageStats": {
+    "og": 6,
+    "stock": 0,
+    "fallback": 0
+  }
+}
